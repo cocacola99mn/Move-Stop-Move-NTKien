@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
+  m_Name: Candy
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 179291366974948169, guid: f9d1e0cc44342a745a56a68dc9ac1c93, type: 3}
+  weaponMaterial:
+  - {fileID: 2100000, guid: 24e74970e1bed1f4f805ab3753675d29, type: 2}
+  - {fileID: 2100000, guid: 1fc3d85cf2b0a644ea966a95cfc23b2a, type: 2}
+  weaponName: Candy
+  description: Attack Speed + 10
+  attackSpeed: 10
+  attackRange: 0
+  price: 200
+  weaponType: 1

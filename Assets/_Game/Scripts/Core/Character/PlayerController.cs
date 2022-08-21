@@ -25,12 +25,10 @@ public class PlayerController : Character
     {
         JoyStickInput();
 
-        if (direction.magnitude >= 0.1f)
-            PlayerMovement();       
-        else if (colliders != null && direction.magnitude < 0.1f)
-            PlayerAttack();
+        if (direction.magnitude >= 0.01f)
+            PlayerMovement();              
         else
-            IdleAnim();            
+            IdleAnim();             
     }
 
     public void PlayerMovement()

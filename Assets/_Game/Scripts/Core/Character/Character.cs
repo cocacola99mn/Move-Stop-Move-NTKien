@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public Firing firing;
     public Transform character;
     public Animator animator;
 
@@ -17,6 +18,9 @@ public class Character : MonoBehaviour
 
     public void OnInit()
     {
+        if (GetComponent<Firing>() != null)
+            firing = GetComponent<Firing>();
+
         turnTime = 0.1f;
         playerSpeed = 8;
         attackRange = 5;
@@ -34,18 +38,24 @@ public class Character : MonoBehaviour
         characterOrigin = character.position;
         
         colliders = Physics.OverlapSphere(characterOrigin, attackRange, targetLayer);
+
+        SetTarget();
     }
 
-    public void PlayerAttack()
+    public void SetTarget()
     {
-        if(colliders != null)
+        if (direction.magnitude < 0.01f && Physics.CheckSphere(characterOrigin, attackRange, targetLayer))
         {
+            firing.isFiring = true;
+            
             foreach (Collider coll in colliders)
             {
-                PlayerRotation(coll.ClosestPoint(characterOrigin) - characterOrigin);
+                PlayerRotation(colliders[0].transform.position - characterOrigin);
                 AttackAnim();
             }
-        }        
+        }    
+        else 
+            firing.isFiring = false;
     }
 
     #region ANIMATORREGION

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99a06ceabad6ef4c9341080ba6a77d6, type: 3}
+  m_Name: Prime Candy
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
+  attackSpeed: 10
+  attackRange: 5
+  weaponType: 1
