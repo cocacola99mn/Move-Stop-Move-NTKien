@@ -24,38 +24,73 @@ public class Character : MonoBehaviour
         turnTime = 0.1f;
         playerSpeed = 8;
         attackRange = 5;
+        colliders = new Collider[10];
     }
 
     public void PlayerRotation(Vector3 direction)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
+        
         character.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     public void PlayerCircleCast()
     {
         characterOrigin = character.position;
-        
-        colliders = Physics.OverlapSphere(characterOrigin, attackRange, targetLayer);
 
+        Physics.OverlapSphereNonAlloc(characterOrigin, attackRange, colliders, targetLayer);
         SetTarget();
     }
 
     public void SetTarget()
     {
-        if (direction.magnitude < 0.01f && Physics.CheckSphere(characterOrigin, attackRange, targetLayer))
+        if (InRangeCondition() && StopMovinglCondition())
         {
             firing.isFiring = true;
-            
-            foreach (Collider coll in colliders)
-            {
-                PlayerRotation(colliders[0].transform.position - characterOrigin);
-                AttackAnim();
-            }
+
+            PlayerRotation(GetClosestEnemyCollider(colliders) - characterOrigin);
         }    
         else 
             firing.isFiring = false;
+    }
+
+    public Vector3 GetClosestEnemyCollider(Collider[] enemyColliders)
+    {
+        float bestDistance = 10000;
+        Collider bestCollider = null;
+
+        foreach (Collider enemy in enemyColliders)
+        {
+            if(enemy != null)
+            {
+                float distance = Vector3.Distance(characterOrigin, enemy.transform.position);
+
+                if (distance < bestDistance)
+                {
+                    bestDistance = distance;
+                    bestCollider = enemy;
+                }
+            }           
+        }
+
+        return bestCollider.transform.position;
+    }
+
+    public bool InRangeCondition()
+    {
+        if (Physics.CheckSphere(characterOrigin, attackRange, targetLayer))
+            return true;
+        else
+            return false;
+    }
+
+    public bool StopMovinglCondition()
+    {
+        if (direction.magnitude < 0.01f)
+            return true;
+        else
+            return false;
     }
 
     #region ANIMATORREGION
@@ -73,11 +108,13 @@ public class Character : MonoBehaviour
     public void IdleAnim()
     {
         animator.SetTrigger(GameConstant.IDLE_ANIM);
+        animator.ResetTrigger(GameConstant.ATTACK_ANIM);
     }
 
     public void AttackAnim()
     {
         animator.SetTrigger(GameConstant.ATTACK_ANIM);
+        animator.SetTrigger(GameConstant.IDLE_ANIM);
     }
 
     public void RunAnim()

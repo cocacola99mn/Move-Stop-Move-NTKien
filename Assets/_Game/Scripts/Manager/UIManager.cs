@@ -8,15 +8,9 @@ using System.Numerics;
 public enum UIID
 {
     UICGamePlay = 0,
-    UICBlockRaycast = 1,
-
-    UICMainMenu = 2,
-
-    UICSetting = 3,
-    UICFail = 4,
-    UICVictory = 5,
+    UICMainMenu = 1,
+    UICWeaponShop = 2
 }
-
 
 public class UIManager : Singleton<UIManager>
 {

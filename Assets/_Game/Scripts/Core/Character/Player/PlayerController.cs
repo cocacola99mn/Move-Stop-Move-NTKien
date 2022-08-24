@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : Character
 {
     public CharacterController controller;
+    public Transform TargetOutline;
 
     public Joystick joyStick;
 
@@ -18,6 +19,7 @@ public class PlayerController : Character
     void Update()
     {
         PlayerCircleCast();
+        DisplayTarget();
         PlayerAction();
     }
 
@@ -25,10 +27,12 @@ public class PlayerController : Character
     {
         JoyStickInput();
 
-        if (direction.magnitude >= 0.01f)
-            PlayerMovement();              
+        if (!StopMovinglCondition())
+            PlayerMovement();                 
+        else if(InRangeCondition() && StopMovinglCondition() && firing.shotCounter <= 0.8f)
+            AttackAnim();       
         else
-            IdleAnim();             
+            IdleAnim();            
     }
 
     public void PlayerMovement()
@@ -44,5 +48,19 @@ public class PlayerController : Character
         vertical = joyStick.Vertical;
 
         direction = new Vector3(horizontal, 0, vertical).normalized;
+    }
+
+    public void DisplayTarget()
+    {
+        if(InRangeCondition())
+        {
+            Vector3 enemyPos = GetClosestEnemyCollider(colliders);
+            enemyPos.y += 0.01f;
+
+            TargetOutline.gameObject.SetActive(true);
+            TargetOutline.position = enemyPos;
+        }
+        else
+            TargetOutline.gameObject.SetActive(false);
     }
 }

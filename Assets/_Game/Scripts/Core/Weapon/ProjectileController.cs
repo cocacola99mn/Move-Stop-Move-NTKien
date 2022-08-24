@@ -31,16 +31,16 @@ public class ProjectileController : MonoBehaviour
     public void ProjectileLifeTime()
     {
         existTime -= Time.deltaTime;
-        
+
         if (existTime <= 0)
-            Destroy(gameObject);
+            ObjectPooling.Ins.Despawn("PlayerWeapon", gameObject);
     }
 
     public void OnProjectileHit(Collider other)
     {
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
-            Destroy(gameObject);
+            ObjectPooling.Ins.Despawn("PlayerWeapon", gameObject);
             Destroy(other.gameObject);
         }
     }

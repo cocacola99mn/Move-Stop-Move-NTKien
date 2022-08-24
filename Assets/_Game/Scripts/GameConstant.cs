@@ -9,6 +9,7 @@ public static class GameConstant
     public const string ATTACK_ANIM = "IsAttack";
     public const string WIN_ANIM = "IsWin";
     public const string DANCE_ANIM = "IsDance";
+    public const string ARROW_ANIM = "ArrowSwingAnim 2";
 
     public const string DAMAGEABLE_TAG = "Damageable";
 }
