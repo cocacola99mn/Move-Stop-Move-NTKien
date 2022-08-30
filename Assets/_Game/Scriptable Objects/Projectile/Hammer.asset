@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99a06ceabad6ef4c9341080ba6a77d6, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
+  id: 7
   projectile: {fileID: 2658909352863336754, guid: ab351128573ec234cb8501cde5e70a7d, type: 3}
   attackSpeed: 0
   attackRange: 25

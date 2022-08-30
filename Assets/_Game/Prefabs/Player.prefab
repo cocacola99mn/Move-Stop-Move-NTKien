@@ -499,11 +499,11 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: 6af23c853ef6ecb439e6cd97a46ecd39, type: 2}
   - {fileID: 11400000, guid: c4e4ff3043637d54d8ec8f9cfd82a032, type: 2}
+  - {fileID: 11400000, guid: 6839d772b63f24e4aa7561f6b4ba6647, type: 2}
   - {fileID: 11400000, guid: d7949c0dbefcade4b98c1e9836e3a52f, type: 2}
   - {fileID: 11400000, guid: f58c45e88a2b10a4580487444c456805, type: 2}
   - {fileID: 11400000, guid: b4c451e83a216bd4f8164804c002623a, type: 2}
   - {fileID: 11400000, guid: f0d57be799ee97e4c889e581f96041a3, type: 2}
-  - {fileID: 11400000, guid: 6839d772b63f24e4aa7561f6b4ba6647, type: 2}
   - {fileID: 11400000, guid: 6205fb082267b5244bfc39fa037ade50, type: 2}
   - {fileID: 11400000, guid: 099d027432dac0d40a1821bc3b763321, type: 2}
   - {fileID: 11400000, guid: 18ae7262d5646a24bb5ff22c22a7ba03, type: 2}
@@ -2452,6 +2452,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
+  weaponHolder: {fileID: 610428393}
   controller: {fileID: 3687084864315573268}
   TargetOutline: {fileID: 0}
   joyStick: {fileID: 0}

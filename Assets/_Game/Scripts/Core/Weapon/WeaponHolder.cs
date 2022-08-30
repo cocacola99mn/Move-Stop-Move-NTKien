@@ -6,21 +6,34 @@ public class WeaponHolder : MonoBehaviour
 {
     public List<Weapon> weapons;
 
+    public List<GameObject> playerWeapons;
+
     public Transform holder;
 
-    private void Start()
+    public GameObject myWeapon;
+
+    public int currentWeapon;
+
+    public void Start()
+    {
+        currentWeapon = PlayerPrefs.GetInt(GameConstant.PREF_WEAPONEQUIP);
+    }
+
+    public void GetWeapon()
     {
         for(int i = 0; i < weapons.Count; i++)
         {
-            GameObject myWeapon = Instantiate(weapons[i].weapon);
-            
-            if (i == 0)
-                myWeapon.SetActive(true); 
+            myWeapon = Instantiate(weapons[i].weapon);
+
+            if (i == currentWeapon)
+                myWeapon.SetActive(true);
             else
                 myWeapon.SetActive(false);
 
             myWeapon.transform.SetParent(holder);
             myWeapon.transform.localPosition = new Vector3(0, 0, 0);
+
+            playerWeapons.Add(myWeapon);
         }
     }
 }

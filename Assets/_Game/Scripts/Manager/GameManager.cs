@@ -8,7 +8,6 @@ public class GameManager : Singleton<GameManager>
 {
     protected void Awake()
     {
-        //base.Awake();
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;

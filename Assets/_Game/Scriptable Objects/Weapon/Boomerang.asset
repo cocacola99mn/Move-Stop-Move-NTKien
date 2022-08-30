@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Boomerang
   m_EditorClassIdentifier: 
+  price: 150
+  id: 2
   weapon: {fileID: 3512769037254545233, guid: aa1dc18444b2e20489cb1b9f76c440a9, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: 837030627ab1d564abba1edcbcd3dda9, type: 2}
-  - {fileID: 2100000, guid: 331cb7ceae4099e42b331af45cef246c, type: 2}
   weaponName: Boomerang
   description: Attack Range +10
-  attackSpeed: 0
-  attackRange: 10
-  price: 150
-  weaponType: 0

@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasMainMenu : MonoBehaviour
+public class CanvasMainMenu : UICanvas
 {
-    public void PlayGameButton()
-    {
-
-    }
-
     public void WeaponShopButton()
     {
-
+        UIManager.Ins.OpenUI(UIID.UICWeaponShop);
+        Close();
     }
 
     public void SkinShopButton()

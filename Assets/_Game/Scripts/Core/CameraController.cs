@@ -16,4 +16,10 @@ public class CameraController : MonoBehaviour
     {
         Camera.position = new Vector3(Target.position.x , Camera.position.y , Target.position.z + deltaZ);
     }
+
+    public void PlayGameButton()
+    {
+        Camera.localPosition = Vector3.Lerp(Camera.position, new Vector3(0, 10, -15), 1);
+        Camera.localRotation = Quaternion.Euler(35, 0, 0);
+    }
 }

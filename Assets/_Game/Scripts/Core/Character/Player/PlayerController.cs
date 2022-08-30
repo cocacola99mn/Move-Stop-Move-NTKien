@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
+    public WeaponHolder weaponHolder;
+
     public CharacterController controller;
+    
     public Transform TargetOutline;
 
     public Joystick joyStick;
@@ -14,6 +17,7 @@ public class PlayerController : Character
     void Start()
     {
         OnInit();
+        SetWeapon();
     }
 
     void Update()
@@ -62,5 +66,10 @@ public class PlayerController : Character
         }
         else
             TargetOutline.gameObject.SetActive(false);
+    }
+
+    public void SetWeapon()
+    {
+        weaponHolder.GetWeapon();
     }
 }

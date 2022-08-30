@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99a06ceabad6ef4c9341080ba6a77d6, type: 3}
   m_Name: Boomerang
   m_EditorClassIdentifier: 
+  id: 2
   projectile: {fileID: 3512769037254545233, guid: aa1dc18444b2e20489cb1b9f76c440a9, type: 3}
   attackSpeed: 0
   attackRange: 10

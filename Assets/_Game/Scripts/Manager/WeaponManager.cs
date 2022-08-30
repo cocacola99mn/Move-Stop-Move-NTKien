@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : Singleton<WeaponManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public WeaponHolder weaponHolder;
+    int currentWeapon;
+
+    public void OnChangeWeapon()
     {
-        
+        GetWeaponPref();
+
+        weaponHolder.playerWeapons[currentWeapon].SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EquipWeapon()
     {
-        
+        GetWeaponPref();
+
+        weaponHolder.playerWeapons[currentWeapon].SetActive(true);
+    }
+
+    public void GetWeaponPref()
+    {
+        currentWeapon = PlayerPrefs.GetInt(GameConstant.PREF_WEAPONEQUIP);
     }
 }

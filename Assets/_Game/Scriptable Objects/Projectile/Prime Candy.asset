@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99a06ceabad6ef4c9341080ba6a77d6, type: 3}
   m_Name: Prime Candy
   m_EditorClassIdentifier: 
+  id: 5
   projectile: {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
   attackSpeed: 10
   attackRange: 5

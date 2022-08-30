@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
+  price: 500
+  id: 8
   weapon: {fileID: 2554166221338607195, guid: 50759512a0da3784897feb85139ed5f0, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: d7231e10a9a8088408feed108022316d, type: 2}
-  - {fileID: 2100000, guid: fe03d2b67f0e5da459afdd595de7ee77, type: 2}
   weaponName: Knife
   description: AttackSpeed + 25
-  attackSpeed: 25
-  attackRange: 0
-  price: 500
-  weaponType: 2

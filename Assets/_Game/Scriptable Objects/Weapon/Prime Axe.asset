@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Prime Axe
   m_EditorClassIdentifier: 
+  price: 100
+  id: 1
   weapon: {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: 346774a60f70f9f4992fe040fb8514bb, type: 2}
-  - {fileID: 2100000, guid: e9b489eca47ac13498f5e24a18d38291, type: 2}
   weaponName: Prime Axe
   description: Attack Speed +5
-  attackSpeed: 5
-  attackRange: 0
-  price: 100
-  weaponType: 1

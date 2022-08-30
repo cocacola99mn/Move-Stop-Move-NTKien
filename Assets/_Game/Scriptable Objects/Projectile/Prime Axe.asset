@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99a06ceabad6ef4c9341080ba6a77d6, type: 3}
   m_Name: Prime Axe
   m_EditorClassIdentifier: 
+  id: 1
   projectile: {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
   attackSpeed: 5
   attackRange: 0

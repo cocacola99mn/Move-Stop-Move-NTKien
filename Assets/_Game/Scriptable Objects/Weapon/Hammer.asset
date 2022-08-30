@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
+  price: 350
+  id: 7
   weapon: {fileID: 2658909352863336754, guid: ab351128573ec234cb8501cde5e70a7d, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: a6740ef7d635cbe4a824bfb9d2685488, type: 2}
-  - {fileID: 2100000, guid: 6d127dd5a2ab87d46b841a19def63305, type: 2}
   weaponName: Hammer
   description: Attack Range +25
-  attackSpeed: 0
-  attackRange: 25
-  price: 350
-  weaponType: 0

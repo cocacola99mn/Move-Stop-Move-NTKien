@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Prime Candy
   m_EditorClassIdentifier: 
+  price: 250
+  id: 5
   weapon: {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: 2b5a73a76d8051b469d8797a06e9d697, type: 2}
-  - {fileID: 2100000, guid: 545f75727e258324ca7575e76adeda12, type: 2}
   weaponName: Prime Candy
   description: Attack Speed + 10, Range +5
-  attackSpeed: 10
-  attackRange: 5
-  price: 250
-  weaponType: 1

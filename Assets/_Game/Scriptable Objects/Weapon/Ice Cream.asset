@@ -12,13 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d643e8142237542a2374c121ac8f7b, type: 3}
   m_Name: Ice Cream
   m_EditorClassIdentifier: 
+  price: 250
+  id: 4
   weapon: {fileID: 4362393701989107104, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
-  weaponMaterial:
-  - {fileID: 2100000, guid: efbbfd28358ca904e8b669502a784698, type: 2}
-  - {fileID: 2100000, guid: 27ddbd86a9e2a4047b0487233ac4482f, type: 2}
   weaponName: Ice Cream
   description: Attack Range + 10, Attack Speed +5
-  attackSpeed: 5
-  attackRange: 10
-  price: 250
-  weaponType: 0
