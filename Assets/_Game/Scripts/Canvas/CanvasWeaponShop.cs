@@ -60,9 +60,7 @@ public class CanvasWeaponShop : UICanvas
     public void EquipButton()
     {
         WeaponManager.Ins.OnChangeWeapon();
-        
-        PlayerPrefs.SetInt(GameConstant.PREF_WEAPONEQUIP, weaponHolder.weapons[currentWeaponIndex].id);
-        
+        WeaponManager.Ins.SetWeaponPref(weaponHolder.weapons[currentWeaponIndex].id);        
         WeaponManager.Ins.EquipWeapon();
     }
 

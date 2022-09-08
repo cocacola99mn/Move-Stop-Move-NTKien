@@ -21,8 +21,15 @@ public class WeaponManager : Singleton<WeaponManager>
         weaponHolder.playerWeapons[currentWeapon].SetActive(true);
     }
 
-    public void GetWeaponPref()
+    public int GetWeaponPref()
     {
         currentWeapon = PlayerPrefs.GetInt(GameConstant.PREF_WEAPONEQUIP);
+
+        return PlayerPrefs.GetInt(GameConstant.PREF_WEAPONEQUIP);
+    }
+
+    public void SetWeaponPref(int id)
+    {
+        PlayerPrefs.SetInt(GameConstant.PREF_WEAPONEQUIP, id);
     }
 }

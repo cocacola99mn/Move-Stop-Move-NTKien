@@ -7,9 +7,10 @@ using System.Numerics;
 
 public enum UIID
 {
-    UICGamePlay = 0,
+    UICGameplay = 0,
     UICMainMenu = 1,
-    UICWeaponShop = 2
+    UICWeaponShop = 2,
+    UICSkinShop = 3
 }
 
 public class UIManager : Singleton<UIManager>

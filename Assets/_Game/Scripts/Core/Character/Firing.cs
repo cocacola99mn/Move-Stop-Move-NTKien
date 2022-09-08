@@ -5,6 +5,7 @@ using UnityEngine;
 public class Firing : MonoBehaviour
 {
     public PlayerController playerController;
+    public AIController aIController;
 
     public GameObject projectileEquipped;
 
@@ -17,8 +18,11 @@ public class Firing : MonoBehaviour
     void Start()
     {
         timeBetweenShots = 3;
+
         isFiring = false;
-        playerController = GetComponent<PlayerController>();
+
+        if (GetComponent<AIController>() != null)
+            aIController = GetComponent<AIController>();
     }
 
     void Update()
@@ -41,12 +45,11 @@ public class Firing : MonoBehaviour
         if (shotCounter <= 0)
         {
             shotCounter = timeBetweenShots;
-            ObjectPooling.Ins.Spawn("PlayerWeapon", firePoint.position, firePoint.rotation);
+            ObjectPooling.Ins.Spawn(WeaponManager.Ins.GetWeaponPref() + "", firePoint.position, firePoint.rotation);
         }
         else
         {
             shotCounter -= Time.deltaTime;
-        }    
-                       
+        }                           
     }
 }

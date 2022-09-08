@@ -9,10 +9,11 @@ public class Character : MonoBehaviour
     public Animator animator;
 
     public float turnTime, turnVelocity, playerSpeed, attackRange;
+    public float horizontal, vertical;
 
     public Collider[] colliders;
 
-    protected Vector3 direction, characterOrigin;
+    public Vector3 direction, characterOrigin;
     
     public LayerMask targetLayer;
 
@@ -35,9 +36,14 @@ public class Character : MonoBehaviour
         character.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
-    public void PlayerCircleCast()
+    public void GetCharacterPosition()
     {
         characterOrigin = character.position;
+    }
+
+    public void PlayerCircleCast()
+    {
+        GetCharacterPosition();
 
         Physics.OverlapSphereNonAlloc(characterOrigin, attackRange, colliders, targetLayer);
         SetTarget();
@@ -45,7 +51,7 @@ public class Character : MonoBehaviour
 
     public void SetTarget()
     {
-        if (InRangeCondition() && StopMovinglCondition())
+        if (InRangeCondition() && StopMovingCondition())
         {
             firing.isFiring = true;
 
@@ -85,7 +91,7 @@ public class Character : MonoBehaviour
             return false;
     }
 
-    public bool StopMovinglCondition()
+    public bool StopMovingCondition()
     {
         if (direction.magnitude < 0.01f)
             return true;

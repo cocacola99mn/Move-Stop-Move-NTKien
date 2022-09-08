@@ -507,7 +507,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6205fb082267b5244bfc39fa037ade50, type: 2}
   - {fileID: 11400000, guid: 099d027432dac0d40a1821bc3b763321, type: 2}
   - {fileID: 11400000, guid: 18ae7262d5646a24bb5ff22c22a7ba03, type: 2}
+  playerWeapons: []
   holder: {fileID: 7115177657059488463}
+  myWeapon: {fileID: 0}
+  currentWeapon: 0
 --- !u!1 &1530324721296269868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,7 +2451,11 @@ MonoBehaviour:
   turnVelocity: 0
   playerSpeed: 0
   attackRange: 0
+  horizontal: 0
+  vertical: 0
   colliders: []
+  direction: {x: 0, y: 0, z: 0}
+  characterOrigin: {x: 0, y: 0, z: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2468,7 +2475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec92ed2bf474204089b7bb266db2c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 1940171342}
+  aIController: {fileID: 0}
   projectileEquipped: {fileID: 8983994976084142528, guid: 733260ecf4611124ba6b0a06a22d0901, type: 3}
   isFiring: 0
   timeBetweenShots: 0

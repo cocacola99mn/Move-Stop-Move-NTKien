@@ -33,14 +33,14 @@ public class ProjectileController : MonoBehaviour
         existTime -= Time.deltaTime;
 
         if (existTime <= 0)
-            ObjectPooling.Ins.Despawn("PlayerWeapon", gameObject);
+            ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
     }
 
     public void OnProjectileHit(Collider other)
     {
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
-            ObjectPooling.Ins.Despawn("PlayerWeapon", gameObject);
+            ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
             Destroy(other.gameObject);
         }
     }

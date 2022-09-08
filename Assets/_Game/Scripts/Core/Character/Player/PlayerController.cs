@@ -12,8 +12,6 @@ public class PlayerController : Character
 
     public Joystick joyStick;
 
-    float horizontal, vertical;
-
     void Start()
     {
         OnInit();
@@ -31,9 +29,9 @@ public class PlayerController : Character
     {
         JoyStickInput();
 
-        if (!StopMovinglCondition())
+        if (!StopMovingCondition())
             PlayerMovement();                 
-        else if(InRangeCondition() && StopMovinglCondition() && firing.shotCounter <= 0.8f)
+        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.75f)
             AttackAnim();       
         else
             IdleAnim();            
