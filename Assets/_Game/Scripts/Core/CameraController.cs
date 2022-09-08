@@ -14,7 +14,8 @@ public class CameraController : Singleton<CameraController>
 
     void LateUpdate()
     {
-        Camera.position = new Vector3(Target.position.x , Camera.position.y , Target.position.z + deltaZ);
+        if(Target != null)
+            Camera.position = new Vector3(Target.position.x , Camera.position.y , Target.position.z + deltaZ);
     }
 
     public void MoveToPlayer()

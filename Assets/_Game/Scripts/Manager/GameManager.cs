@@ -18,8 +18,7 @@ public class GameManager : Singleton<GameManager>
         if (Screen.currentResolution.height > maxScreenHeight)
             Screen.SetResolution(Mathf.RoundToInt(ratio * (float)maxScreenHeight), maxScreenHeight, true);
 
-        UIManager.Ins.OpenUI(UIID.UICMainMenu);
-        
+        UIManager.Ins.OpenUI(UIID.UICMainMenu);        
     }
   
 }

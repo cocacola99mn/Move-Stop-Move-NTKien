@@ -8,9 +8,7 @@ public class AIController : Character
 
     public CharacterController AIControl;
 
-    public int randomTimer,secondsTimer;
-
-    public float timer;
+    public float timer, secondsFloatTimer, randomTimer;
 
     void Start()
     {
@@ -22,6 +20,8 @@ public class AIController : Character
     {
         Timer();
         ExecuteState();
+        PlayerCircleCast();
+        SetTarget();
     }
 
     public void AIMovement()
@@ -33,22 +33,16 @@ public class AIController : Character
         AIControl.Move(direction * playerSpeed * Time.deltaTime);
     }
 
-    public void AIRandomStopTime()
+    public void AIRandomStateTime(IState<AIController> state)
     {
-        if (secondsTimer >= randomTimer)
-            ChangeState(new PatrolState());  
-    }
-
-    public void AIRandomPatrolTime()
-    {
-        if (secondsTimer >= randomTimer)
-            ChangeState(new IdleState());
+        if (secondsFloatTimer >= randomTimer)
+            ChangeState(state);  
     }
 
     public void Timer()
     {
         timer += Time.deltaTime;
-        secondsTimer = (int)(timer % 60);
+        secondsFloatTimer = (float)(timer % 60);
     }
 
     public void ResetTimer()
@@ -56,7 +50,7 @@ public class AIController : Character
         timer = 0.0f;
     }
 
-    public void AIRandomTimer(int min, int max)
+    public void AIRandomTimer(float min, float max)
     {
         randomTimer = Random.Range(min, max);
     }

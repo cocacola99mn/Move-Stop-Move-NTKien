@@ -25,7 +25,6 @@ public class Character : MonoBehaviour
         turnTime = 0.1f;
         playerSpeed = 8;
         attackRange = 5;
-        colliders = new Collider[10];
     }
 
     public void PlayerRotation(Vector3 direction)
@@ -45,8 +44,7 @@ public class Character : MonoBehaviour
     {
         GetCharacterPosition();
 
-        Physics.OverlapSphereNonAlloc(characterOrigin, attackRange, colliders, targetLayer);
-        SetTarget();
+        colliders = Physics.OverlapSphere(characterOrigin, attackRange, targetLayer);
     }
 
     public void SetTarget()
@@ -72,20 +70,21 @@ public class Character : MonoBehaviour
             {
                 float distance = Vector3.Distance(characterOrigin, enemy.transform.position);
 
-                if (distance < bestDistance)
+                if (distance < bestDistance && distance >= 0.01f)
                 {
                     bestDistance = distance;
                     bestCollider = enemy;
                 }
-            }           
+            }                 
         }
 
         return bestCollider.transform.position;
+
     }
 
     public bool InRangeCondition()
     {
-        if (Physics.CheckSphere(characterOrigin, attackRange, targetLayer))
+        if (Physics.CheckSphere(characterOrigin, attackRange, targetLayer) && colliders.Length >= 2)
             return true;
         else
             return false;
@@ -120,7 +119,6 @@ public class Character : MonoBehaviour
     public void AttackAnim()
     {
         animator.SetTrigger(GameConstant.ATTACK_ANIM);
-        animator.SetTrigger(GameConstant.IDLE_ANIM);
     }
 
     public void RunAnim()

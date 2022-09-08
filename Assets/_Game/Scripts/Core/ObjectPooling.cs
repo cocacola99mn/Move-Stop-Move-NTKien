@@ -44,15 +44,14 @@ public class ObjectPooling : Singleton<ObjectPooling>
     public GameObject Spawn(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.Log("Error");
             return null;
-        }
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
+        Debug.Log(objectToSpawn);
 
         return objectToSpawn;
     }
@@ -60,9 +59,7 @@ public class ObjectPooling : Singleton<ObjectPooling>
     public void Despawn(string tag, GameObject prefab)
     {
         if (!poolDictionary.ContainsKey(tag))
-        {
             Debug.Log("None");
-        }
 
         prefab.SetActive(false);
 

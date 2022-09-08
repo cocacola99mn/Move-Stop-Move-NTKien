@@ -21,6 +21,7 @@ public class PlayerController : Character
     void Update()
     {
         PlayerCircleCast();
+        SetTarget();
         DisplayTarget();
         PlayerAction();
     }

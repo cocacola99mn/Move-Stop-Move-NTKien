@@ -13,9 +13,12 @@ public class IdleState : IState<AIController>
 
     public void OnExecute(AIController ai)
     {
-        ai.AIRandomStopTime();
-
         ai.IdleAnim();
+
+        if (ai.InRangeCondition())
+            ai.ChangeState(new AttackState());
+            
+        ai.AIRandomStateTime(new PatrolState());        
     }
 
     public void OnExit(AIController ai)

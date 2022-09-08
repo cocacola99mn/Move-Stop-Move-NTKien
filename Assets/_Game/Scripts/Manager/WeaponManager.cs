@@ -7,6 +7,11 @@ public class WeaponManager : Singleton<WeaponManager>
     public WeaponHolder weaponHolder;
     int currentWeapon;
 
+    private void Awake()
+    {
+        Debug.Log(currentWeapon);
+    }
+
     public void OnChangeWeapon()
     {
         GetWeaponPref();

@@ -15,9 +15,9 @@ public class PatrolState : IState<AIController>
 
     public void OnExecute(AIController ai)
     {
-        ai.AIRandomPatrolTime();
-
         ai.AIMovement();
+
+        ai.AIRandomStateTime(new IdleState());
     }
 
     public void OnExit(AIController ai)
