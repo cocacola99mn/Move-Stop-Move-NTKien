@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    public Projectile projectile;
+    
     public float projecTileSpeed, existTime;
+
+    public Transform weapon;
 
     void Start()
     {
-        projecTileSpeed = 10;
+        projecTileSpeed = 5;
         existTime = 3;
     }
 
     void Update()
     {
-        MovingProjectile();
+        GetProjectileType();
         ProjectileLifeTime();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         OnProjectileHit(other);
-    }
-
-    public void MovingProjectile()
-    {
-        transform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
     }
 
     public void ProjectileLifeTime()
@@ -36,8 +35,7 @@ public class ProjectileController : MonoBehaviour
         {
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
             existTime = 3;
-        }    
-            
+        }                
     }
 
     public void OnProjectileHit(Collider other)
@@ -47,6 +45,34 @@ public class ProjectileController : MonoBehaviour
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
             existTime = 3;
             Destroy(other.gameObject);
+        }
+    }
+
+    public void MovingProjectile()
+    {
+        transform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
+    }
+
+    public void TypeSpin()
+    {
+        weapon.Rotate(0, 0, 10, Space.Self);
+    }
+
+    public void GetProjectileType()
+    {
+        switch (projectile.weaponType)
+        {
+            case WeaponType.Spin:
+                MovingProjectile();
+                TypeSpin();
+                break;
+            case WeaponType.Split:
+                MovingProjectile();
+                break;
+            default:
+                //Type: Normal
+                MovingProjectile();
+                break;
         }
     }
 

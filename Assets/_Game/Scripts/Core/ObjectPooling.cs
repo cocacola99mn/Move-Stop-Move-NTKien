@@ -51,7 +51,6 @@ public class ObjectPooling : Singleton<ObjectPooling>
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-        Debug.Log(objectToSpawn);
 
         return objectToSpawn;
     }

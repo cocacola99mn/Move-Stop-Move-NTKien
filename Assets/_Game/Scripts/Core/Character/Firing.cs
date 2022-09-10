@@ -48,8 +48,6 @@ public class Firing : MonoBehaviour
             ObjectPooling.Ins.Spawn(WeaponManager.Ins.GetWeaponPref() + "", firePoint.position, firePoint.rotation);
         }
         else
-        {
-            shotCounter -= Time.deltaTime;
-        }                           
+            shotCounter -= Time.deltaTime;                         
     }
 }

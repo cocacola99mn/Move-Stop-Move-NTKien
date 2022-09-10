@@ -12,6 +12,7 @@ public static class GameConstant
     public const string ARROW_ANIM = "ArrowSwingAnim 2";
 
     public const string DAMAGEABLE_TAG = "Damageable";
+    public const string OBSTACLE_TAG = "Obstacle";
 
     public const string PREF_WEAPONEQUIP = "WeaponID";
 }
