@@ -23,8 +23,14 @@ public class Character : MonoBehaviour
             firing = GetComponent<Firing>();
 
         turnTime = 0.1f;
-        playerSpeed = 8;
+        playerSpeed = 5;
         attackRange = 5;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(characterOrigin, attackRange);
     }
 
     public void PlayerRotation(Vector3 direction)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : Singleton<CameraController>
 {
     [SerializeField] Transform Target, Camera;
+    public GameObject attackRangeOutLine;
     float deltaZ;
 
     void Start()
@@ -24,5 +25,7 @@ public class CameraController : Singleton<CameraController>
 
         Camera.localPosition = Vector3.Lerp(Camera.position, new Vector3(0, 10, -15), 1);
         Camera.localRotation = Quaternion.Euler(35, 0, 0);
+
+        attackRangeOutLine.SetActive(true);
     }
 }

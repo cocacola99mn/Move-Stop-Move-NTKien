@@ -8,13 +8,16 @@ public class PlayerController : Character
 
     public CharacterController controller;
     
-    public Transform TargetOutline;
+    public Transform TargetOutline, rangeOutline;
 
     public Joystick joyStick;
 
     void Start()
     {
         OnInit();
+
+        rangeOutline.localScale = new Vector3(attackRange - 1, attackRange - 1, 1);
+
         SetWeapon();
     }
 
@@ -32,10 +35,11 @@ public class PlayerController : Character
 
         if (!StopMovingCondition())
             PlayerMovement();                 
-        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.75f)
-            AttackAnim();       
+        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.85f)
+            AttackAnim();   
         else
-            IdleAnim();            
+            IdleAnim();
+                       
     }
 
     public void PlayerMovement()

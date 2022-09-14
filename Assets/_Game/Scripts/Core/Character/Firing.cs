@@ -7,7 +7,7 @@ public class Firing : MonoBehaviour
     public PlayerController playerController;
     public AIController aIController;
 
-    public GameObject projectileEquipped;
+    public GameObject projectileEquipped, weaponHolderObject;
 
     public bool isFiring;
     
@@ -35,7 +35,10 @@ public class Firing : MonoBehaviour
         if (isFiring)
             ShotDelay();
         else
+        {
+            weaponHolderObject.SetActive(true);
             shotCounter = 0.8f;
+        }
     }
 
     public void ShotDelay()
@@ -44,10 +47,11 @@ public class Firing : MonoBehaviour
         
         if (shotCounter <= 0)
         {
+            weaponHolderObject.SetActive(false);
             shotCounter = timeBetweenShots;
             ObjectPooling.Ins.Spawn(WeaponManager.Ins.GetWeaponPref() + "", firePoint.position, firePoint.rotation);
         }
         else
-            shotCounter -= Time.deltaTime;                         
+            shotCounter -= Time.deltaTime;                                         
     }
 }

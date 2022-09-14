@@ -13,7 +13,7 @@ public class ProjectileController : MonoBehaviour
     void Start()
     {
         projecTileSpeed = 5;
-        existTime = 3;
+        existTime = 2;
     }
 
     void Update()
@@ -34,7 +34,7 @@ public class ProjectileController : MonoBehaviour
         if (existTime <= 0)
         {
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
-            existTime = 3;
+            existTime = 2;
         }                
     }
 
@@ -43,7 +43,7 @@ public class ProjectileController : MonoBehaviour
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
-            existTime = 3;
+            existTime = 2;
             Destroy(other.gameObject);
         }
     }
