@@ -9,9 +9,8 @@ public class WeaponManager : Singleton<WeaponManager>
 
     public void OnChangeWeapon()
     {
-        GetWeaponPref();
-
         weaponHolder.playerWeapons[currentWeapon].SetActive(false);
+        Debug.Log(currentWeapon);
     }
 
     public void EquipWeapon()

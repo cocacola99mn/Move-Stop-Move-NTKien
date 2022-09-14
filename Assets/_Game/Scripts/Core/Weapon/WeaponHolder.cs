@@ -14,9 +14,9 @@ public class WeaponHolder : MonoBehaviour
 
     public int currentWeapon;
 
-    public void Start()
+    public void Awake()
     {
-        currentWeapon = PlayerPrefs.GetInt(GameConstant.PREF_WEAPONEQUIP);
+        currentWeapon = WeaponManager.Ins.GetWeaponPref();
     }
 
     public void GetWeapon()
@@ -25,15 +25,14 @@ public class WeaponHolder : MonoBehaviour
         {
             myWeapon = Instantiate(weapons[i].weapon);
 
-            if (i == currentWeapon)
-                myWeapon.SetActive(true);
-            else
-                myWeapon.SetActive(false);
+            myWeapon.SetActive(false);
 
             myWeapon.transform.SetParent(holder);
             myWeapon.transform.localPosition = new Vector3(0, 0, 0);
 
             playerWeapons.Add(myWeapon);
         }
+
+        playerWeapons[currentWeapon].SetActive(true);
     }
 }

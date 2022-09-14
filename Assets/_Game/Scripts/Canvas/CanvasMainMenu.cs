@@ -19,7 +19,8 @@ public class CanvasMainMenu : UICanvas
 
     public void SkinShopButton()
     {
-
+        UIManager.Ins.OpenUI(UIID.UICSkinShop);
+        Close();
     }
 
     public void VibrateButton()

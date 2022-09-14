@@ -15,4 +15,9 @@ public static class GameConstant
     public const string OBSTACLE_TAG = "Obstacle";
 
     public const string PREF_WEAPONEQUIP = "WeaponID";
+    public const string PREF_HATEQUIP = "HatID";
+    public const string PREF_PANTEQUIP = "PantID";
+
+    public const string HAT_DESCRIPTION = "+5 Range";
+    public const string PANT_DESCRIPTION = "+5 Speed";
 }
