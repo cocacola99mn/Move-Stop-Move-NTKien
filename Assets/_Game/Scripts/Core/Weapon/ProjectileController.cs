@@ -19,6 +19,7 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
         GetProjectileType();
+
         ProjectileLifeTime();
     }
 
@@ -34,6 +35,7 @@ public class ProjectileController : MonoBehaviour
         if (existTime <= 0)
         {
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
+
             existTime = 2;
         }                
     }
@@ -43,8 +45,14 @@ public class ProjectileController : MonoBehaviour
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
             ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
+            ObjectPooling.Ins.Despawn(GameConstant.ENEMY_POOLING, other.gameObject);
+
             existTime = 2;
-            Destroy(other.gameObject);
+
+            LevelManager.Ins.aliveNumber--;
+            LevelManager.Ins.SetAliveNumber();
+
+            EnemySpawner.Ins.StartCoroutine(EnemySpawner.Ins.SpawnEnemy());
         }
     }
 

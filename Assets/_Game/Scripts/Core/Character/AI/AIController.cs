@@ -10,18 +10,32 @@ public class AIController : Character
 
     public float timer, secondsFloatTimer, randomTimer;
 
+    public AIRandomWeapon aIRandomWeapon;
+
+    public int randomWeaponIndex;
     void Start()
     {
         OnInit();
+
+        randomWeaponIndex = aIRandomWeapon.weaponIndex;
+
         ChangeState(new IdleState());
     }
 
     void Update()
     {
-        Timer();
-        ExecuteState();
-        PlayerCircleCast();
-        SetTarget();
+        StartAi();
+    }
+
+    public void StartAi()
+    {
+        if (LevelManager.Ins.levelStarter)
+        {
+            Timer();
+            ExecuteState();
+            PlayerCircleCast();
+            SetTarget();
+        }
     }
 
     public void AIMovement()

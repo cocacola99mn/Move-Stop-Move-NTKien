@@ -12,6 +12,8 @@ public class PlayerController : Character
 
     public Joystick joyStick;
 
+    public int playerWeapon;
+
     void Start()
     {
         OnInit();
@@ -19,14 +21,24 @@ public class PlayerController : Character
         rangeOutline.localScale = new Vector3(attackRange - 1, attackRange - 1, 1);
 
         SetWeapon();
+
+        playerWeapon = WeaponManager.Ins.GetWeaponPref();
     }
 
     void Update()
     {
-        PlayerCircleCast();
-        SetTarget();
-        DisplayTarget();
-        PlayerAction();
+        StartPlayer();
+    }
+
+    public void StartPlayer()
+    {
+        if (LevelManager.Ins.levelStarter)
+        {
+            PlayerCircleCast();
+            SetTarget();
+            DisplayTarget();
+            PlayerAction();
+        }
     }
 
     public void PlayerAction()

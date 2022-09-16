@@ -2182,7 +2182,13 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bfe2557323ec6d64284fd36d38f2a411, type: 2}
   - {fileID: 2100000, guid: 4f6bd5546e6aac64291fe7a1f51fb1cc, type: 2}
   - {fileID: 2100000, guid: 9dbb2fd988bf02b4c8afecddd668f0b4, type: 2}
+  bodyColorList:
+  - {fileID: 2100000, guid: 0c29d6579939bef43a1ce31054669223, type: 2}
+  - {fileID: 2100000, guid: bf5961f6cb5ca124cb912071801012b4, type: 2}
+  - {fileID: 2100000, guid: b9790e1fe01ed8144a1fa66a69d3b207, type: 2}
+  - {fileID: 2100000, guid: ee212837de83d4a4ebda781a311c66b9, type: 2}
   pantMaterial: {fileID: 8376928737068886244}
+  aiBody: {fileID: 838172848664489351}
   randomIndex: 0
 --- !u!1 &9126784180427242280
 GameObject:
@@ -2195,7 +2201,7 @@ GameObject:
   - component: {fileID: 2653611881413008935}
   - component: {fileID: 838172848664489351}
   m_Layer: 3
-  m_Name: Body
+  m_Name: BodyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2380,7 +2386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9207260804893598308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8445253799617600505}
@@ -2457,6 +2463,8 @@ MonoBehaviour:
   timer: 0
   secondsFloatTimer: 0
   randomTimer: 0
+  aIRandomWeapon: {fileID: 607369687}
+  randomWeaponIndex: 0
 --- !u!114 &932174504
 MonoBehaviour:
   m_ObjectHideFlags: 0

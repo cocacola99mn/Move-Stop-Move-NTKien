@@ -32,16 +32,24 @@ public class Firing : MonoBehaviour
 
     public void FiringProjectile()
     {
-        if (isFiring)
-            ShotDelay();
-        else
+        if (LevelManager.Ins.levelStarter)
         {
-            weaponHolderObject.SetActive(true);
-            shotCounter = 0.8f;
-        }
+            if (isFiring)
+            {
+                if (GetComponent<AIController>() == null)
+                    ShotDelay(playerController.playerWeapon);
+                else
+                    ShotDelay(aIController.randomWeaponIndex);
+            }
+            else
+            {
+                weaponHolderObject.SetActive(true);
+                shotCounter = 0.8f;
+            }
+        }        
     }
 
-    public void ShotDelay()
+    public void ShotDelay(int weaponId)
     {
         shotCounter -= Time.deltaTime;
         
@@ -49,7 +57,7 @@ public class Firing : MonoBehaviour
         {
             weaponHolderObject.SetActive(false);
             shotCounter = timeBetweenShots;
-            ObjectPooling.Ins.Spawn(WeaponManager.Ins.GetWeaponPref() + "", firePoint.position, firePoint.rotation);
+            ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
         }
         else
             shotCounter -= Time.deltaTime;                                         

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPooling : Singleton<ObjectPooling>
 {
+    public bool checkInitSpawn;
+
     [System.Serializable]
     public class Pool
     {
@@ -39,6 +41,8 @@ public class ObjectPooling : Singleton<ObjectPooling>
 
             poolDictionary.Add(pool.tag, objectPool);
         }
+
+        checkInitSpawn = true;
     }
 
     public GameObject Spawn(string tag, Vector3 position, Quaternion rotation)
@@ -47,7 +51,7 @@ public class ObjectPooling : Singleton<ObjectPooling>
             return null;
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        
+
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
@@ -63,5 +67,10 @@ public class ObjectPooling : Singleton<ObjectPooling>
         prefab.SetActive(false);
 
         poolDictionary[tag].Enqueue(prefab);
+    }
+
+    public GameObject AddToPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        return null;
     }
 }

@@ -8,7 +8,8 @@ public class CanvasMainMenu : UICanvas
     {
         CameraController.Ins.MoveToPlayer();
         Close();
-        UIManager.Ins.OpenUI(UIID.UICGameplay);
+        LevelManager.Ins.UIGameplay.SetActive(true);
+        LevelManager.Ins.levelStarter = true;
     }
 
     public void WeaponShopButton()

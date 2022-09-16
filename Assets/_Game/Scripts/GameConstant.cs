@@ -20,4 +20,6 @@ public static class GameConstant
 
     public const string HAT_DESCRIPTION = "+5 Range";
     public const string PANT_DESCRIPTION = "+5 Speed";
+
+    public const string ENEMY_POOLING = "Enemy";
 }

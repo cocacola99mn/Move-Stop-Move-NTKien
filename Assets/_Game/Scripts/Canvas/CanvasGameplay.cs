@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class CanvasGameplay : UICanvas
 {
+    public void PauseButton()
+    {
 
+    }
 }

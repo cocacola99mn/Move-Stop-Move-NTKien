@@ -6,14 +6,16 @@ public class AiRandomSkin : MonoBehaviour
 {
     public List<GameObject> hatList;
     public List<Material> pantList;
+    public List<Material> bodyColorList;
 
-    public SkinnedMeshRenderer pantMaterial;
+    public SkinnedMeshRenderer pantMaterial,aiBody;
 
     public int randomIndex;
     void Start()
     {
         getRandomHat();
         getRandomPant();
+        getRandomBody();
     }
 
     public void getRandomHat()
@@ -24,6 +26,11 @@ public class AiRandomSkin : MonoBehaviour
     public void getRandomPant()
     {
         pantMaterial.material = pantList[getRandomIndex(pantList.Count - 1)];
+    }
+
+    public void getRandomBody()
+    {
+        aiBody.material = bodyColorList[getRandomIndex(bodyColorList.Count - 1)];
     }
 
     public int getRandomIndex(int index)
