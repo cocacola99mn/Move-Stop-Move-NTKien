@@ -6,14 +6,15 @@ public class ProjectileController : MonoBehaviour
 {
     public Projectile projectile;
     
-    public float projecTileSpeed, existTime;
+    public float projecTileSpeed, projectileExistTime, corpseExistTime;
 
     public Transform weapon;
 
     void Start()
     {
         projecTileSpeed = 5;
-        existTime = 2;
+        projectileExistTime = 2;
+        corpseExistTime = 2;
     }
 
     void Update()
@@ -30,13 +31,13 @@ public class ProjectileController : MonoBehaviour
 
     public void ProjectileLifeTime()
     {
-        existTime -= Time.deltaTime;
+        projectileExistTime -= Time.deltaTime;
 
-        if (existTime <= 0)
+        if (projectileExistTime <= 0)
         {
-            ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
+            DespawnProjectile();
 
-            existTime = 2;
+            projectileExistTime = 2;
         }                
     }
 
@@ -44,16 +45,15 @@ public class ProjectileController : MonoBehaviour
     {
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
-            ObjectPooling.Ins.Despawn(WeaponManager.Ins.GetWeaponPref() + "", gameObject);
-            ObjectPooling.Ins.Despawn(GameConstant.ENEMY_POOLING, other.gameObject);
+            DespawnProjectile();
 
-            existTime = 2;
-
-            LevelManager.Ins.aliveNumber--;
-            LevelManager.Ins.SetAliveNumber();
-
-            EnemySpawner.Ins.StartCoroutine(EnemySpawner.Ins.SpawnEnemy());
+            projectileExistTime = 2;
         }
+    }
+
+    public void DespawnProjectile()
+    {
+        ObjectPooling.Ins.Despawn(projectile.id + "", gameObject);
     }
 
     public void MovingProjectile()

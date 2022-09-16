@@ -8,14 +8,52 @@ public class Character : MonoBehaviour
     public Transform character;
     public Animator animator;
 
-    public float turnTime, turnVelocity, playerSpeed, attackRange;
+    public float turnTime, turnVelocity, playerSpeed, attackRange, deadAnimTime, deadAnimEnd;
     public float horizontal, vertical;
+
+    public bool isDead;
 
     public Collider[] colliders;
 
     public Vector3 direction, characterOrigin;
     
     public LayerMask targetLayer;
+
+    public int characterPoint;
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(characterOrigin, attackRange);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        OnGetHit();
+    }
+
+    public void OnGetHit()
+    {
+        deadAnimEnd = Time.time + deadAnimTime;
+
+        DeadAnim();
+
+        isDead = true;
+    }
+
+    public virtual void OnDead()
+    {
+        if(isDead && Time.time > deadAnimEnd)
+        {
+            ObjectPooling.Ins.Despawn(GameConstant.ENEMY_POOLING, gameObject);
+
+            LevelManager.Ins.aliveNumber--;
+            LevelManager.Ins.SetAliveNumber();
+
+            if (LevelManager.Ins.aliveNumber > 6)
+                EnemySpawner.Ins.StartCoroutine(EnemySpawner.Ins.SpawnEnemy());
+        }
+    }
 
     public void OnInit()
     {
@@ -24,13 +62,8 @@ public class Character : MonoBehaviour
 
         turnTime = 0.1f;
         playerSpeed = 5;
-        attackRange = 5;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(characterOrigin, attackRange);
+        attackRange = 6;
+        deadAnimTime = 2;
     }
 
     public void PlayerRotation(Vector3 direction)
@@ -85,7 +118,11 @@ public class Character : MonoBehaviour
         }
 
         return bestCollider.transform.position;
+    }
 
+    public void SetCharacterScale(float x)
+    {
+        character.localScale += new Vector3(x, x, x);
     }
 
     public bool InRangeCondition()

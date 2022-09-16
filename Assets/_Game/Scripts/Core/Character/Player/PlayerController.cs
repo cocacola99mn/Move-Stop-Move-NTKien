@@ -18,7 +18,7 @@ public class PlayerController : Character
     {
         OnInit();
 
-        rangeOutline.localScale = new Vector3(attackRange - 1, attackRange - 1, 1);
+        SetRangeOutline(attackRange - 1, attackRange - 1);
 
         SetWeapon();
 
@@ -27,18 +27,30 @@ public class PlayerController : Character
 
     void Update()
     {
+        OnDead();
         StartPlayer();
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        if (isDead && Time.time > deadAnimEnd)
+        {
+            LevelManager.Ins.levelStarter = false;
+        }
     }
 
     public void StartPlayer()
     {
-        if (LevelManager.Ins.levelStarter)
+        if (LevelManager.Ins.levelStarter && isDead == false)
         {
             PlayerCircleCast();
             SetTarget();
             DisplayTarget();
             PlayerAction();
         }
+        else
+            TargetOutline.gameObject.SetActive(false);
     }
 
     public void PlayerAction()
@@ -81,6 +93,11 @@ public class PlayerController : Character
         }
         else
             TargetOutline.gameObject.SetActive(false);
+    }
+
+    public void SetRangeOutline(float x, float y)
+    {
+        rangeOutline.localScale = new Vector3(x, y, 1);
     }
 
     public void SetWeapon()

@@ -38,7 +38,7 @@ public class Firing : MonoBehaviour
             {
                 if (GetComponent<AIController>() == null)
                     ShotDelay(playerController.playerWeapon);
-                else
+                else if(aIController.isDead == false)
                     ShotDelay(aIController.randomWeaponIndex);
             }
             else

@@ -592,30 +592,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &724342386 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4801873103700955096, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
-  m_PrefabInstance: {fileID: 4801873103014959530}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &724342387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 724342386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b76570743e6ce9a4eb92769a32ebc3fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 246575195}
-  spawner: {fileID: 4801873103014959531}
-  xPos: 0
-  zPos: 0
-  timer: 0
-  secondsFloatTimer: 0
-  randomTimer: 0
 --- !u!1 &746368637
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,9 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dba61b8a71bc34e939e0b810c77e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterList:
+  - {fileID: 907771733}
   UIGameplay: {fileID: 1275875099}
   UIAliveDisplayNumber: {fileID: 1275875101}
   aliveNumber: 0
+  levelStarter: 0
 --- !u!114 &900603053 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 751332167933351555, guid: 8d8cc0bc26d6a3b418213b0e96dc534f, type: 3}
@@ -798,6 +777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac1ec62d53e73c48ad9ee89db69ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &907771733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8903290090917771983, guid: 8d8cc0bc26d6a3b418213b0e96dc534f, type: 3}
+  m_PrefabInstance: {fileID: 1437682753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &959990112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7487928357960155185, guid: 259c8b9a3a99e454fbb87b1c10efbc43, type: 3}
@@ -2046,6 +2030,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 724342387, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 246575195}
     - target: {fileID: 4801873103700955096, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -2096,11 +2084,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
---- !u!4 &4801873103014959531 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4801873103700955100, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
-  m_PrefabInstance: {fileID: 4801873103014959530}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8096274699085973752
 PrefabInstance:
   m_ObjectHideFlags: 0

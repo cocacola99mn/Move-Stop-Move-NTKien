@@ -20,7 +20,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
     {
         if (ObjectPooling.Ins.checkInitSpawn == true)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
                 ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
             }
@@ -56,9 +56,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public IEnumerator SpawnEnemy()
     {
         GetRandomTimer(); 
+        
         yield return new WaitForSeconds(randomTimer);
-        ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
+       
+        GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
+
+        if (GetComponent<AIController>() != null)
+            enemy.GetComponent<AIController>().isDead = false;
     }
-
-
 }

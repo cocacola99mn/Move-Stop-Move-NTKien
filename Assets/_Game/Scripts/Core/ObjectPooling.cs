@@ -37,6 +37,9 @@ public class ObjectPooling : Singleton<ObjectPooling>
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
+
+                if (string.Equals(pool.tag, GameConstant.ENEMY_POOLING))
+                    LevelManager.Ins.characterList.Add(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
@@ -67,10 +70,5 @@ public class ObjectPooling : Singleton<ObjectPooling>
         prefab.SetActive(false);
 
         poolDictionary[tag].Enqueue(prefab);
-    }
-
-    public GameObject AddToPool(string tag, Vector3 position, Quaternion rotation)
-    {
-        return null;
     }
 }

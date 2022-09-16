@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AIRandomWeapon : MonoBehaviour
 {
+    public AIController aIController;
+
     public List<GameObject> weaponList;
 
     public GameObject aiWeapon;
@@ -22,5 +24,7 @@ public class AIRandomWeapon : MonoBehaviour
         aiWeapon = Instantiate(weaponList[weaponIndex]);
         aiWeapon.transform.SetParent(transform);
         aiWeapon.transform.localPosition = Vector3.zero;
+
+        aIController.randomWeaponIndex = weaponIndex;
     }
 }

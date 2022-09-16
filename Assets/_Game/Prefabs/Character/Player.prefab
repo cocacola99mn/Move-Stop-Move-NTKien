@@ -2562,19 +2562,24 @@ MonoBehaviour:
   turnVelocity: 0
   playerSpeed: 0
   attackRange: 0
+  deadAnimTime: 0
+  deadAnimEnd: 0
   horizontal: 0
   vertical: 0
+  isDead: 0
   colliders: []
   direction: {x: 0, y: 0, z: 0}
   characterOrigin: {x: 0, y: 0, z: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
+  characterPoint: 0
   weaponHolder: {fileID: 610428393}
   controller: {fileID: 3687084864315573268}
   TargetOutline: {fileID: 0}
   rangeOutline: {fileID: 998390256}
   joyStick: {fileID: 0}
+  playerWeapon: 0
 --- !u!114 &1752358567
 MonoBehaviour:
   m_ObjectHideFlags: 0

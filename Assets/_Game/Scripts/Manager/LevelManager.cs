@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    public List<GameObject> characterList;
+
     public GameObject UIGameplay;
     
     public Text UIAliveDisplayNumber;

@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07596f538201956448227f1de2a8645b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aIController: {fileID: 932174503}
   weaponList:
   - {fileID: 8983994976084142528, guid: 8261b0ab7c6ece14c81c23237e944f49, type: 3}
   - {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
@@ -2447,23 +2448,27 @@ MonoBehaviour:
   firing: {fileID: 932174504}
   character: {fileID: 5304566581900710007}
   animator: {fileID: 2816888258159262989}
+  defaultLayer:
+    serializedVersion: 2
+    m_Bits: 0
   turnTime: 0
   turnVelocity: 0
   playerSpeed: 0
   attackRange: 0
   horizontal: 0
   vertical: 0
+  isDead: 0
   colliders: []
   direction: {x: 0, y: 0, z: 0}
   characterOrigin: {x: 0, y: 0, z: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
+  characterPoint: 0
   AIControl: {fileID: 3991101760706452671}
   timer: 0
   secondsFloatTimer: 0
   randomTimer: 0
-  aIRandomWeapon: {fileID: 607369687}
   randomWeaponIndex: 0
 --- !u!114 &932174504
 MonoBehaviour:
