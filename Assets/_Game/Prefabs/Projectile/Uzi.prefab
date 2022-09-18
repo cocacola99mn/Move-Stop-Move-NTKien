@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3002572446875423746}
-  - component: {fileID: 1968330534388880420}
   - component: {fileID: -2275743329476708794}
+  - component: {fileID: -7994957760685609838}
   m_Layer: 0
   m_Name: Uzi
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1968330534388880420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6356265764769711466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: 98763d888bfc7e14c80b421e325d4a44, type: 2}
-  projecTileSpeed: 0
-  existTime: 0
-  weapon: {fileID: 500226443912119264}
 --- !u!65 &-2275743329476708794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +46,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7994957760685609838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356265764769711466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 11400000, guid: 98763d888bfc7e14c80b421e325d4a44, type: 2}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  corpseExistTime: 0
+  projectileTransform: {fileID: 500226443912119264}
 --- !u!1001 &2411373139668695622
 PrefabInstance:
   m_ObjectHideFlags: 0

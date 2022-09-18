@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WeaponManager : Singleton<WeaponManager>
 {
+    public PlayerController playerController;
     public WeaponHolder weaponHolder;
     int currentWeapon;
 
     public void OnChangeWeapon()
     {
         weaponHolder.playerWeapons[currentWeapon].SetActive(false);
-        Debug.Log(currentWeapon);
     }
 
     public void EquipWeapon()
@@ -18,6 +18,8 @@ public class WeaponManager : Singleton<WeaponManager>
         GetWeaponPref();
 
         weaponHolder.playerWeapons[currentWeapon].SetActive(true);
+
+        playerController.playerWeapon = currentWeapon;
     }
 
     public int GetWeaponPref()

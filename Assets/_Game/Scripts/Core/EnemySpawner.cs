@@ -8,7 +8,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     public float xPos, zPos;
 
-    public float timer, secondsFloatTimer, randomTimer;
+    public float randomTimer;
 
     private void Update()
     {
@@ -62,6 +62,11 @@ public class EnemySpawner : Singleton<EnemySpawner>
         GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
 
         if (GetComponent<AIController>() != null)
-            enemy.GetComponent<AIController>().isDead = false;
+        {
+            AIController aiControl = enemy.GetComponent<AIController>();
+            aiControl.isDead = false;
+            aiControl.characterObject.layer = LayerMask.NameToLayer("Target");
+        }
+
     }
 }

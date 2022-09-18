@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 11400000, guid: 07e4f31777fd4894a9bef3d990678997, type: 2}
   projecTileSpeed: 0
-  existTime: 0
-  weapon: {fileID: 3015391979690304838}
+  projectileExistTime: 0
+  corpseExistTime: 0
+  projectileTransform: {fileID: 3015391979690304838}
 --- !u!65 &-5098676794083861893
 BoxCollider:
   m_ObjectHideFlags: 0

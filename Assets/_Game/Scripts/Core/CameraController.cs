@@ -23,7 +23,7 @@ public class CameraController : Singleton<CameraController>
     {
         deltaZ += -7;
 
-        Camera.localPosition = Vector3.Lerp(Camera.position, new Vector3(0, 10.5f, -15.5f), 1);
+        Camera.localPosition = Vector3.Lerp(Camera.position, new Vector3(0, 12f, 0), 1);
         Camera.localRotation = Quaternion.Euler(35, 0, 0);
 
         attackRangeOutLine.SetActive(true);

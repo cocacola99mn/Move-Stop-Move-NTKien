@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    public WeaponListData weaponListData;
+
     public List<Weapon> weapons;
 
     public List<GameObject> playerWeapons;
@@ -16,6 +18,8 @@ public class WeaponHolder : MonoBehaviour
 
     public void Awake()
     {
+        weapons = weaponListData.weaponList;
+
         currentWeapon = WeaponManager.Ins.GetWeaponPref();
     }
 

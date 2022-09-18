@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576600102}
   m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: 0, y: 3.5, z: -8}
+  m_LocalPosition: {x: 0, y: 3.5, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -760,8 +760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dba61b8a71bc34e939e0b810c77e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterList:
-  - {fileID: 907771733}
   UIGameplay: {fileID: 1275875099}
   UIAliveDisplayNumber: {fileID: 1275875101}
   aliveNumber: 0
@@ -777,11 +775,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac1ec62d53e73c48ad9ee89db69ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &907771733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8903290090917771983, guid: 8d8cc0bc26d6a3b418213b0e96dc534f, type: 3}
+--- !u!114 &907771735 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1940171342, guid: 8d8cc0bc26d6a3b418213b0e96dc534f, type: 3}
   m_PrefabInstance: {fileID: 1437682753}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0752f46289f134cbfb887944db8264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &959990112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7487928357960155185, guid: 259c8b9a3a99e454fbb87b1c10efbc43, type: 3}
@@ -1121,6 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d10a9bf1d5655429e8a98071e4dda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 907771735}
   weaponHolder: {fileID: 1433534068}
 --- !u!1001 &1275875096
 PrefabInstance:
@@ -1656,7 +1661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1887159264
 PrefabInstance:
@@ -1882,7 +1887,7 @@ MonoBehaviour:
     prefab: {fileID: 762214404188825492, guid: fba324f471a642a44ad1dca957309aa4, type: 3}
     size: 10
   - tag: 8
-    prefab: {fileID: 2821409362021359929, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
+    prefab: {fileID: 1973601753423858997, guid: fbde7f5fbc7e4f04fbdc9b6f0fee33b8, type: 3}
     size: 30
   - tag: 9
     prefab: {fileID: 6356265764769711466, guid: b731634989bc9df4d8ef201041a7ea89, type: 3}
@@ -2040,7 +2045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801873103700955100, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4801873103700955100, guid: 72c1ce97410014a439c4286aba5b9ec6, type: 3}
       propertyPath: m_LocalPosition.x

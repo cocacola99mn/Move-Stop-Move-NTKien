@@ -9,8 +9,6 @@ public class AIController : Character
     public CharacterController AIControl;
 
     public float timer, secondsFloatTimer, randomTimer;
-
-    public int randomWeaponIndex;
     void Start()
     {
         OnInit();
@@ -34,7 +32,10 @@ public class AIController : Character
             SetTarget();
         }
         else
-            IdleAnim();
+        {
+            firing.isFiring = false;
+            ChangeState(new IdleState());
+        }            
     }
 
     public void AIMovement()
@@ -74,6 +75,11 @@ public class AIController : Character
         vertical = Random.Range(-1.0f, 1.0f);
     }
 
+    public void OnActive()
+    {
+        if (isDead && gameObject.activeInHierarchy)
+            isDead = false;
+    }
     #region STATEMACHINE
 
     public void ExecuteState()

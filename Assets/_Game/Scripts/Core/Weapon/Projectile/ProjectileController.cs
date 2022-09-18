@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    public Character bulletShooter;
+
     public Projectile projectile;
     
-    public float projecTileSpeed, projectileExistTime, corpseExistTime;
+    public float projecTileSpeed, projectileExistTime;
 
-    public Transform weapon;
+    public Transform projectileTransform;
 
     void Start()
     {
         projecTileSpeed = 5;
-        projectileExistTime = 2;
-        corpseExistTime = 2;
+        projectileExistTime = 1.5f;
     }
 
     void Update()
     {
-        GetProjectileType();
-
+        TransformProjectile();
         ProjectileLifeTime();
     }
 
@@ -37,7 +37,7 @@ public class ProjectileController : MonoBehaviour
         {
             DespawnProjectile();
 
-            projectileExistTime = 2;
+            projectileExistTime = 1.5f;
         }                
     }
 
@@ -47,7 +47,9 @@ public class ProjectileController : MonoBehaviour
         {
             DespawnProjectile();
 
-            projectileExistTime = 2;
+            projectileExistTime = 1.5f;
+
+            bulletShooter.OnGetKill(Cache.GetCharacter(other));
         }
     }
 
@@ -56,32 +58,8 @@ public class ProjectileController : MonoBehaviour
         ObjectPooling.Ins.Despawn(projectile.id + "", gameObject);
     }
 
-    public void MovingProjectile()
+    public virtual void TransformProjectile()
     {
         transform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
     }
-
-    public void TypeSpin()
-    {
-        weapon.Rotate(0, 0, 10, Space.Self);
-    }
-
-    public void GetProjectileType()
-    {
-        switch (projectile.weaponType)
-        {
-            case WeaponType.Spin:
-                MovingProjectile();
-                TypeSpin();
-                break;
-            case WeaponType.Split:
-                MovingProjectile();
-                break;
-            default:
-                //Type: Normal
-                MovingProjectile();
-                break;
-        }
-    }
-
 }

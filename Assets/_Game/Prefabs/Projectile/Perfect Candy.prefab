@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1659778569764702663}
-  - component: {fileID: 7850462100682530192}
   - component: {fileID: -4931349975109996101}
+  - component: {fileID: 4389747852287790457}
   m_Layer: 0
   m_Name: Perfect Candy
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7850462100682530192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7694338478491809574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: e948423516f9d2847a3bc11715fa1f15, type: 2}
-  projecTileSpeed: 0
-  existTime: 0
-  weapon: {fileID: 54846318812897165}
 --- !u!65 &-4931349975109996101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +46,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4389747852287790457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694338478491809574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 11400000, guid: e948423516f9d2847a3bc11715fa1f15, type: 2}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  corpseExistTime: 0
+  projectileTransform: {fileID: 54846318812897165}
 --- !u!1001 &7115869979799734876
 PrefabInstance:
   m_ObjectHideFlags: 0

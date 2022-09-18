@@ -12,7 +12,7 @@ public class PlayerController : Character
 
     public Joystick joyStick;
 
-    public int playerWeapon;
+    public Character character;
 
     void Start()
     {
@@ -35,14 +35,12 @@ public class PlayerController : Character
     {
         base.OnDead();
         if (isDead && Time.time > deadAnimEnd)
-        {
             LevelManager.Ins.levelStarter = false;
-        }
     }
 
     public void StartPlayer()
     {
-        if (LevelManager.Ins.levelStarter && isDead == false)
+        if (LevelManager.Ins.levelStarter && !isDead)
         {
             PlayerCircleCast();
             SetTarget();
@@ -50,7 +48,10 @@ public class PlayerController : Character
             PlayerAction();
         }
         else
+        {
+            firing.isFiring = false;
             TargetOutline.gameObject.SetActive(false);
+        }
     }
 
     public void PlayerAction()
@@ -59,11 +60,10 @@ public class PlayerController : Character
 
         if (!StopMovingCondition())
             PlayerMovement();                 
-        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.85f)
+        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.8f)
             AttackAnim();   
         else
-            IdleAnim();
-                       
+            IdleAnim();                      
     }
 
     public void PlayerMovement()

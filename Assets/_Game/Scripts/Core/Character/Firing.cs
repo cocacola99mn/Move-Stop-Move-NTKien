@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Firing : MonoBehaviour
 {
-    public PlayerController playerController;
-    public AIController aIController;
+    public Character character;
 
-    public GameObject projectileEquipped, weaponHolderObject;
+    public GameObject weaponHolderObject, spawnedProjectile;
 
     public bool isFiring;
     
@@ -21,8 +20,7 @@ public class Firing : MonoBehaviour
 
         isFiring = false;
 
-        if (GetComponent<AIController>() != null)
-            aIController = GetComponent<AIController>();
+        character = GetComponent<Character>();
     }
 
     void Update()
@@ -32,21 +30,13 @@ public class Firing : MonoBehaviour
 
     public void FiringProjectile()
     {
-        if (LevelManager.Ins.levelStarter)
+        if (isFiring)
+            ShotDelay(character.playerWeapon);
+        else
         {
-            if (isFiring)
-            {
-                if (GetComponent<AIController>() == null)
-                    ShotDelay(playerController.playerWeapon);
-                else if(aIController.isDead == false)
-                    ShotDelay(aIController.randomWeaponIndex);
-            }
-            else
-            {
-                weaponHolderObject.SetActive(true);
-                shotCounter = 0.8f;
-            }
-        }        
+            weaponHolderObject.SetActive(true);
+            shotCounter = 0.8f;
+        }
     }
 
     public void ShotDelay(int weaponId)
@@ -57,7 +47,13 @@ public class Firing : MonoBehaviour
         {
             weaponHolderObject.SetActive(false);
             shotCounter = timeBetweenShots;
-            ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
+            spawnedProjectile = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
+
+            Debug.Log(spawnedProjectile);
+
+            Cache.GetProjectileController(spawnedProjectile).bulletShooter = character;
+
+            //Error weapon Knife
         }
         else
             shotCounter -= Time.deltaTime;                                         

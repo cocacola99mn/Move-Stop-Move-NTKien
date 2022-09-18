@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public GameObject characterObject;
     public Firing firing;
-    public Transform character;
+    public Transform characterTransform;
     public Animator animator;
 
     public float turnTime, turnVelocity, playerSpeed, attackRange, deadAnimTime, deadAnimEnd;
@@ -19,7 +20,7 @@ public class Character : MonoBehaviour
     
     public LayerMask targetLayer;
 
-    public int characterPoint;
+    public int characterPoint, playerWeapon;
 
     private void OnDrawGizmosSelected()
     {
@@ -32,13 +33,27 @@ public class Character : MonoBehaviour
         OnGetHit();
     }
 
+    public void OnInit()
+    {
+        if (GetComponent<Firing>() != null)
+            firing = GetComponent<Firing>();
+
+        turnTime = 0.1f;
+        playerSpeed = 5;
+        attackRange = 6;
+        deadAnimTime = 2;
+        characterObject = gameObject;
+    }
+
     public void OnGetHit()
     {
+        isDead = true;
+
         deadAnimEnd = Time.time + deadAnimTime;
 
         DeadAnim();
 
-        isDead = true;
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public virtual void OnDead()
@@ -55,28 +70,17 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void OnInit()
-    {
-        if (GetComponent<Firing>() != null)
-            firing = GetComponent<Firing>();
-
-        turnTime = 0.1f;
-        playerSpeed = 5;
-        attackRange = 6;
-        deadAnimTime = 2;
-    }
-
     public void PlayerRotation(Vector3 direction)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
         
-        character.rotation = Quaternion.Euler(0f, angle, 0f);
+        characterTransform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     public void GetCharacterPosition()
     {
-        characterOrigin = character.position;
+        characterOrigin = characterTransform.position;
     }
 
     public void PlayerCircleCast()
@@ -122,7 +126,12 @@ public class Character : MonoBehaviour
 
     public void SetCharacterScale(float x)
     {
-        character.localScale += new Vector3(x, x, x);
+        characterTransform.localScale += new Vector3(x, x, x);
+    }
+
+    public void OnGetKill(Character character)
+    {
+        Debug.Log("Got Kill");
     }
 
     public bool InRangeCondition()

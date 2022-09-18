@@ -60,7 +60,8 @@ public class CanvasWeaponShop : UICanvas
     public void EquipButton()
     {
         WeaponManager.Ins.OnChangeWeapon();
-        WeaponManager.Ins.SetWeaponPref(weaponHolder.weapons[currentWeaponIndex].id);        
+        WeaponManager.Ins.SetWeaponPref(weaponHolder.weapons[currentWeaponIndex].id);
+        Debug.Log(WeaponManager.Ins.GetWeaponPref());
         WeaponManager.Ins.EquipWeapon();
     }
 

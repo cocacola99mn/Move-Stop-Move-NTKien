@@ -25,6 +25,6 @@ public class AIRandomWeapon : MonoBehaviour
         aiWeapon.transform.SetParent(transform);
         aiWeapon.transform.localPosition = Vector3.zero;
 
-        aIController.randomWeaponIndex = weaponIndex;
+        aIController.playerWeapon = weaponIndex;
     }
 }

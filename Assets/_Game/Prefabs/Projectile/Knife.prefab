@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3204325666650497749}
-  - component: {fileID: 7720732594066873943}
   - component: {fileID: 940825694554234075}
+  - component: {fileID: 877045695404463106}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7720732594066873943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2821409362021359929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
-  projecTileSpeed: 0
-  existTime: 0
-  weapon: {fileID: 8792209096649851735}
 --- !u!65 &940825694554234075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +46,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &877045695404463106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2821409362021359929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa20e39c790a94498e4153db0412e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletShooter: {fileID: 0}
+  projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  projectileTransform: {fileID: 3204325666650497749}
 --- !u!1001 &6446352227294650668
 PrefabInstance:
   m_ObjectHideFlags: 0

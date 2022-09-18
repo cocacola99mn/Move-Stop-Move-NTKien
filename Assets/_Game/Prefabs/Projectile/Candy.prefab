@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3252074490579319728}
-  - component: {fileID: 1465332003803563996}
   - component: {fileID: 6544570171942580839}
+  - component: {fileID: -5119813610073351640}
   m_Layer: 0
   m_Name: Candy
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465332003803563996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196764295415172705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 11400000, guid: 8720f897422d7c24d96674f81744ca5f, type: 2}
-  projecTileSpeed: 0
-  existTime: 0
-  weapon: {fileID: 4605053747844997495}
 --- !u!65 &6544570171942580839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +46,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5119813610073351640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196764295415172705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 11400000, guid: 8720f897422d7c24d96674f81744ca5f, type: 2}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  corpseExistTime: 0
+  projectileTransform: {fileID: 4605053747844997495}
 --- !u!1001 &4437338042108247582
 PrefabInstance:
   m_ObjectHideFlags: 0
