@@ -8,6 +8,7 @@ public class SkinManager : Singleton<SkinManager>
     public Material playerDefault;
     public int GetHatPref()
     {
+        //TODO: throw to PlayerDataManager
         return PlayerPrefs.GetInt(GameConstant.PREF_HATEQUIP);
     }
 

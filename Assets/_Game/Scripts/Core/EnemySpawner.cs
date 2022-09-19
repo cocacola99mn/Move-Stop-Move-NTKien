@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : Singleton<EnemySpawner>
+public class EnemySpawner : MonoBehaviour
 {
     public Transform player, spawner;
 
-    public float xPos, zPos;
+    [SerializeField]
+    float xPos, zPos, randomTimer;
 
-    public float randomTimer;
+    private Vector3 cacheVector;
+
+    private WaitForSeconds randomWaitTime, initSpawnWaitTime;
+
+    public void Start()
+    {
+        OnInit();
+    }
 
     private void Update()
     {
-        InitSpawn();
         SetSpawnerPos();
     }
 
-    public void InitSpawn()
+    public void OnInit()
     {
-        if (ObjectPooling.Ins.checkInitSpawn == true)
-        {
-            for (int i = 0; i < 8; i++)
-            {
-                ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
-            }
+        StartCoroutine(InitSpawn());
 
-            ObjectPooling.Ins.checkInitSpawn = false;
-        }
+        randomWaitTime = new WaitForSeconds(randomTimer);
+        initSpawnWaitTime = new WaitForSeconds(0.5f);
     }
 
     public void SetSpawnerPos()
@@ -36,7 +38,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     public void GetRandomTimer()
     {
-        randomTimer = Random.Range(0.5f, 2);
+        randomTimer = Random.Range(1, 3);
     }
 
     public Vector3 GetRandomPosition(float min, float max)
@@ -44,29 +46,42 @@ public class EnemySpawner : Singleton<EnemySpawner>
         xPos = Random.Range(min, max);
         zPos = Random.Range(min, max);
 
+        //To avoid enemy spawn too near player
         while(xPos < 8 && zPos< 8 && xPos > -8 && zPos > -8)
         {
             xPos = Random.Range(min, max);
             zPos = Random.Range(min, max);
         }
 
-        return new Vector3(xPos, 0, zPos);
+        cacheVector.x = xPos;
+        cacheVector.y = 0;
+        cacheVector.z = zPos;
+
+        return cacheVector;
+    }
+
+    public IEnumerator InitSpawn()
+    {
+        yield return initSpawnWaitTime;
+
+        for (int i = 0; i < 8; i++)
+        {
+            ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
+        }
     }
 
     public IEnumerator SpawnEnemy()
     {
-        GetRandomTimer(); 
-        
-        yield return new WaitForSeconds(randomTimer);
+        GetRandomTimer();
+
+        yield return randomWaitTime;
        
         GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
 
-        if (GetComponent<AIController>() != null)
+        if (Cache.GetAIController(enemy) != null)
         {
-            AIController aiControl = enemy.GetComponent<AIController>();
-            aiControl.isDead = false;
-            aiControl.characterObject.layer = LayerMask.NameToLayer("Target");
+            Cache.GetAIController(enemy).isDead = false;
+            Cache.GetAIController(enemy).controller.enabled = true;
         }
-
     }
 }

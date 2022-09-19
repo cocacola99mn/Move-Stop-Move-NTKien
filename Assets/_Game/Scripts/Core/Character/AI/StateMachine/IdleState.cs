@@ -6,19 +6,19 @@ public class IdleState : IState<AIController>
 {
     public void OnEnter(AIController ai)
     {
-        ai.direction = new Vector3(0, 0, 0).normalized;
+        ai.direction = Vector3.zero.normalized;
 
-        ai.AIRandomTimer(2 , 3);
+        ai.RandomTimer(2 , 3);
     }
 
     public void OnExecute(AIController ai)
     {
-        ai.IdleAnim();
+        ai.ChangeAnim(GameConstant.IDLE_ANIM);
 
         if (ai.InRangeCondition())
-            ai.ChangeState(new AttackState());
+            ai.ChangeState(ai.attackState);
             
-        ai.AIRandomStateTime(new PatrolState());        
+        ai.RandomStateTime(ai.patrolState);        
     }
 
     public void OnExit(AIController ai)

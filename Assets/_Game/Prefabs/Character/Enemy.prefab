@@ -2445,10 +2445,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad970d12c8fd7014c842b9abc82c7be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 3991101760706452671}
   characterObject: {fileID: 9207260804893598308}
   firing: {fileID: 932174504}
   characterTransform: {fileID: 5304566581900710007}
   animator: {fileID: 2816888258159262989}
+  colliders: []
+  direction: {x: 0, y: 0, z: 0}
+  characterOrigin: {x: 0, y: 0, z: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  characterPoint: 0
+  playerWeapon: 0
   turnTime: 0
   turnVelocity: 0
   playerSpeed: 0
@@ -2458,18 +2467,9 @@ MonoBehaviour:
   horizontal: 0
   vertical: 0
   isDead: 0
-  colliders: []
-  direction: {x: 0, y: 0, z: 0}
-  characterOrigin: {x: 0, y: 0, z: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  characterPoint: 0
-  AIControl: {fileID: 3991101760706452671}
   timer: 0
   secondsFloatTimer: 0
   randomTimer: 0
-  randomWeaponIndex: 0
 --- !u!114 &932174504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2482,10 +2482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec92ed2bf474204089b7bb266db2c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  aIController: {fileID: 0}
-  projectileEquipped: {fileID: 8983994976084142528, guid: 733260ecf4611124ba6b0a06a22d0901, type: 3}
+  character: {fileID: 0}
   weaponHolderObject: {fileID: 1187417877472304728}
+  spawnedProjectile: {fileID: 0}
   isFiring: 0
   timeBetweenShots: 0
   shotCounter: 0

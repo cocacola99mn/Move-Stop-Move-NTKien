@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : Character
 {
     public WeaponHolder weaponHolder;
-
-    public CharacterController controller;
     
     public Transform TargetOutline, rangeOutline;
 
@@ -17,12 +15,6 @@ public class PlayerController : Character
     void Start()
     {
         OnInit();
-
-        SetRangeOutline(attackRange - 1, attackRange - 1);
-
-        SetWeapon();
-
-        playerWeapon = WeaponManager.Ins.GetWeaponPref();
     }
 
     void Update()
@@ -31,12 +23,16 @@ public class PlayerController : Character
         StartPlayer();
     }
 
-    public override void OnDead()
+    public override void OnInit()
     {
-        base.OnDead();
-        if (isDead && Time.time > deadAnimEnd)
-            LevelManager.Ins.levelStarter = false;
-    }
+        base.OnInit();
+
+        SetRangeOutline(attackRange - 1, attackRange - 1);
+
+        SetWeapon();
+
+        playerWeapon = WeaponManager.Ins.GetWeaponPref();
+    }    
 
     public void StartPlayer()
     {
@@ -45,7 +41,7 @@ public class PlayerController : Character
             PlayerCircleCast();
             SetTarget();
             DisplayTarget();
-            PlayerAction();
+            Action();
         }
         else
         {
@@ -54,23 +50,34 @@ public class PlayerController : Character
         }
     }
 
-    public void PlayerAction()
+    public override void OnDead()
+    {
+        base.OnDead();
+
+        if (isDead && Time.time > deadAnimEnd)
+        {
+            LevelManager.Ins.levelStarter = false;
+        }
+    }
+
+    public void Action()
     {
         JoyStickInput();
 
         if (!StopMovingCondition())
-            PlayerMovement();                 
-        else if(InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.8f)
-            AttackAnim();   
-        else
-            IdleAnim();                      
-    }
+        {
+            Movement(controller);
+        }
 
-    public void PlayerMovement()
-    {
-        RunAnim();
-        PlayerRotation(direction);
-        controller.Move(direction * playerSpeed * Time.deltaTime);
+        else if (InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.8f)
+        {
+            ChangeAnim(GameConstant.ATTACK_ANIM);
+        }
+
+        else
+        {
+            ChangeAnim(GameConstant.IDLE_ANIM);
+        }
     }
 
     public void JoyStickInput()
@@ -83,7 +90,7 @@ public class PlayerController : Character
 
     public void DisplayTarget()
     {
-        if(InRangeCondition())
+        if (InRangeCondition())
         {
             Vector3 enemyPos = GetClosestEnemyCollider(colliders);
             enemyPos.y += 0.01f;
@@ -92,7 +99,9 @@ public class PlayerController : Character
             TargetOutline.position = enemyPos;
         }
         else
+        {
             TargetOutline.gameObject.SetActive(false);
+        }
     }
 
     public void SetRangeOutline(float x, float y)
@@ -104,4 +113,17 @@ public class PlayerController : Character
     {
         weaponHolder.GetWeapon();
     }
+
+    //private Weapon curretnWeapon;
+
+    //public void ChangeWeapon(int id)
+    //{
+    //    if (curretnWeapon != null)
+    //    {
+    //        Destroy(curretnWeapon.gameobject);
+    //    }
+
+    //    curretnWeapon = Instantiate( DataManager.ins.getweapon(ind), weaponTransform);
+
+    //}
 }

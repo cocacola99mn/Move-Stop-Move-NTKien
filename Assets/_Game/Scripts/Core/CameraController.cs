@@ -6,24 +6,47 @@ public class CameraController : Singleton<CameraController>
 {
     [SerializeField] Transform Target, Camera;
     public GameObject attackRangeOutLine;
-    float deltaZ;
+    public Vector3  yOffset, zOffset, cameraFollow;
 
     void Start()
     {
-        deltaZ = Camera.position.z - Target.position.z;
+        OnInit();
     }
 
     void LateUpdate()
     {
+        FollowPlayer();
+    }
+
+    public void OnInit()
+    {
+        GetZOffset();
+
+        yOffset.y = 12;
+    }
+
+    public void GetZOffset()
+    {
+        zOffset.z = Camera.position.z - Target.position.z;
+    }
+
+    public void FollowPlayer()
+    {
         if(Target != null)
-            Camera.position = new Vector3(Target.position.x , Camera.position.y , Target.position.z + deltaZ);
+        {
+            cameraFollow.x = Target.position.x;
+            cameraFollow.y = Camera.position.y;
+            cameraFollow.z = Target.position.z + zOffset.z;
+
+            Camera.position = cameraFollow;
+        }
     }
 
     public void MoveToPlayer()
     {
-        deltaZ += -7;
+        zOffset.z += -7;
 
-        Camera.localPosition = Vector3.Lerp(Camera.position, new Vector3(0, 12f, 0), 1);
+        Camera.localPosition = Vector3.Lerp(Camera.position, yOffset, 1);
         Camera.localRotation = Quaternion.Euler(35, 0, 0);
 
         attackRangeOutLine.SetActive(true);

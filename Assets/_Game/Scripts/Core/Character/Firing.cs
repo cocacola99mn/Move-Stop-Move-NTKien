@@ -49,13 +49,29 @@ public class Firing : MonoBehaviour
             shotCounter = timeBetweenShots;
             spawnedProjectile = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
 
-            Debug.Log(spawnedProjectile);
+            OnTypeSplit(spawnedProjectile, weaponId);
 
             Cache.GetProjectileController(spawnedProjectile).bulletShooter = character;
-
-            //Error weapon Knife
         }
         else
             shotCounter -= Time.deltaTime;                                         
+    }
+
+    public void OnTypeSplit(GameObject gameObject, int weaponId)
+    {
+        float rotaionOffset = 30;
+        Quaternion rightRotation = Quaternion.LookRotation(firePoint.position) * Quaternion.Euler(0, rotaionOffset, 0);
+        Quaternion leftRotation = Quaternion.LookRotation(firePoint.position) * Quaternion.Euler(0, -rotaionOffset, 0);
+
+
+        //TODO: test
+        if (gameObject.GetComponent<TypeSplit>() != null)
+        {
+            GameObject spawnedRight = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, rightRotation);
+            GameObject spawnedLeft = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, leftRotation);
+
+            Cache.GetProjectileController(spawnedRight).bulletShooter = character;
+            Cache.GetProjectileController(spawnedLeft).bulletShooter = character;
+        }
     }
 }

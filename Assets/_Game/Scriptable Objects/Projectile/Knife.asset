@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   id: 8
-  projectile: {fileID: 1973601753423858997, guid: fbde7f5fbc7e4f04fbdc9b6f0fee33b8, type: 3}
+  projectile: {fileID: 2821409362021359929, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
   attackSpeed: 25
   attackRange: 0
   weaponType: 2

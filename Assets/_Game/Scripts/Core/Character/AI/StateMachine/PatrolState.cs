@@ -7,17 +7,18 @@ public class PatrolState : IState<AIController>
 
     public void OnEnter(AIController ai)
     {
-        ai.AIRandomDirection();
+        ai.RandomDirection();
+
         ai.direction = new Vector3(ai.horizontal, 0, ai.vertical).normalized;
 
-        ai.AIRandomTimer(1 , 2);
+        ai.RandomTimer(1 , 2);
     }
 
     public void OnExecute(AIController ai)
     {
-        ai.AIMovement();
+        ai.Movement(ai.controller);
 
-        ai.AIRandomStateTime(new IdleState());
+        ai.RandomStateTime(ai.idleState);
     }
 
     public void OnExit(AIController ai)

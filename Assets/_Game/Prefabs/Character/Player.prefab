@@ -2587,6 +2587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   weaponHolderObject: {fileID: 1455396626432034547}
+  spawnedProjectile: {fileID: 0}
   isFiring: 0
   timeBetweenShots: 0
   shotCounter: 0

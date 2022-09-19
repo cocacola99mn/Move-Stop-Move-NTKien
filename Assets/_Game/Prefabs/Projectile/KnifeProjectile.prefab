@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1973601753423858996}
+  - component: {fileID: 4047156513330906798}
   m_Layer: 0
   m_Name: KnifeProjectile
   m_TagString: Untagged
@@ -33,6 +34,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4047156513330906798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973601753423858997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa20e39c790a94498e4153db0412e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletShooter: {fileID: 0}
+  projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  projectileTransform: {fileID: 8614615850773209489}
+  rightProjectile: {fileID: 3970953732687827123}
+  leftProjectile: {fileID: 3970953734076447632}
 --- !u!1001 &1973601753718692165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3484726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -117,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3484726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -180,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3484726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3204325666650497749, guid: 20cf83d9cb0a1b74989bec6d9920e41c, type: 3}
       propertyPath: m_LocalPosition.z

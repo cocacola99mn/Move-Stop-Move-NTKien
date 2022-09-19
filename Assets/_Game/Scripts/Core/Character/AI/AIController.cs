@@ -6,20 +6,32 @@ public class AIController : Character
 {
     public IState<AIController> currentState;
 
-    public CharacterController AIControl;
-
     public float timer, secondsFloatTimer, randomTimer;
+
+    public IdleState idleState { get; protected set; }
+    public PatrolState patrolState { get; protected set; }
+    public AttackState attackState { get; protected set; }
+
     void Start()
     {
         OnInit();
-
-        ChangeState(new IdleState());
     }
 
     void Update()
     {
         OnDead();
         StartAi();
+    }
+
+    public override void OnInit()
+    {
+        base.OnInit();
+
+        idleState = new IdleState();
+        patrolState = new PatrolState();
+        attackState = new AttackState();
+
+        ChangeState(idleState);
     }
 
     public void StartAi()
@@ -34,23 +46,16 @@ public class AIController : Character
         else
         {
             firing.isFiring = false;
-            ChangeState(new IdleState());
+            ChangeState(idleState);
         }            
     }
 
-    public void AIMovement()
-    {
-        RunAnim();
-        
-        PlayerRotation(direction);
-
-        AIControl.Move(direction * playerSpeed * Time.deltaTime);
-    }
-
-    public void AIRandomStateTime(IState<AIController> state)
+    public void RandomStateTime(IState<AIController> state)
     {
         if (secondsFloatTimer >= randomTimer)
-            ChangeState(state);  
+        {
+            ChangeState(state);
+        }
     }
 
     public void Timer()
@@ -64,21 +69,15 @@ public class AIController : Character
         timer = 0.0f;
     }
 
-    public void AIRandomTimer(float min, float max)
+    public void RandomTimer(float min, float max)
     {
         randomTimer = Random.Range(min, max);
     }
 
-    public void AIRandomDirection()
+    public void RandomDirection()
     {
         horizontal = Random.Range(-1.0f, 1.0f);
         vertical = Random.Range(-1.0f, 1.0f);
-    }
-
-    public void OnActive()
-    {
-        if (isDead && gameObject.activeInHierarchy)
-            isDead = false;
     }
     #region STATEMACHINE
 
@@ -99,7 +98,7 @@ public class AIController : Character
             currentState.OnEnter(this);
     }
 
-    public bool isState(IState<AIController> state)
+    public bool IsState(IState<AIController> state)
     {
         if (state == currentState)
             return true;

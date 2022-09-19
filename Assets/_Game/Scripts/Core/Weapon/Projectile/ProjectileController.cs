@@ -53,7 +53,7 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    public void DespawnProjectile()
+    public virtual void DespawnProjectile()
     {
         ObjectPooling.Ins.Despawn(projectile.id + "", gameObject);
     }

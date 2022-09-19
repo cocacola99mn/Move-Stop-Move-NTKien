@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IHit
 {
+    public CharacterController controller;
+
     public GameObject characterObject;
+
     public Firing firing;
+
     public Transform characterTransform;
+
     public Animator animator;
-
-    public float turnTime, turnVelocity, playerSpeed, attackRange, deadAnimTime, deadAnimEnd;
-    public float horizontal, vertical;
-
-    public bool isDead;
 
     public Collider[] colliders;
 
     public Vector3 direction, characterOrigin;
-    
+
     public LayerMask targetLayer;
 
     public int characterPoint, playerWeapon;
+
+    public float turnTime, turnVelocity, playerSpeed, attackRange, deadAnimTime, deadAnimEnd;
+    public float horizontal, vertical;
+
+    private string curAnimName;
+
+    public bool isDead;
+
+#if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
     {
@@ -28,21 +37,29 @@ public class Character : MonoBehaviour
         Gizmos.DrawSphere(characterOrigin, attackRange);
     }
 
+#endif
+
     public void OnTriggerEnter(Collider other)
     {
         OnGetHit();
     }
 
-    public void OnInit()
+    public virtual void OnInit()
     {
-        if (GetComponent<Firing>() != null)
-            firing = GetComponent<Firing>();
-
         turnTime = 0.1f;
         playerSpeed = 5;
         attackRange = 6;
         deadAnimTime = 2;
         characterObject = gameObject;
+    }
+
+    public void Movement(CharacterController controller)
+    {
+        RunAnim();
+
+        PlayerRotation(direction);
+
+        controller.Move(direction * playerSpeed * Time.deltaTime);
     }
 
     public void OnGetHit()
@@ -51,9 +68,9 @@ public class Character : MonoBehaviour
 
         deadAnimEnd = Time.time + deadAnimTime;
 
-        DeadAnim();
+        controller.enabled = false;
 
-        gameObject.layer = LayerMask.NameToLayer("Default");
+        ChangeAnim(GameConstant.DEAD_ANIM);
     }
 
     public virtual void OnDead()
@@ -62,11 +79,7 @@ public class Character : MonoBehaviour
         {
             ObjectPooling.Ins.Despawn(GameConstant.ENEMY_POOLING, gameObject);
 
-            LevelManager.Ins.aliveNumber--;
-            LevelManager.Ins.SetAliveNumber();
-
-            if (LevelManager.Ins.aliveNumber > 6)
-                EnemySpawner.Ins.StartCoroutine(EnemySpawner.Ins.SpawnEnemy());
+            LevelManager.Ins.OnCharacterDead();
         }
     }
 
@@ -98,8 +111,10 @@ public class Character : MonoBehaviour
 
             PlayerRotation(GetClosestEnemyCollider(colliders) - characterOrigin);
         }    
-        else 
+        else
+        {
             firing.isFiring = false;
+        }
     }
 
     public Vector3 GetClosestEnemyCollider(Collider[] enemyColliders)
@@ -107,18 +122,18 @@ public class Character : MonoBehaviour
         float bestDistance = 10000;
         Collider bestCollider = null;
 
-        foreach (Collider enemy in enemyColliders)
+        for (int i = 0; i < enemyColliders.Length; i++)
         {
-            if(enemy != null)
+            if (enemyColliders[i] != null)
             {
-                float distance = Vector3.Distance(characterOrigin, enemy.transform.position);
+                float distance = Vector3.Distance(characterOrigin, enemyColliders[i].transform.position);
 
                 if (distance < bestDistance && distance >= 0.01f)
                 {
                     bestDistance = distance;
-                    bestCollider = enemy;
+                    bestCollider = enemyColliders[i];
                 }
-            }                 
+            }
         }
 
         return bestCollider.transform.position;
@@ -137,41 +152,30 @@ public class Character : MonoBehaviour
     public bool InRangeCondition()
     {
         if (Physics.CheckSphere(characterOrigin, attackRange, targetLayer) && colliders.Length >= 2)
+        {
             return true;
+        }
+
         else
+        {
             return false;
+        }
     }
 
     public bool StopMovingCondition()
     {
         if (direction.magnitude < 0.01f)
+        {
             return true;
+        }
+
         else
+        {
             return false;
+        }
     }
 
     #region ANIMATORREGION
-
-    public void WinAnim()
-    {
-        animator.SetTrigger(GameConstant.WIN_ANIM);
-    }
-
-    public void DeadAnim()
-    {
-        animator.SetTrigger(GameConstant.DEAD_ANIM);
-    }
-
-    public void IdleAnim()
-    {
-        animator.SetTrigger(GameConstant.IDLE_ANIM);
-        animator.ResetTrigger(GameConstant.ATTACK_ANIM);
-    }
-
-    public void AttackAnim()
-    {
-        animator.SetTrigger(GameConstant.ATTACK_ANIM);
-    }
 
     public void RunAnim()
     {
@@ -179,5 +183,15 @@ public class Character : MonoBehaviour
         animator.ResetTrigger(GameConstant.ATTACK_ANIM);
     }
 
+    public void ChangeAnim(string animName)
+    {
+        if (curAnimName != null)
+        {
+            animator.ResetTrigger(curAnimName);
+        }
+
+        curAnimName = animName;
+        animator.SetTrigger(curAnimName);
+    }
     #endregion
 }

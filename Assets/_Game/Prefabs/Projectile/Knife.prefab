@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3204325666650497749}
   - component: {fileID: 940825694554234075}
-  - component: {fileID: 877045695404463106}
+  - component: {fileID: 1477943802964617996}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -44,9 +44,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &877045695404463106
+  m_Size: {x: 0.32059032, y: 0.24517441, z: 1}
+  m_Center: {x: -0.0035402775, y: 1.0149479, z: 0}
+--- !u!114 &1477943802964617996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,7 +62,9 @@ MonoBehaviour:
   projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
   projecTileSpeed: 0
   projectileExistTime: 0
-  projectileTransform: {fileID: 3204325666650497749}
+  projectileTransform: {fileID: 8792209096649851735}
+  rightProjectile: {fileID: 0}
+  leftProjectile: {fileID: 0}
 --- !u!1001 &6446352227294650668
 PrefabInstance:
   m_ObjectHideFlags: 0
