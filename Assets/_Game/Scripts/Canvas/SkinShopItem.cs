@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,49 +6,52 @@ using UnityEngine.UI;
 
 public class SkinShopItem : MonoBehaviour
 {
+    public DataManager dataIns;
+
     public CanvasSkinShop canvasSkinShop;
+
     public GetItemData getItemData, itemDataHolder;
 
     public GameObject hatItemHolder, pantItemHolder , itemBackGround, item3dHolder,  uiItem,uiHolder;
+
     public RectTransform uiHolderTransform;
 
-    public List<Skin> skin;
+    Vector3 itemPos;
 
     public int itemIndex;
     
     void Start()
     {
-        GetAllSkin();
+        OnInit();
     }
 
-    public void GetAllSkin()
+    private void OnInit()
     {
-        for(int i = 0; i < skin.Count; i++)
+        dataIns = DataManager.Ins;
+        itemPos = new Vector3(0, -140, 0);
+
+        GetItem(dataIns.hatObjectList, ref hatItemHolder, Vector3.zero);
+        GetItem(dataIns.pantObjectList, ref pantItemHolder, itemPos);
+    }
+
+    public void GetItem(List<GameObject> itemList, ref GameObject itemHolder, Vector3 position)
+    {
+        for(int i = 0; i < itemList.Count; i++)
         {
-            switch (skin[i].skinType)
-            {
-                case SkinType.Hat:
-                    
-                    SetParentForItem(hatItemHolder.transform, i, (i == 8) ? new Vector3(0, 50, 0) : Vector3.zero);
-                    
-                    break;
-                default:
-                    SetParentForItem(pantItemHolder.transform, i, new Vector3(0, -140, 0));
-                    break;
-            }                       
+            SetParentForItem(itemList ,itemHolder.transform, i, position);
         }
     }
 
-    public void SetParentForItem(Transform holder, int elementArray, Vector3 position)
+    public void SetParentForItem(List<GameObject> itemList , Transform holder, int index, Vector3 position)
     {
         uiHolder = Instantiate(item3dHolder);
         uiHolder.transform.SetParent(holder);
         uiHolderTransform = uiHolder.GetComponent<RectTransform>();
         uiHolderTransform.localPosition = Vector3.zero;
         getItemData = uiHolder.GetComponent<GetItemData>();
-        getItemData.itemData = elementArray;
+        getItemData.itemData = index;
 
-        uiItem = Instantiate(skin[elementArray].skin);
+        uiItem = Instantiate(itemList[index]);
         uiItem.transform.SetParent(uiHolder.transform);
         uiItem.transform.localPosition = position;
     }

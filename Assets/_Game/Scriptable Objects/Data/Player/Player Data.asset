@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75da7205218b4ee42b90fdd9ada75b3e, type: 3}
-  m_Name: Cowboy
+  m_Script: {fileID: 11500000, guid: 12b73a7181b325340a33d9a374b6e71f, type: 3}
+  m_Name: Player Data
   m_EditorClassIdentifier: 
-  hat: {fileID: 8233258358818712465, guid: 0aff9720e8ca3034c888594da2dc817f, type: 3}
-  price: 100
-  skinId: 2
-  skinDes: +5 Range
-  locked: 1
+  InitData: 1
+  Name: Player
+  Weapon: 0
+  Color: 0
+  Hat: 0
+  Pant: 0
+  Gold: 0
+  Rank: 100

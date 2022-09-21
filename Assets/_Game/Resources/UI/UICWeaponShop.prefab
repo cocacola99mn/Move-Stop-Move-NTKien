@@ -239,16 +239,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353742897798729377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 353742898275163445}
-  m_RootOrder: 6
+  m_Father: {fileID: 353742899111128475}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 100}
+  m_AnchoredPosition: {x: 450, y: 550.5}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &353742897798729405
@@ -335,12 +335,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596802046616596130}
         m_TargetAssemblyTypeName: CanvasWeaponShop, Assembly-CSharp
-        m_MethodName: NextButton
-        m_Mode: 1
+        m_MethodName: ChangePageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -379,7 +379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0017700195, y: 49.179993}
+  m_AnchoredPosition: {x: -0.0017089844, y: 49.17993}
   m_SizeDelta: {x: 0.0039063, y: -618.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &353742897969415070
@@ -430,7 +430,6 @@ GameObject:
   m_Component:
   - component: {fileID: 353742898275163445}
   - component: {fileID: 596802046616596130}
-  - component: {fileID: -1607734863437213642}
   - component: {fileID: 2681143710269811673}
   - component: {fileID: 6607248074459385191}
   - component: {fileID: 8834976787291332989}
@@ -458,7 +457,6 @@ RectTransform:
   - {fileID: 353742899108336048}
   - {fileID: 353742898551569468}
   - {fileID: 353742899111128475}
-  - {fileID: 353742897798729376}
   - {fileID: 353742898733678525}
   - {fileID: 8130567802440536926}
   - {fileID: 7395775827063709359}
@@ -483,33 +481,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
+  dataIns: {fileID: 0}
   weapons: []
-  weaponHolder: {fileID: -1607734863437213642}
   weaponImageHolder: {fileID: 8130567802440536926}
   weaponNameText: {fileID: 353742898956075365}
   lockText: {fileID: 353742899108336079}
   descriptionText: {fileID: 353742897585213556}
   nextButton: {fileID: 353742897798729377}
   backButton: {fileID: 353742898733678526}
-  currentWeaponIndex: 0
---- !u!114 &-1607734863437213642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353742898275163446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7900144c9b896645a9eb6bbf59d9a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponListData: {fileID: 11400000, guid: 64662eedc46840341bbc382d8a83bef2, type: 2}
-  weapons: []
-  playerWeapons: []
-  holder: {fileID: 0}
-  myWeapon: {fileID: 0}
-  currentWeapon: 0
 --- !u!223 &2681143710269811673
 Canvas:
   m_ObjectHideFlags: 0
@@ -678,7 +657,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 353742898275163445}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -769,12 +748,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 596802046616596130}
         m_TargetAssemblyTypeName: CanvasWeaponShop, Assembly-CSharp
-        m_MethodName: BackButton
-        m_Mode: 1
+        m_MethodName: ChangePageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: -1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1130,6 +1109,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 353742899034325064}
+  - {fileID: 353742897798729376}
   m_Father: {fileID: 353742898275163445}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1418,7 +1398,7 @@ RectTransform:
   m_Children:
   - {fileID: 500758280842323670}
   m_Father: {fileID: 353742898275163445}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1547,7 +1527,7 @@ RectTransform:
   m_LocalScale: {x: 500, y: 500, z: 500}
   m_Children: []
   m_Father: {fileID: 353742898275163445}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

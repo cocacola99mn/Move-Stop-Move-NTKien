@@ -14,12 +14,17 @@ public static class GameConstant
     public const string DAMAGEABLE_TAG = "Damageable";
     public const string OBSTACLE_TAG = "Obstacle";
 
-    public const string PREF_WEAPONEQUIP = "WeaponID";
-    public const string PREF_HATEQUIP = "HatID";
-    public const string PREF_PANTEQUIP = "PantID";
-
     public const string HAT_DESCRIPTION = "+5 Range";
     public const string PANT_DESCRIPTION = "+5 Speed";
 
     public const string ENEMY_POOLING = "Enemy";
+
+    public const string PREF_WEAPONEQUIP = "WeaponID";
+    public const string PREF_HATEQUIP = "HatID";
+    public const string PREF_PANTEQUIP = "PantID";
+    public const string PREF_PLAYERNAME = "PlayerName";
+    public const string PREF_COLOR = "Color";
+    public const string PREF_GOLD = "Gold";
+    public const string PREF_RANK = "Rank";
+    public const string PREF_INITDATA = "InitData";
 }

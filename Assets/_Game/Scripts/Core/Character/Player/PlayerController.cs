@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
-    public WeaponHolder weaponHolder;
-    
-    public Transform TargetOutline, rangeOutline;
-
     public Joystick joyStick;
 
-    public Character character;
+    public GameObject weaponHolder, hatHolder;
+
+    public SkinnedMeshRenderer pantHolder;
+
+    public Transform TargetOutline, rangeOutline;
+    Transform currentWeaponTransform, currentHatTransform;
 
     void Start()
     {
@@ -29,9 +30,11 @@ public class PlayerController : Character
 
         SetRangeOutline(attackRange - 1, attackRange - 1);
 
-        SetWeapon();
+        GetWeapon(dataIns.playerDataSO.Weapon);
 
-        playerWeapon = WeaponManager.Ins.GetWeaponPref();
+        GetHat(dataIns.playerDataSO.Hat);
+
+        GetPant(dataIns.playerDataSO.Pant);
     }    
 
     public void StartPlayer()
@@ -98,6 +101,7 @@ public class PlayerController : Character
             TargetOutline.gameObject.SetActive(true);
             TargetOutline.position = enemyPos;
         }
+
         else
         {
             TargetOutline.gameObject.SetActive(false);
@@ -109,21 +113,40 @@ public class PlayerController : Character
         rangeOutline.localScale = new Vector3(x, y, 1);
     }
 
-    public void SetWeapon()
+    public void GetWeapon(int weaponIndex)
     {
-        weaponHolder.GetWeapon();
+        if(currentWeaponTransform != null)
+        {
+            Destroy(currentWeaponTransform.gameObject);
+        }
+
+        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, Vector3.zero, Quaternion.Euler(0, 0, -100));
+
+        playerWeapon = weaponIndex;
     }
 
-    //private Weapon curretnWeapon;
+    public void GetHat(int hatIndex)
+    {
+        if (currentHatTransform != null)
+        {
+            Destroy(currentHatTransform.gameObject);
+        }
 
-    //public void ChangeWeapon(int id)
-    //{
-    //    if (curretnWeapon != null)
-    //    {
-    //        Destroy(curretnWeapon.gameobject);
-    //    }
+        SetItemTransform(dataIns.hatObjectList[hatIndex], ref currentHatTransform, hatHolder.transform, dataIns.hatObjectList[hatIndex].transform.localPosition, Quaternion.identity);
+    }
 
-    //    curretnWeapon = Instantiate( DataManager.ins.getweapon(ind), weaponTransform);
+    public void GetPant(int pantIndex)
+    {
+        pantHolder.material = dataIns.pantMaterialList[pantIndex];
+    }
 
-    //}
+    public void SetItemTransform(GameObject item , ref Transform itemTransform , Transform parentTransform, Vector3 position, Quaternion rotation)
+    {
+        itemTransform = Instantiate(item).transform;
+        itemTransform.SetParent(parentTransform);
+        itemTransform.localPosition = position;
+        itemTransform.localRotation = rotation;
+
+        Debug.Log(position);
+    }
 }

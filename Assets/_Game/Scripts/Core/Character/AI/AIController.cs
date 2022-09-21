@@ -7,7 +7,6 @@ public class AIController : Character
     public IState<AIController> currentState;
 
     public float timer, secondsFloatTimer, randomTimer;
-
     public IdleState idleState { get; protected set; }
     public PatrolState patrolState { get; protected set; }
     public AttackState attackState { get; protected set; }

@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.99279785, y: -361}
-  m_SizeDelta: {x: 1086, y: 466.5383}
+  m_AnchoredPosition: {x: 1.9982, y: -361}
+  m_SizeDelta: {x: 1084, y: 466.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2562378697768157054
 MonoBehaviour:
@@ -763,8 +763,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00016465703, y: 6.3158}
-  m_SizeDelta: {x: 1086, y: 479.17}
+  m_AnchoredPosition: {x: 202.6911, y: -0.00009294}
+  m_SizeDelta: {x: 1491.3823, y: 466.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7935148886925718366
 MonoBehaviour:
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
-  skinListCanvas: []
+  dataIns: {fileID: 0}
   hatScroll: {fileID: 3282199657813793079}
   pantScroll: {fileID: 7030820334917333827}
   itemTouched: {fileID: 0}
@@ -1127,6 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bd95979b888d142914ead5f92538b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataIns: {fileID: 0}
   canvasSkinShop: {fileID: 0}
   getItemData: {fileID: 0}
   itemDataHolder: {fileID: 0}
@@ -1137,22 +1138,6 @@ MonoBehaviour:
   uiItem: {fileID: 0}
   uiHolder: {fileID: 0}
   uiHolderTransform: {fileID: 0}
-  skin:
-  - {fileID: 11400000, guid: 889af6ff8fadaba4395631eb26c81e3d, type: 2}
-  - {fileID: 11400000, guid: 66640e8f8f1248a44b551ca9a0fae5c3, type: 2}
-  - {fileID: 11400000, guid: be5ae0204e25a6f419674d6ebca98074, type: 2}
-  - {fileID: 11400000, guid: 53236b4c3900343489d1f6f7ceb65daa, type: 2}
-  - {fileID: 11400000, guid: 97aefa321cf3a1e41b8cb3a81492b5b6, type: 2}
-  - {fileID: 11400000, guid: 8f89a7a5d35f8844b9559db6fbc8ddad, type: 2}
-  - {fileID: 11400000, guid: 4697c386ab079234186327dce0af2ae7, type: 2}
-  - {fileID: 11400000, guid: ac746dbb69e9f1548897fcedbc142dd9, type: 2}
-  - {fileID: 11400000, guid: 02e084135a0b9a84bbc2178ed09884cf, type: 2}
-  - {fileID: 11400000, guid: e45299fc33dbead4e922a6a6964ac50d, type: 2}
-  - {fileID: 11400000, guid: 5c081666c97cd8e4f95cf920d297ca41, type: 2}
-  - {fileID: 11400000, guid: 6475197ba67fc7049a03fdcf46e8f55a, type: 2}
-  - {fileID: 11400000, guid: ffec29c4de1803742ada781dc9fd63bf, type: 2}
-  - {fileID: 11400000, guid: 5adb10938e30b61499193802fe17e556, type: 2}
-  - {fileID: 11400000, guid: d1d20b2a758a0e24fad6dc5fb5d1233b, type: 2}
   itemIndex: 0
 --- !u!223 &2885224324590965595
 Canvas:

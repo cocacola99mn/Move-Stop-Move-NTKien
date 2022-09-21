@@ -58,7 +58,7 @@ public class ObjectPooling : Singleton<ObjectPooling>
     public void Despawn(string tag, GameObject prefab)
     {
         if (!poolDictionary.ContainsKey(tag))
-            Debug.Log("None");
+            Debug.Log("Can't find tag");
 
         prefab.SetActive(false);
 

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebdd4e68972efda43a48374f1fdd2a71, type: 3}
+  m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Vantim
   m_EditorClassIdentifier: 
-  skinType: 1
-  skin: {fileID: 2395872283798297214, guid: f715dbe2c4d09f841b98a4f728e23f9e, type: 3}
-  skinMaterial: {fileID: 2100000, guid: 9dbb2fd988bf02b4c8afecddd668f0b4, type: 2}
+  pant: {fileID: 2395872283798297214, guid: f715dbe2c4d09f841b98a4f728e23f9e, type: 3}
+  pantMaterial: {fileID: 2100000, guid: 9dbb2fd988bf02b4c8afecddd668f0b4, type: 2}
   price: 100
   skinId: 9
   skinDes: +5 Speed

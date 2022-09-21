@@ -19,8 +19,6 @@ public class Firing : MonoBehaviour
         timeBetweenShots = 3;
 
         isFiring = false;
-
-        character = GetComponent<Character>();
     }
 
     void Update()
@@ -31,7 +29,10 @@ public class Firing : MonoBehaviour
     public void FiringProjectile()
     {
         if (isFiring)
+        {
             ShotDelay(character.playerWeapon);
+        }
+
         else
         {
             weaponHolderObject.SetActive(true);
@@ -49,20 +50,23 @@ public class Firing : MonoBehaviour
             shotCounter = timeBetweenShots;
             spawnedProjectile = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
 
-            OnTypeSplit(spawnedProjectile, weaponId);
+            //OnTypeSplit(spawnedProjectile, weaponId);
 
             Cache.GetProjectileController(spawnedProjectile).bulletShooter = character;
         }
+
         else
-            shotCounter -= Time.deltaTime;                                         
+        {
+            shotCounter -= Time.deltaTime;
+        }
+                                                     
     }
 
     public void OnTypeSplit(GameObject gameObject, int weaponId)
     {
         float rotaionOffset = 30;
-        Quaternion rightRotation = Quaternion.LookRotation(firePoint.position) * Quaternion.Euler(0, rotaionOffset, 0);
-        Quaternion leftRotation = Quaternion.LookRotation(firePoint.position) * Quaternion.Euler(0, -rotaionOffset, 0);
-
+        Quaternion rightRotation = Quaternion.LookRotation(character.direction) * Quaternion.Euler(0, rotaionOffset, 0);
+        Quaternion leftRotation = Quaternion.LookRotation(character.direction) * Quaternion.Euler(0, -rotaionOffset, 0);
 
         //TODO: test
         if (gameObject.GetComponent<TypeSplit>() != null)

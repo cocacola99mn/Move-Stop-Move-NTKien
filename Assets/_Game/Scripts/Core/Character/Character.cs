@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IHit
 {
+    public DataManager dataIns;
+
+    public Firing firing;
+
     public CharacterController controller;
 
     public GameObject characterObject;
 
-    public Firing firing;
-
-    public Transform characterTransform;
+    public Transform characterTransform;   
 
     public Animator animator;
 
@@ -51,6 +53,7 @@ public class Character : MonoBehaviour, IHit
         attackRange = 6;
         deadAnimTime = 2;
         characterObject = gameObject;
+        dataIns = DataManager.Ins;
     }
 
     public void Movement(CharacterController controller)

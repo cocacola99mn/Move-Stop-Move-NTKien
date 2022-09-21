@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
-  m_Name: Onion
+  m_Name: Default
   m_EditorClassIdentifier: 
-  pant: {fileID: 6401416971349512846, guid: f961f60bae205da4aa29f43fb9b2387d, type: 3}
-  pantMaterial: {fileID: 2100000, guid: 47b1040698e66ba448e5b2f12d8598bc, type: 2}
-  price: 100
-  skinId: 5
-  skinDes: +5 Speed
+  pant: {fileID: 7806045130597994136, guid: 86e3f82e8719d7a4fa2c9230c6208fa7, type: 3}
+  pantMaterial: {fileID: 2100000, guid: 0c29d6579939bef43a1ce31054669223, type: 2}
+  price: 0
+  skinId: 0
+  skinDes: No Pant
   locked: 0

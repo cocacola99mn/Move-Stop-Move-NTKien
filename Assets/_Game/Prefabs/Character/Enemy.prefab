@@ -2482,7 +2482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec92ed2bf474204089b7bb266db2c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 932174503}
   weaponHolderObject: {fileID: 1187417877472304728}
   spawnedProjectile: {fileID: 0}
   isFiring: 0

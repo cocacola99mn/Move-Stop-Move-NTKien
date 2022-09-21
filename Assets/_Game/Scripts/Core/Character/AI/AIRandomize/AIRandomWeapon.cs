@@ -6,8 +6,6 @@ public class AIRandomWeapon : MonoBehaviour
 {
     public AIController aIController;
 
-    public List<GameObject> weaponList;
-
     public GameObject aiWeapon;
 
     public int weaponIndex;
@@ -19,9 +17,9 @@ public class AIRandomWeapon : MonoBehaviour
 
     public void getRandomWeapon()
     {
-        weaponIndex = Random.Range(0, weaponList.Count - 1);
+        weaponIndex = Random.Range(0, DataManager.Ins.weaponObjectList.Count - 1);
 
-        aiWeapon = Instantiate(weaponList[weaponIndex]);
+        aiWeapon = Instantiate(DataManager.Ins.weaponObjectList[weaponIndex]);
         aiWeapon.transform.SetParent(transform);
         aiWeapon.transform.localPosition = Vector3.zero;
 

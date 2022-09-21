@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CanvasSkinShop : UICanvas
 {
-    public List<Skin> skinListCanvas;
+    public DataManager dataIns;
 
     public GameObject hatScroll, pantScroll,itemTouched;
     
@@ -17,62 +17,74 @@ public class CanvasSkinShop : UICanvas
 
     private void Start()
     {
+        OnInit();
+    }
+
+    public void OnInit()
+    {
+        dataIns = DataManager.Ins;
+
         itemIndex = 0;
-        OnItemClicked();
     }
 
     public void CloseButton()
     {
-        SkinManager.Ins.EquipHat();
-        SkinManager.Ins.EquipPant();
+        dataIns.player.GetPant(dataIns.playerDataSO.Pant);
+        dataIns.player.GetHat(dataIns.playerDataSO.Hat);
+
         Close();
+
         UIManager.Ins.OpenUI(UIID.UICMainMenu);
     }
 
-    public void HatButton()
+   public void HatButton()
     {
-        pantScroll.SetActive(false);
-        hatScroll.SetActive(true);
-        itemIndex = 1;
-        OnItemClicked();
+        TopNavigator(hatScroll, pantScroll);
     }
 
     public void PantButton()
     {
-        pantScroll.SetActive(true);
-        hatScroll.SetActive(false);
+        TopNavigator(pantScroll, hatScroll);
+    }
+
+    public void TopNavigator(GameObject activeScroll, GameObject deactiveScroll)
+    {
+        activeScroll.SetActive(true);
+        deactiveScroll.SetActive(false);
         itemIndex = 0;
         OnItemClicked();
     }
 
     public void OnItemClicked()
     {
-        skinDesText.text = skinShopItem.skin[itemIndex].skinDes;
-        
-        switch (skinShopItem.skin[itemIndex].skinType)
+        if (pantScroll.activeInHierarchy)
         {
-            case SkinType.Hat:
-                SkinManager.Ins.TryHat(skinShopItem.skin[itemIndex].skinId - 1);
-                break;
-            default:
-                SkinManager.Ins.TryPant(skinShopItem.skin[itemIndex].skinId - 1);
-                break;
+            GetItemData(dataIns.itemListData.pantDatasList[itemIndex].skinDes);
+            dataIns.player.GetPant(itemIndex);
         }
+
+        else
+        {
+            GetItemData(dataIns.itemListData.hatDatasList[itemIndex].skinDes);
+            dataIns.player.GetHat(itemIndex);
+        }
+    }
+
+    public void GetItemData(string skinDes)
+    {
+        skinDesText.text = skinDes;
     }
 
     public void EquipButton()
     {
-        switch (skinShopItem.skin[itemIndex].skinType)
+        if (pantScroll.activeInHierarchy)
         {
-            case SkinType.Hat:
-                SkinManager.Ins.DeactiveHat();
-                SkinManager.Ins.SetHatPref(skinShopItem.skin[itemIndex].skinId);
-                SkinManager.Ins.EquipHat();
-                break;
-            default:
-                SkinManager.Ins.SetPantPref(skinShopItem.skin[itemIndex].skinId);
-                SkinManager.Ins.EquipPant();
-                break;
+            dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
+        }
+
+        else
+        {
+            dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
         }
     }
 

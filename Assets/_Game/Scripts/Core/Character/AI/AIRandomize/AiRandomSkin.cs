@@ -13,6 +13,11 @@ public class AiRandomSkin : MonoBehaviour
     public int randomIndex;
     void Start()
     {
+        OnInit();
+    }
+
+    private void OnInit()
+    {
         getRandomHat();
         getRandomPant();
         getRandomBody();
