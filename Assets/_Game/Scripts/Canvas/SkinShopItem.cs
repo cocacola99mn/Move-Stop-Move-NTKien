@@ -12,7 +12,7 @@ public class SkinShopItem : MonoBehaviour
 
     public GetItemData getItemData, itemDataHolder;
 
-    public GameObject hatItemHolder, pantItemHolder , itemBackGround, item3dHolder,  uiItem,uiHolder;
+    public GameObject hatItemHolder, pantItemHolder , itemBackGround, item3dHolder,  uiItem, uiHolder;
 
     public RectTransform uiHolderTransform;
 
@@ -46,9 +46,10 @@ public class SkinShopItem : MonoBehaviour
     {
         uiHolder = Instantiate(item3dHolder);
         uiHolder.transform.SetParent(holder);
-        uiHolderTransform = uiHolder.GetComponent<RectTransform>();
+        uiHolderTransform = Cache.GetRectTransform(uiHolder);
         uiHolderTransform.localPosition = Vector3.zero;
-        getItemData = uiHolder.GetComponent<GetItemData>();
+
+        getItemData = Cache.GetItemData(uiHolder);
         getItemData.itemData = index;
 
         uiItem = Instantiate(itemList[index]);

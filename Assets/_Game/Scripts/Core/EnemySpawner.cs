@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         zPos = Random.Range(min, max);
 
         //To avoid enemy spawn too near player
-        while(xPos < 8 && zPos< 8 && xPos > -8 && zPos > -8)
+        while(xPos < 10 && zPos< 10 && xPos > -10 && zPos > -10)
         {
             xPos = Random.Range(min, max);
             zPos = Random.Range(min, max);

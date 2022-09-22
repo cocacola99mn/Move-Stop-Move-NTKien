@@ -40,17 +40,19 @@ public class Firing : MonoBehaviour
         }
     }
 
-    public void ShotDelay(int weaponId)
+    public virtual void ShotDelay(int weaponId)
     {
         shotCounter -= Time.deltaTime;
         
         if (shotCounter <= 0)
         {
             weaponHolderObject.SetActive(false);
+
             shotCounter = timeBetweenShots;
+
             spawnedProjectile = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
 
-            //OnTypeSplit(spawnedProjectile, weaponId);
+            OnTypeSplit(weaponId);
 
             Cache.GetProjectileController(spawnedProjectile).bulletShooter = character;
         }
@@ -58,24 +60,20 @@ public class Firing : MonoBehaviour
         else
         {
             shotCounter -= Time.deltaTime;
-        }
-                                                     
+        }                                         
     }
 
-    public void OnTypeSplit(GameObject gameObject, int weaponId)
+    public void OnTypeSplit(int weaponId)
     {
-        float rotaionOffset = 30;
-        Quaternion rightRotation = Quaternion.LookRotation(character.direction) * Quaternion.Euler(0, rotaionOffset, 0);
-        Quaternion leftRotation = Quaternion.LookRotation(character.direction) * Quaternion.Euler(0, -rotaionOffset, 0);
-
-        //TODO: test
-        if (gameObject.GetComponent<TypeSplit>() != null)
+        if (Cache.GetTypeSplit(spawnedProjectile) != null)
         {
-            GameObject spawnedRight = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, rightRotation);
-            GameObject spawnedLeft = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, leftRotation);
+            GameObject spawnedRight = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
+            GameObject spawnedLeft = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
 
             Cache.GetProjectileController(spawnedRight).bulletShooter = character;
             Cache.GetProjectileController(spawnedLeft).bulletShooter = character;
+            Cache.GetTypeSplit(spawnedRight).right = true;
+            Cache.GetTypeSplit(spawnedLeft).left = true;
         }
     }
 }

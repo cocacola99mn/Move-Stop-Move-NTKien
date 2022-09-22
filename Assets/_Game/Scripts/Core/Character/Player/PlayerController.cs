@@ -13,6 +13,8 @@ public class PlayerController : Character
     public Transform TargetOutline, rangeOutline;
     Transform currentWeaponTransform, currentHatTransform;
 
+    Vector3 moveDirection;
+
     void Start()
     {
         OnInit();
@@ -88,7 +90,11 @@ public class PlayerController : Character
         horizontal = joyStick.Horizontal;
         vertical = joyStick.Vertical;
 
-        direction = new Vector3(horizontal, 0, vertical).normalized;
+        moveDirection.x = horizontal;
+        moveDirection.y = 0;
+        moveDirection.z = vertical;
+
+        direction = moveDirection.normalized;
     }
 
     public void DisplayTarget()

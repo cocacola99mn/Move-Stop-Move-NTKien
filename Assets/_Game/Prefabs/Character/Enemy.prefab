@@ -322,17 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aIController: {fileID: 932174503}
-  weaponList:
-  - {fileID: 8983994976084142528, guid: 8261b0ab7c6ece14c81c23237e944f49, type: 3}
-  - {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
-  - {fileID: 3512769037254545233, guid: aa1dc18444b2e20489cb1b9f76c440a9, type: 3}
-  - {fileID: 179291366974948169, guid: f9d1e0cc44342a745a56a68dc9ac1c93, type: 3}
-  - {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
-  - {fileID: 4362393701989107104, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
-  - {fileID: 7062343935611849201, guid: 224eaba47d0772749b6e7aa84eaca3eb, type: 3}
-  - {fileID: 2658909352863336754, guid: ab351128573ec234cb8501cde5e70a7d, type: 3}
-  - {fileID: 2554166221338607195, guid: 50759512a0da3784897feb85139ed5f0, type: 3}
-  - {fileID: 1287074620023475125, guid: 741459a6f16beff488f38a327f768f69, type: 3}
   aiWeapon: {fileID: 0}
   weaponIndex: 0
 --- !u!1 &1225488685381015425
@@ -1171,7 +1160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4400303211568449199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5304566581900710007}
@@ -2445,9 +2434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad970d12c8fd7014c842b9abc82c7be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataIns: {fileID: 0}
+  firing: {fileID: 932174504}
   controller: {fileID: 3991101760706452671}
   characterObject: {fileID: 9207260804893598308}
-  firing: {fileID: 932174504}
   characterTransform: {fileID: 5304566581900710007}
   animator: {fileID: 2816888258159262989}
   colliders: []

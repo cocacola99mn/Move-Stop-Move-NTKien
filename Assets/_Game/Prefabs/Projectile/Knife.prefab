@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2821409362021359929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06893104, y: 52.17348, z: 0.21076566}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8792209096649851735}
@@ -63,8 +63,10 @@ MonoBehaviour:
   projecTileSpeed: 0
   projectileExistTime: 0
   projectileTransform: {fileID: 8792209096649851735}
-  rightProjectile: {fileID: 0}
-  leftProjectile: {fileID: 0}
+  gameobjectTransform: {fileID: 3204325666650497749}
+  direction: {x: 0, y: 0, z: 0}
+  left: 0
+  right: 0
 --- !u!1001 &6446352227294650668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,7 +100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2554166221339091579, guid: 50759512a0da3784897feb85139ed5f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2554166221339091579, guid: 50759512a0da3784897feb85139ed5f0, type: 3}
       propertyPath: m_LocalPosition.z

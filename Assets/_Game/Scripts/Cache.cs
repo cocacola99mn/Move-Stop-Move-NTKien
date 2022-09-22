@@ -7,6 +7,9 @@ public static class Cache
     private static Dictionary<Collider, Character> character = new Dictionary<Collider, Character>();
     private static Dictionary<GameObject, ProjectileController> projectileController = new Dictionary<GameObject, ProjectileController>();
     private static Dictionary<GameObject, AIController> aiController = new Dictionary<GameObject, AIController>();
+    private static Dictionary<GameObject, RectTransform> rectTransform = new Dictionary<GameObject, RectTransform>();
+    private static Dictionary<GameObject, GetItemData> getItemData = new Dictionary<GameObject, GetItemData>();
+    private static Dictionary<GameObject, TypeSplit> getTypeSplit = new Dictionary<GameObject, TypeSplit>();
 
     public static Character GetCharacter(Collider collider)
     {
@@ -36,5 +39,35 @@ public static class Cache
         }
 
             return aiController[gameObject];     
+    }
+
+    public static RectTransform GetRectTransform(GameObject gameObject)
+    {
+        if (!rectTransform.ContainsKey(gameObject))
+        {
+            rectTransform.Add(gameObject, gameObject.GetComponent<RectTransform>());
+        }
+
+        return rectTransform[gameObject];
+    }
+
+    public  static GetItemData GetItemData(GameObject gameObject)
+    {
+        if (!getItemData.ContainsKey(gameObject))
+        {
+            getItemData.Add(gameObject, gameObject.GetComponent<GetItemData>());
+        }
+
+        return getItemData[gameObject];
+    }
+
+    public static TypeSplit GetTypeSplit(GameObject gameObject)
+    {
+        if (!getTypeSplit.ContainsKey(gameObject))
+        {
+            getTypeSplit.Add(gameObject, gameObject.GetComponent<TypeSplit>());
+        }
+
+        return getTypeSplit[gameObject];
     }
 }

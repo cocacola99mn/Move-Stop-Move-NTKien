@@ -21,7 +21,7 @@ public class DataManager : Singleton<DataManager>
 
     public void OnInit()
     {
-        InitDataFirstTime();
+        //InitDataFirstTime();
 
         InitDataList();
     }
@@ -69,7 +69,7 @@ public class DataManager : Singleton<DataManager>
         PlayerPrefs.SetInt(data, value ? 1 : 0);
     }
 
-    //Load data at the first time you open the game
+    /*//Load data at the first time you open the game
     private void InitDataFirstTime()
     {
         playerDataSO.InitData = (PlayerPrefs.GetInt(GameConstant.PREF_INITDATA) != 0) ? true : false;
@@ -92,5 +92,5 @@ public class DataManager : Singleton<DataManager>
 
             Debug.Log("InitData Success");
         }
-    }
+    }*/
 }

@@ -58,11 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletShooter: {fileID: 0}
   projectile: {fileID: 11400000, guid: 8720f897422d7c24d96674f81744ca5f, type: 2}
   projecTileSpeed: 0
   projectileExistTime: 0
-  corpseExistTime: 0
   projectileTransform: {fileID: 4605053747844997495}
+  gameobjectTransform: {fileID: 3252074490579319728}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &4437338042108247582
 PrefabInstance:
   m_ObjectHideFlags: 0

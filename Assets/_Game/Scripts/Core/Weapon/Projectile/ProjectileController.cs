@@ -10,15 +10,16 @@ public class ProjectileController : MonoBehaviour
     
     public float projecTileSpeed, projectileExistTime;
 
-    public Transform projectileTransform;
+    public Transform projectileTransform, gameobjectTransform;
+
+    public Vector3 direction;
 
     void Start()
     {
-        projecTileSpeed = 5;
-        projectileExistTime = 1.5f;
+        OnInit();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         TransformProjectile();
         ProjectileLifeTime();
@@ -27,6 +28,12 @@ public class ProjectileController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnProjectileHit(other);
+    }
+
+    public virtual void OnInit()
+    {
+        projecTileSpeed = 6;
+        projectileExistTime = 1.5f;
     }
 
     public void ProjectileLifeTime()
@@ -60,6 +67,6 @@ public class ProjectileController : MonoBehaviour
 
     public virtual void TransformProjectile()
     {
-        transform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
+        gameobjectTransform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
     }
 }
