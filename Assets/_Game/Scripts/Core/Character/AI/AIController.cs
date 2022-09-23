@@ -25,12 +25,18 @@ public class AIController : Character
     public override void OnInit()
     {
         base.OnInit();
-
         idleState = new IdleState();
         patrolState = new PatrolState();
         attackState = new AttackState();
 
         ChangeState(idleState);
+        
+        GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
+        GetPant(Random.Range(0, dataIns.pantMaterialList.Count - 1));
+        GetHat(Random.Range(0, dataIns.hatObjectList.Count - 1));
+        GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
+
+        canvasInfoBar.SetColor(bodyColor);
     }
 
     public void StartAi()
@@ -41,6 +47,7 @@ public class AIController : Character
             ExecuteState();
             PlayerCircleCast();
             SetTarget();
+            canvasInfoObject.SetActive(true);
         }
         else
         {

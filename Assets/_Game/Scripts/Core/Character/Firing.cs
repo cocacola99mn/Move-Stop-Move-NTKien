@@ -30,7 +30,7 @@ public class Firing : MonoBehaviour
     {
         if (isFiring)
         {
-            ShotDelay(character.playerWeapon);
+            ShotDelay(character.characterWeapon);
         }
 
         else

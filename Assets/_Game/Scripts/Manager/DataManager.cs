@@ -14,6 +14,8 @@ public class DataManager : Singleton<DataManager>
 
     public List<Material> pantMaterialList;
 
+    public List<Color32> colorList;
+
     public void Awake()
     {
         OnInit();
@@ -21,8 +23,6 @@ public class DataManager : Singleton<DataManager>
 
     public void OnInit()
     {
-        //InitDataFirstTime();
-
         InitDataList();
     }
 
@@ -68,29 +68,4 @@ public class DataManager : Singleton<DataManager>
         dataValue = value;
         PlayerPrefs.SetInt(data, value ? 1 : 0);
     }
-
-    /*//Load data at the first time you open the game
-    private void InitDataFirstTime()
-    {
-        playerDataSO.InitData = (PlayerPrefs.GetInt(GameConstant.PREF_INITDATA) != 0) ? true : false;
-
-        if (!playerDataSO.InitData)
-        {
-            PlayerPrefs.SetString(GameConstant.PREF_PLAYERNAME, playerDataSO.Name);
-            
-            PlayerPrefs.SetInt(GameConstant.PREF_WEAPONEQUIP, playerDataSO.Weapon);
-            
-            PlayerPrefs.SetInt(GameConstant.PREF_COLOR, playerDataSO.Color);
-            PlayerPrefs.SetInt(GameConstant.PREF_HATEQUIP, playerDataSO.Hat);
-            PlayerPrefs.SetInt(GameConstant.PREF_PANTEQUIP, playerDataSO.Pant);
-            
-            PlayerPrefs.SetInt(GameConstant.PREF_GOLD, playerDataSO.Gold);
-            
-            PlayerPrefs.SetInt(GameConstant.PREF_RANK, playerDataSO.Rank);
-
-            SetBoolData(GameConstant.PREF_INITDATA, ref playerDataSO.InitData, true);
-
-            Debug.Log("InitData Success");
-        }
-    }*/
 }

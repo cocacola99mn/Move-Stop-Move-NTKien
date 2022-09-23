@@ -8,11 +8,18 @@ public class Character : MonoBehaviour, IHit
 
     public Firing firing;
 
+    public CanvasInfoBar canvasInfoBar;
+
     public CharacterController controller;
 
-    public GameObject characterObject;
+    public GameObject characterObject, weaponHolder, hatHolder, canvasInfoObject;
 
-    public Transform characterTransform;   
+    public SkinnedMeshRenderer pantHolder, bodyMeshRenderer;
+
+    public Color32 bodyColor;
+
+    public Transform characterTransform;
+    Transform currentWeaponTransform, currentHatTransform;
 
     public Animator animator;
 
@@ -22,10 +29,10 @@ public class Character : MonoBehaviour, IHit
 
     public LayerMask targetLayer;
 
-    public int characterPoint, playerWeapon;
+    public int characterPoint, characterLevel, characterLevelLimit, characterWeapon;
 
-    public float turnTime, turnVelocity, playerSpeed, attackRange, deadAnimTime, deadAnimEnd;
-    public float horizontal, vertical;
+    public float playerSpeed, attackRange, deadAnimTime, deadAnimEnd, horizontal, vertical;
+    float turnTime, turnVelocity;
 
     private string curAnimName;
 
@@ -52,7 +59,9 @@ public class Character : MonoBehaviour, IHit
         playerSpeed = 5;
         attackRange = 6;
         deadAnimTime = 2;
+        characterLevel = 1;
         characterObject = gameObject;
+        
         dataIns = DataManager.Ins;
     }
 
@@ -149,7 +158,20 @@ public class Character : MonoBehaviour, IHit
 
     public void OnGetKill(Character character)
     {
-        Debug.Log("Got Kill");
+        this.characterPoint += character.characterLevel;
+        canvasInfoBar.pointText.text = this.characterPoint.ToString();
+
+        if(characterPoint >= characterLevelLimit)
+        {
+            OnLevelUp();
+        }
+    }
+
+    public void OnLevelUp()
+    {
+        characterLevel++;
+        characterLevelLimit = characterLevelLimit * 2 + 1;
+        //TODO:Size up
     }
 
     public bool InRangeCondition()
@@ -176,6 +198,48 @@ public class Character : MonoBehaviour, IHit
         {
             return false;
         }
+    }
+
+
+    public void GetWeapon(int weaponIndex)
+    {
+        if (currentWeaponTransform != null)
+        {
+            Destroy(currentWeaponTransform.gameObject);
+        }
+
+        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, Vector3.zero, Quaternion.Euler(0, 0, -100));
+
+        characterWeapon = weaponIndex;
+    }
+
+    public void GetHat(int hatIndex)
+    {
+        if (currentHatTransform != null)
+        {
+            Destroy(currentHatTransform.gameObject);
+        }
+
+        SetItemTransform(dataIns.hatObjectList[hatIndex], ref currentHatTransform, hatHolder.transform, dataIns.hatObjectList[hatIndex].transform.localPosition, Quaternion.identity);
+    }
+
+    public void GetPant(int pantIndex)
+    {
+        pantHolder.material = dataIns.pantMaterialList[pantIndex];
+    }
+
+    public void GetBodyColor(Color32 color)
+    {
+        bodyMeshRenderer.material.color = color;
+        bodyColor = color;
+    }
+
+    public void SetItemTransform(GameObject item, ref Transform itemTransform, Transform parentTransform, Vector3 position, Quaternion rotation)
+    {
+        itemTransform = Instantiate(item).transform;
+        itemTransform.SetParent(parentTransform);
+        itemTransform.localPosition = position;
+        itemTransform.localRotation = rotation;
     }
 
     #region ANIMATORREGION

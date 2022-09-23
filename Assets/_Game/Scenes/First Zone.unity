@@ -1070,6 +1070,19 @@ MonoBehaviour:
   hatObjectList: []
   pantObjectList: []
   pantMaterialList: []
+  colorList:
+  - serializedVersion: 2
+    rgba: 4278193407
+  - serializedVersion: 2
+    rgba: 4294906112
+  - serializedVersion: 2
+    rgba: 4280991741
+  - serializedVersion: 2
+    rgba: 4280690214
+  - serializedVersion: 2
+    rgba: 4278255396
+  - serializedVersion: 2
+    rgba: 8782079
 --- !u!1 &1131745866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,6 +1250,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7704820546761835817, guid: 6627b262605bded4f91d779d67da7dd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704820546965316059, guid: 6627b262605bded4f91d779d67da7dd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704820547644864951, guid: 6627b262605bded4f91d779d67da7dd5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
