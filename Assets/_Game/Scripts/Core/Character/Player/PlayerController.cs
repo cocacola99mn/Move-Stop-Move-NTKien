@@ -118,4 +118,10 @@ public class PlayerController : Character
     {
         rangeOutline.localScale = new Vector3(x, y, 1);
     }
+
+    public override void GainStat()
+    {
+        base.GainStat();
+        CameraController.Ins.MoveFurtherFromPlayer();
+    }
 }

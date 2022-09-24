@@ -26,12 +26,12 @@ public class TypeSplit : ProjectileController
     {
         if (right)
         {
-            gameobjectTransform.eulerAngles += angle;
+            projectileObjectTransform.eulerAngles += angle;
         }
 
         if(left)
         {
-            gameobjectTransform.eulerAngles -= angle;
+            projectileObjectTransform.eulerAngles -= angle;
         }
     }
 

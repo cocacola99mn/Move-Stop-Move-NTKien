@@ -32,11 +32,8 @@ public class AIController : Character
         attackState = new AttackState();
 
         ChangeState(idleState);
-        
-        GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
-        GetPant(Random.Range(0, dataIns.pantMaterialList.Count - 1));
-        GetHat(Random.Range(0, dataIns.hatObjectList.Count - 1));
-        GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
+
+        GetAllItem();
 
         canvasInfoBar.SetColor(bodyColor);
         
@@ -62,6 +59,14 @@ public class AIController : Character
             firing.isFiring = false;
             ChangeState(idleState);
         }            
+    }
+
+    public void GetAllItem()
+    {
+        GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
+        GetPant(Random.Range(0, dataIns.pantMaterialList.Count - 1));
+        GetHat(Random.Range(0, dataIns.hatObjectList.Count - 1));
+        GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
     }
 
     public void RandomStateTime(IState<AIController> state)

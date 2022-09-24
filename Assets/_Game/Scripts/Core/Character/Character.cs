@@ -25,7 +25,7 @@ public class Character : MonoBehaviour, IHit
 
     public Collider[] colliders;
 
-    public Vector3 direction, characterOrigin;
+    public Vector3 direction, characterOrigin, sizeUpOffset;
 
     public LayerMask targetLayer;
 
@@ -60,7 +60,11 @@ public class Character : MonoBehaviour, IHit
         attackRange = 6;
         deadAnimTime = 2;
         characterLevel = 1;
+        characterLevelLimit = 2;
+        
         characterObject = gameObject;
+
+        sizeUpOffset = new Vector3(0.1f, 0.1f, 0.1f);
         
         dataIns = DataManager.Ins;
     }
@@ -72,6 +76,8 @@ public class Character : MonoBehaviour, IHit
         PlayerRotation(direction);
 
         controller.Move(direction * playerSpeed * Time.deltaTime);
+
+        KeepOnGround();
     }
 
     public virtual void OnGetHit()
@@ -97,6 +103,7 @@ public class Character : MonoBehaviour, IHit
         }
     }
 
+    //Rotation for movement
     public void PlayerRotation(Vector3 direction)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -117,6 +124,7 @@ public class Character : MonoBehaviour, IHit
         colliders = Physics.OverlapSphere(characterOrigin, attackRange, targetLayer);
     }
 
+    //Shoot if match condittion
     public void SetTarget()
     {
         if (InRangeCondition() && StopMovingCondition())
@@ -131,6 +139,7 @@ public class Character : MonoBehaviour, IHit
         }
     }
 
+    //Find nearest Collider
     public Vector3 GetClosestEnemyCollider(Collider[] enemyColliders)
     {
         float bestDistance = 10000;
@@ -153,11 +162,6 @@ public class Character : MonoBehaviour, IHit
         return bestCollider.transform.position;
     }
 
-    public void SetCharacterScale(float x)
-    {
-        characterTransform.localScale += new Vector3(x, x, x);
-    }
-
     public virtual void OnGetKill(Character character)
     {
         this.characterPoint += character.characterLevel;
@@ -172,8 +176,17 @@ public class Character : MonoBehaviour, IHit
     public void OnLevelUp()
     {
         characterLevel++;
+        
         characterLevelLimit = characterLevelLimit * 2 + 1;
-        //TODO:Size up
+        
+        GainStat();
+    }
+
+    public virtual void GainStat()
+    {
+        characterTransform.localScale += sizeUpOffset;
+
+        attackRange += 0.6f;
     }
 
     public bool InRangeCondition()
@@ -183,10 +196,7 @@ public class Character : MonoBehaviour, IHit
             return true;
         }
 
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public bool StopMovingCondition()
@@ -196,10 +206,12 @@ public class Character : MonoBehaviour, IHit
             return true;
         }
 
-        else
-        {
-            return false;
-        }
+        return false;
+    }
+
+    public void KeepOnGround()
+    {
+        characterTransform.localPosition = new Vector3(characterTransform.localPosition.x, 0, characterTransform.localPosition.z);
     }
 
 

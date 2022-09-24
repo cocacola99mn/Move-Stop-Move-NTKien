@@ -47,10 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletShooter: {fileID: 0}
   projectile: {fileID: 11400000, guid: 2413f3c477490df4b97e6b86c863490f, type: 2}
-  projecTileSpeed: 0
-  projectileExistTime: 0
   projectileTransform: {fileID: 3157679979004829903}
-  gameobjectTransform: {fileID: 6490162014251412603}
+  projectileObjectTransform: {fileID: 6490162014251412603}
   direction: {x: 0, y: 0, z: 0}
 --- !u!65 &6815792043753921470
 BoxCollider:
@@ -63,8 +61,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.49805725, y: 0.6474457, z: 1}
+  m_Center: {x: -0.008723199, y: -0.020183563, z: 0}
 --- !u!1001 &1682095287461738831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,7 +84,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362393701988817280, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.158
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4362393701988817280, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
       propertyPath: m_LocalRotation.w

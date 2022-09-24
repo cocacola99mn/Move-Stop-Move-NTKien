@@ -60,10 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletShooter: {fileID: 0}
   projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
-  projecTileSpeed: 0
-  projectileExistTime: 0
   projectileTransform: {fileID: 8792209096649851735}
-  gameobjectTransform: {fileID: 3204325666650497749}
+  projectileObjectTransform: {fileID: 3204325666650497749}
   direction: {x: 0, y: 0, z: 0}
   left: 0
   right: 0

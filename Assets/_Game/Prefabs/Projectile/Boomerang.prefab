@@ -60,10 +60,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletShooter: {fileID: 0}
   projectile: {fileID: 11400000, guid: de682caf97656a54e83ad997ec202a2a, type: 2}
-  projecTileSpeed: 0
-  projectileExistTime: 0
   projectileTransform: {fileID: 5964272391941128306}
-  gameobjectTransform: {fileID: 1507131251447300022}
+  projectileObjectTransform: {fileID: 1507131251447300022}
   direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &7096132528273740547
 PrefabInstance:

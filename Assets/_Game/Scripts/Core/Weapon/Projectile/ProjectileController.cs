@@ -8,9 +8,9 @@ public class ProjectileController : MonoBehaviour
 
     public Projectile projectile;
     
-    public float projecTileSpeed, projectileExistTime;
+    private float projecTileSpeed, projectileExistTime, existTime, scale;
 
-    public Transform projectileTransform, gameobjectTransform;
+    public Transform projectileTransform, projectileObjectTransform;
 
     public Vector3 direction;
 
@@ -33,7 +33,13 @@ public class ProjectileController : MonoBehaviour
     public virtual void OnInit()
     {
         projecTileSpeed = 6;
-        projectileExistTime = 1.5f;
+        existTime = 1.5f;
+        
+        projectileExistTime = existTime;
+        
+        scale = (bulletShooter.characterLevel - 1) * 0.1f;
+
+        ProjectileScale(scale);
     }
 
     public void ProjectileLifeTime()
@@ -43,8 +49,6 @@ public class ProjectileController : MonoBehaviour
         if (projectileExistTime <= 0)
         {
             DespawnProjectile();
-
-            projectileExistTime = 1.5f;
         }                
     }
 
@@ -54,19 +58,24 @@ public class ProjectileController : MonoBehaviour
         {
             DespawnProjectile();
 
-            projectileExistTime = 1.5f;
-
             bulletShooter.OnGetKill(Cache.GetCharacter(other));
         }
+    }
+
+    public virtual void TransformProjectile()
+    {
+        projectileObjectTransform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
+    }
+
+    public void ProjectileScale(float x)
+    {
+        projectileObjectTransform.localScale += new Vector3(x, x, x);
     }
 
     public virtual void DespawnProjectile()
     {
         ObjectPooling.Ins.Despawn(projectile.id + "", gameObject);
-    }
 
-    public virtual void TransformProjectile()
-    {
-        gameobjectTransform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
+        projectileExistTime = existTime;
     }
 }

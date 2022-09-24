@@ -7,7 +7,7 @@ public class CameraController : Singleton<CameraController>
     public Camera mainCamera;
     [SerializeField] Transform Target, Camera;
     public GameObject attackRangeOutLine;
-    public Vector3  yOffset, zOffset, cameraFollow;
+    public Vector3  yPos,yOffset, zOffset, cameraFollow;
 
     void Start()
     {
@@ -23,7 +23,8 @@ public class CameraController : Singleton<CameraController>
     {
         GetZOffset();
 
-        yOffset.y = 12;
+        yOffset.y = 0;
+        yPos.y = 12;
     }
 
     public void GetZOffset()
@@ -47,9 +48,15 @@ public class CameraController : Singleton<CameraController>
     {
         zOffset.z += -7;
 
-        Camera.localPosition = Vector3.Lerp(Camera.position, yOffset, 1);
+        Camera.localPosition = Vector3.Lerp(Camera.position, yPos, 1);
         Camera.localRotation = Quaternion.Euler(35, 0, 0);
 
         attackRangeOutLine.SetActive(true);
+    }
+
+    public void MoveFurtherFromPlayer()
+    {
+        Camera.localPosition += new Vector3(0, 1, 1);
+        zOffset.z--;
     }
 }
