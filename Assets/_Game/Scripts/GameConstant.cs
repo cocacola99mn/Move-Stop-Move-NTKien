@@ -18,6 +18,7 @@ public static class GameConstant
     public const string PANT_DESCRIPTION = "+5 Speed";
 
     public const string ENEMY_POOLING = "Enemy";
+    public const string INDICATOR_POOLING = "Indicator";
 
     public const string PREF_WEAPONEQUIP = "WeaponID";
     public const string PREF_HATEQUIP = "HatID";

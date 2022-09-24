@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public IndicatorHolder indicatorHolder;
+
     public Transform player, spawner;
 
     [SerializeField]
@@ -60,28 +62,49 @@ public class EnemySpawner : MonoBehaviour
         return cacheVector;
     }
 
+    public virtual void SpawnEnemy(bool initCheck)
+    {
+        GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
+        GameObject objectHolder = indicatorHolder.PopIndicatorFromPool();
+        indicatorHolder.MiddleAttach(objectHolder, Cache.GetAIController(enemy));
+
+        SetEnemyVariable(enemy, initCheck);
+    }
+
+    public void SetEnemyVariable(GameObject enemy, bool initCheck)
+    {
+        //INITCHECK: Check if this spawn is InitSpawn or not
+        if (!initCheck)
+        {
+            AIController aiController = Cache.GetAIController(enemy);
+            if (aiController != null)
+            {
+                aiController.isDead = false;
+                aiController.controller.enabled = true;
+                aiController.indicator.SetIndicatorColor(aiController.bodyColor);
+                aiController.indicator.SetIndicatorPoint(aiController.characterPoint);
+            }
+        }
+    }
+
     public IEnumerator InitSpawn()
     {
         yield return initSpawnWaitTime;
 
-        for (int i = 0; i < 8; i++)
+        indicatorHolder.InitIndicator();
+
+        for (int i = 0; i < 6; i++)
         {
-            ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
+            SpawnEnemy(true);
         }
     }
 
-    public IEnumerator SpawnEnemy()
+    public IEnumerator SpawnEnemyOnDead()
     {
         GetRandomTimer();
 
         yield return randomWaitTime;
-       
-        GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
 
-        if (Cache.GetAIController(enemy) != null)
-        {
-            Cache.GetAIController(enemy).isDead = false;
-            Cache.GetAIController(enemy).controller.enabled = true;
-        }
-    }
+        SpawnEnemy(false);
+    }  
 }

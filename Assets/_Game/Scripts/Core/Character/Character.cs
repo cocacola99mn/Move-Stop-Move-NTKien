@@ -74,7 +74,7 @@ public class Character : MonoBehaviour, IHit
         controller.Move(direction * playerSpeed * Time.deltaTime);
     }
 
-    public void OnGetHit()
+    public virtual void OnGetHit()
     {
         isDead = true;
 
@@ -83,6 +83,8 @@ public class Character : MonoBehaviour, IHit
         controller.enabled = false;
 
         ChangeAnim(GameConstant.DEAD_ANIM);
+
+        canvasInfoObject.SetActive(false);
     }
 
     public virtual void OnDead()
@@ -156,7 +158,7 @@ public class Character : MonoBehaviour, IHit
         characterTransform.localScale += new Vector3(x, x, x);
     }
 
-    public void OnGetKill(Character character)
+    public virtual void OnGetKill(Character character)
     {
         this.characterPoint += character.characterLevel;
         canvasInfoBar.pointText.text = this.characterPoint.ToString();

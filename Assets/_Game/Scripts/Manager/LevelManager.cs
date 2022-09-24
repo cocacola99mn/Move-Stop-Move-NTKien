@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public GameObject UIGameplay;
+    public GameObject UIGameplay,indicatorHolder;
 
     public EnemySpawner enemySpawner;
 
@@ -31,6 +31,12 @@ public class LevelManager : Singleton<LevelManager>
         UIAliveDisplayNumber.text = aliveNumber.ToString();
     }
 
+    public void LevelStarter()
+    {
+        levelStarter = true;
+        indicatorHolder.SetActive(true);
+    }
+
     public void OnCharacterDead()
     {
         aliveNumber--;
@@ -39,7 +45,7 @@ public class LevelManager : Singleton<LevelManager>
 
         if(aliveNumber > 6)
         {
-            enemySpawner.StartCoroutine(enemySpawner.SpawnEnemy());
+            enemySpawner.StartCoroutine(enemySpawner.SpawnEnemyOnDead());
         }
     }
 }

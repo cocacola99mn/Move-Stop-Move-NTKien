@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : Singleton<CameraController>
 {
+    public Camera mainCamera;
     [SerializeField] Transform Target, Camera;
     public GameObject attackRangeOutLine;
     public Vector3  yOffset, zOffset, cameraFollow;

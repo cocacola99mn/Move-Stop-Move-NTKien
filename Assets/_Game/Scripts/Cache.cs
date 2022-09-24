@@ -10,6 +10,7 @@ public static class Cache
     private static Dictionary<GameObject, RectTransform> rectTransform = new Dictionary<GameObject, RectTransform>();
     private static Dictionary<GameObject, GetItemData> getItemData = new Dictionary<GameObject, GetItemData>();
     private static Dictionary<GameObject, TypeSplit> getTypeSplit = new Dictionary<GameObject, TypeSplit>();
+    private static Dictionary<GameObject, Indicator> getIndicator = new Dictionary<GameObject, Indicator>();
 
     public static Character GetCharacter(Collider collider)
     {
@@ -69,5 +70,15 @@ public static class Cache
         }
 
         return getTypeSplit[gameObject];
+    }
+
+    public static Indicator GetIndicator(GameObject gameObject)
+    {
+        if (!getIndicator.ContainsKey(gameObject))
+        {
+            getIndicator.Add(gameObject, gameObject.GetComponent<Indicator>());
+        }
+
+        return getIndicator[gameObject];
     }
 }

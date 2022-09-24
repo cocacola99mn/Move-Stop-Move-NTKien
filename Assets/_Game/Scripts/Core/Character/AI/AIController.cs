@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AIController : Character
 {
+    public Indicator indicator;
+
     public IState<AIController> currentState;
 
     public float timer, secondsFloatTimer, randomTimer;
@@ -37,6 +39,12 @@ public class AIController : Character
         GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
 
         canvasInfoBar.SetColor(bodyColor);
+        
+        if(indicator != null)
+        {
+            indicator.SetIndicatorColor(bodyColor);
+            indicator.SetIndicatorPoint(characterPoint);
+        }
     }
 
     public void StartAi()
@@ -84,6 +92,23 @@ public class AIController : Character
     {
         horizontal = Random.Range(-1.0f, 1.0f);
         vertical = Random.Range(-1.0f, 1.0f);
+    }
+
+    public override void OnGetKill(Character character)
+    {
+        base.OnGetKill(character);
+        indicator.SetIndicatorPoint(characterPoint);
+    }
+
+    public override void OnGetHit()
+    {
+        base.OnGetHit();
+        indicator.DespawnIndicator();
+    }
+
+    public void AttachIndicator(Indicator indicator)
+    {
+        this.indicator = indicator;
     }
     #region STATEMACHINE
 
