@@ -7,7 +7,7 @@ public class CameraController : Singleton<CameraController>
     public Camera mainCamera;
     [SerializeField] Transform Target, Camera;
     public GameObject attackRangeOutLine;
-    public Vector3  yPos,yOffset, zOffset, cameraFollow;
+    public Vector3  yPos,yOffset, zOffset, moveFurtherOffset ,cameraFollow;
 
     void Start()
     {
@@ -25,6 +25,7 @@ public class CameraController : Singleton<CameraController>
 
         yOffset.y = 0;
         yPos.y = 12;
+        moveFurtherOffset = new Vector3(0, 1, 1);
     }
 
     public void GetZOffset()
@@ -56,7 +57,7 @@ public class CameraController : Singleton<CameraController>
 
     public void MoveFurtherFromPlayer()
     {
-        Camera.localPosition += new Vector3(0, 1, 1);
+        Camera.localPosition += moveFurtherOffset;
         zOffset.z--;
     }
 }

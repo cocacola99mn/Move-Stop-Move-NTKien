@@ -34,9 +34,4 @@ public class IndicatorHolder : MonoBehaviour
         GameObject objectHolder = ObjectPooling.Ins.Spawn(GameConstant.INDICATOR_POOLING, Vector3.zero, Quaternion.identity);
         return objectHolder;
     }
-
-    public void HideIndicatorHolder()
-    {
-        holder.SetActive(false);
-    }
 }

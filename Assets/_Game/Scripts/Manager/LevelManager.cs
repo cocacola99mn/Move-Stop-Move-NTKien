@@ -31,10 +31,11 @@ public class LevelManager : Singleton<LevelManager>
         UIAliveDisplayNumber.text = aliveNumber.ToString();
     }
 
-    public void LevelStarter()
+    public void LevelStarter(bool state)
     {
-        levelStarter = true;
-        indicatorHolder.SetActive(true);
+        levelStarter = state;
+        indicatorHolder.SetActive(state);
+        UIGameplay.SetActive(state);
     }
 
     public void OnCharacterDead()
@@ -47,5 +48,16 @@ public class LevelManager : Singleton<LevelManager>
         {
             enemySpawner.StartCoroutine(enemySpawner.SpawnEnemyOnDead());
         }
+    }
+
+    public void OnLevelFail()
+    {
+        UIManager.Ins.OpenUI(UIID.UICFail);
+        LevelStarter(false);
+    }
+
+    public void OnLevelVictory()
+    {
+
     }
 }

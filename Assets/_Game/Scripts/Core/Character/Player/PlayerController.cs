@@ -61,7 +61,7 @@ public class PlayerController : Character
 
         if (isDead && Time.time > deadAnimEnd)
         {
-            LevelManager.Ins.levelStarter = false;
+            LevelManager.Ins.OnLevelFail();
         }
     }
 

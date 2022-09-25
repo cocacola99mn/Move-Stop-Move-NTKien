@@ -10,7 +10,9 @@ public enum UIID
     UICGameplay = 0,
     UICMainMenu = 1,
     UICWeaponShop = 2,
-    UICSkinShop = 3
+    UICSkinShop = 3,
+    UICFail = 4,
+    UICPause = 5
 }
 
 public class UIManager : Singleton<UIManager>

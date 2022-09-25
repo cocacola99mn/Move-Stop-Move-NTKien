@@ -449,6 +449,7 @@ MonoBehaviour:
   yPos: {x: 0, y: 0, z: 0}
   yOffset: {x: 0, y: 0, z: 0}
   zOffset: {x: 0, y: 0, z: 0}
+  moveFurtherOffset: {x: 0, y: 0, z: 0}
   cameraFollow: {x: 0, y: 0, z: 0}
 --- !u!81 &576600104
 AudioListener:
