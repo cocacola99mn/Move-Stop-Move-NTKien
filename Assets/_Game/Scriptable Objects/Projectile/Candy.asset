@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Candy
   m_EditorClassIdentifier: 
   id: 3
-  projectile: {fileID: 179291366974948169, guid: f9d1e0cc44342a745a56a68dc9ac1c93, type: 3}
+  projectile: {fileID: 1196764295415172705, guid: 5ff8247c24d50764f8925c81b179ff43, type: 3}
   attackSpeed: 10
   attackRange: 0
   weaponType: 1

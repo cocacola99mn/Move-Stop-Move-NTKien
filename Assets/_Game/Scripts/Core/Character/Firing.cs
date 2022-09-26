@@ -5,14 +5,13 @@ using UnityEngine;
 public class Firing : MonoBehaviour
 {
     public Character character;
+    public ProjectileController projectile, projectileHolder;
 
-    public GameObject weaponHolderObject, spawnedProjectile;
-
-    public bool isFiring;
-    
-    public float timeBetweenShots, shotCounter;
-
+    public GameObject weaponHolderObject;
     public Transform firePoint;
+
+    public bool isFiring;   
+    public float timeBetweenShots, shotCounter;
 
     void Start()
     {
@@ -30,50 +29,46 @@ public class Firing : MonoBehaviour
     {
         if (isFiring)
         {
-            ShotDelay(character.characterWeapon);
+            ShotDelay(character.projectile);
         }
-
         else
         {
             weaponHolderObject.SetActive(true);
-            shotCounter = 0.8f;
+            shotCounter = 0.35f;
         }
     }
 
-    public virtual void ShotDelay(int weaponId)
+    public virtual void ShotDelay(ProjectileController projectile)
     {
-        shotCounter -= Time.deltaTime;
-        
         if (shotCounter <= 0)
         {
             weaponHolderObject.SetActive(false);
 
             shotCounter = timeBetweenShots;
 
-            spawnedProjectile = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
+            projectileHolder = SimplePool.Spawn<ProjectileController>(projectile, firePoint.position, firePoint.rotation);
 
-            OnTypeSplit(weaponId);
+            OnTypeSplit(projectile);
 
-            Cache.GetProjectileController(spawnedProjectile).bulletShooter = character;
+            projectileHolder.bulletShooter = character;
         }
-
         else
         {
             shotCounter -= Time.deltaTime;
-        }                                         
+        }
     }
 
-    public void OnTypeSplit(int weaponId)
+    public void OnTypeSplit(ProjectileController projectile)
     {
-        if (Cache.GetTypeSplit(spawnedProjectile) != null)
+        if (Cache.GetTypeSplit(projectileHolder.gameObject) != null)
         {
-            GameObject spawnedRight = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
-            GameObject spawnedLeft = ObjectPooling.Ins.Spawn(weaponId + "", firePoint.position, firePoint.rotation);
+            ProjectileController spawnedRight = SimplePool.Spawn<ProjectileController>(projectile, firePoint.position, firePoint.rotation);
+            ProjectileController spawnedLeft = SimplePool.Spawn<ProjectileController>(projectile, firePoint.position, firePoint.rotation);
 
-            Cache.GetProjectileController(spawnedRight).bulletShooter = character;
-            Cache.GetProjectileController(spawnedLeft).bulletShooter = character;
-            Cache.GetTypeSplit(spawnedRight).right = true;
-            Cache.GetTypeSplit(spawnedLeft).left = true;
+            spawnedRight.bulletShooter = spawnedLeft.bulletShooter = character;
+
+            Cache.GetTypeSplit(spawnedRight.gameObject).right = true;
+            Cache.GetTypeSplit(spawnedLeft.gameObject).left = true;
         }
     }
 }

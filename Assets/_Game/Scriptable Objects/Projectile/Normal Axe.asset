@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal Axe
   m_EditorClassIdentifier: 
   id: 0
-  projectile: {fileID: 8983994976084142528, guid: 8261b0ab7c6ece14c81c23237e944f49, type: 3}
+  projectile: {fileID: 7505831518105028898, guid: 2702fb7c1b19b6348a1e4416ba75a45a, type: 3}
   attackSpeed: 0
   attackRange: 0
   weaponType: 1

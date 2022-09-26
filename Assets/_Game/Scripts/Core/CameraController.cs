@@ -21,16 +21,11 @@ public class CameraController : Singleton<CameraController>
 
     public void OnInit()
     {
-        GetZOffset();
+        zOffset.z = Camera.position.z - Target.position.z; // Get ZOffset
 
         yOffset.y = 0;
         yPos.y = 12;
         moveFurtherOffset = new Vector3(0, 1, 1);
-    }
-
-    public void GetZOffset()
-    {
-        zOffset.z = Camera.position.z - Target.position.z;
     }
 
     public void FollowPlayer()

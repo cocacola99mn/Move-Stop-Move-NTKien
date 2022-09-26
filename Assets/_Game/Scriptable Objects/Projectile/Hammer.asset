@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   id: 7
-  projectile: {fileID: 2658909352863336754, guid: ab351128573ec234cb8501cde5e70a7d, type: 3}
+  projectile: {fileID: 762214404188825492, guid: fba324f471a642a44ad1dca957309aa4, type: 3}
   attackSpeed: 0
   attackRange: 25
   weaponType: 0

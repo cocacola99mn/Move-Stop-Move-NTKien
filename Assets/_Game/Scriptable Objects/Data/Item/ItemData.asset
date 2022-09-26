@@ -23,6 +23,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6205fb082267b5244bfc39fa037ade50, type: 2}
   - {fileID: 11400000, guid: 099d027432dac0d40a1821bc3b763321, type: 2}
   - {fileID: 11400000, guid: 18ae7262d5646a24bb5ff22c22a7ba03, type: 2}
+  projectileList:
+  - {fileID: 11400000, guid: f5466141f3afae84c93015217e9e6b10, type: 2}
+  - {fileID: 11400000, guid: f432461b93c41134093ac49640e253d5, type: 2}
+  - {fileID: 11400000, guid: de682caf97656a54e83ad997ec202a2a, type: 2}
+  - {fileID: 11400000, guid: 8720f897422d7c24d96674f81744ca5f, type: 2}
+  - {fileID: 11400000, guid: 1a1ffec8a9ef94f48b073be96ee8ee1b, type: 2}
+  - {fileID: 11400000, guid: 2413f3c477490df4b97e6b86c863490f, type: 2}
+  - {fileID: 11400000, guid: e948423516f9d2847a3bc11715fa1f15, type: 2}
+  - {fileID: 11400000, guid: 07e4f31777fd4894a9bef3d990678997, type: 2}
+  - {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
+  - {fileID: 11400000, guid: 98763d888bfc7e14c80b421e325d4a44, type: 2}
   hatDatasList:
   - {fileID: 11400000, guid: edc0f472afd88884a97dba96b3ee0356, type: 2}
   - {fileID: 11400000, guid: e5b77b1586817e046b8f2c9b3094d3c9, type: 2}

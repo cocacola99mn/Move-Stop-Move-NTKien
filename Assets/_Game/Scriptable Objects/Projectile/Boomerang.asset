@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boomerang
   m_EditorClassIdentifier: 
   id: 2
-  projectile: {fileID: 3512769037254545233, guid: aa1dc18444b2e20489cb1b9f76c440a9, type: 3}
+  projectile: {fileID: 4270406270547212359, guid: 951a00ab79bc33c4286711bb370e9e07, type: 3}
   attackSpeed: 0
   attackRange: 10
   weaponType: 1

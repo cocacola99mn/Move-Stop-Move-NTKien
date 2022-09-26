@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Indicator : MonoBehaviour
+public class Indicator : GameUnit
 {
     public Text pointText;
 
@@ -13,7 +13,7 @@ public class Indicator : MonoBehaviour
 
     public Camera mainCamera;
 
-    public AIController aIController;
+    public Character character;
 
     private Vector3 viewPortPos, viewPortOffset;
     
@@ -46,9 +46,9 @@ public class Indicator : MonoBehaviour
         mainCamera = CameraController.Ins.mainCamera;
     }
 
-    public void AttachAIController(AIController aIController)
+    public void AttachCharacter(Character character)
     {
-        this.aIController = aIController;
+        this.character = character;
         indicatorTransform.localPosition = Vector3.zero;
     }
 
@@ -60,7 +60,7 @@ public class Indicator : MonoBehaviour
 
     private bool TargetInScreen()
     {
-        viewPortPos = mainCamera.WorldToViewportPoint(aIController.characterTransform.position);
+        viewPortPos = mainCamera.WorldToViewportPoint(character.characterTransform.position);
 
         if ((viewPortPos.x > 0 && viewPortPos.x < 1) && (viewPortPos.y > 0 && viewPortPos.y < 1))
         {
@@ -134,7 +134,7 @@ public class Indicator : MonoBehaviour
 
     public void DespawnIndicator()
     {
-        ObjectPooling.Ins.Despawn(GameConstant.INDICATOR_POOLING, gameObject);
+        SimplePool.Despawn(this);
     }
 
     public void SetIndicatorPoint(int point)

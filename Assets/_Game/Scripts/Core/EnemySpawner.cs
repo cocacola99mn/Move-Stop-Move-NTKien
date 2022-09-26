@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public IndicatorHolder indicatorHolder;
+    public Character character, characterHolder;
 
     public Transform player, spawner;
 
@@ -13,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 cacheVector;
 
-    private WaitForSeconds randomWaitTime, initSpawnWaitTime;
+    private WaitForSeconds initSpawnWaitTime;
 
     public void Start()
     {
@@ -29,7 +30,6 @@ public class EnemySpawner : MonoBehaviour
     {
         StartCoroutine(InitSpawn());
 
-        randomWaitTime = new WaitForSeconds(randomTimer);
         initSpawnWaitTime = new WaitForSeconds(0.5f);
     }
 
@@ -47,8 +47,7 @@ public class EnemySpawner : MonoBehaviour
     {
         xPos = Random.Range(min, max);
         zPos = Random.Range(min, max);
-
-        //To avoid enemy spawn too near player
+        //Avoid enemy spawn too near player
         while(xPos < 10 && zPos< 10 && xPos > -10 && zPos > -10)
         {
             xPos = Random.Range(min, max);
@@ -58,40 +57,34 @@ public class EnemySpawner : MonoBehaviour
         cacheVector.x = xPos;
         cacheVector.y = 0;
         cacheVector.z = zPos;
+        cacheVector = player.position + cacheVector;
 
         return cacheVector;
     }
 
     public virtual void SpawnEnemy(bool initCheck)
     {
-        GameObject enemy = ObjectPooling.Ins.Spawn(GameConstant.ENEMY_POOLING, GetRandomPosition(-16, 16), Quaternion.identity);
-        GameObject objectHolder = indicatorHolder.PopIndicatorFromPool();
-        indicatorHolder.MiddleAttach(objectHolder, Cache.GetAIController(enemy));
+        characterHolder = SimplePool.Spawn<Character>(character, GetRandomPosition(-16, 16), Quaternion.identity);
+        indicatorHolder.MiddleAttach(characterHolder);
 
-        SetEnemyVariable(enemy, initCheck);
+        SetEnemyVariable(characterHolder, initCheck);
     }
 
-    public void SetEnemyVariable(GameObject enemy, bool initCheck)
+    public void SetEnemyVariable(Character enemy, bool initCheck)
     {
         //INITCHECK: Check if this spawn is InitSpawn or not
         if (!initCheck)
         {
-            AIController aiController = Cache.GetAIController(enemy);
-            if (aiController != null)
-            {
-                aiController.isDead = false;
-                aiController.controller.enabled = true;
-                aiController.indicator.SetIndicatorColor(aiController.bodyColor);
-                aiController.indicator.SetIndicatorPoint(aiController.characterPoint);
-            }
+            AIController aiController = Cache.GetAIController(enemy.gameObject);
+
+            aiController.indicator.SetIndicatorColor(aiController.bodyColor);
+            aiController.indicator.SetIndicatorPoint(aiController.characterPoint);
         }
     }
 
     public IEnumerator InitSpawn()
     {
         yield return initSpawnWaitTime;
-
-        indicatorHolder.InitIndicator();
 
         for (int i = 0; i < 6; i++)
         {
@@ -103,7 +96,7 @@ public class EnemySpawner : MonoBehaviour
     {
         GetRandomTimer();
 
-        yield return randomWaitTime;
+        yield return new WaitForSeconds(randomTimer);
 
         SpawnEnemy(false);
     }  

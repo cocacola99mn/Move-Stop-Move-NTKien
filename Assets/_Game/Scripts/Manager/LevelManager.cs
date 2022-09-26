@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public GameObject UIGameplay,indicatorHolder;
-
     public EnemySpawner enemySpawner;
+    public PlayerController playerController;
 
+    public GameObject UIGameplay,indicatorHolder;
     public Text UIAliveDisplayNumber;
     
     public int aliveNumber;
-
     public bool levelStarter;
 
     void Start()
@@ -22,7 +21,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnInit()
     {
-        aliveNumber = 100;
+        aliveNumber = 50;
         SetAliveNumber();
     }
 

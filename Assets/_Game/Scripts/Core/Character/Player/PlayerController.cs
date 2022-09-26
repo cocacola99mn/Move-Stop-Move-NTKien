@@ -73,12 +73,10 @@ public class PlayerController : Character
         {
             Movement(controller);
         }
-
-        else if (InRangeCondition() && StopMovingCondition() && firing.shotCounter <= 0.8f)
+        else if (InRangeCondition() && StopMovingCondition())
         {
             ChangeAnim(GameConstant.ATTACK_ANIM);
         }
-
         else
         {
             ChangeAnim(GameConstant.IDLE_ANIM);

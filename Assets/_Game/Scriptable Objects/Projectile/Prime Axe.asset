@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Prime Axe
   m_EditorClassIdentifier: 
   id: 1
-  projectile: {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
+  projectile: {fileID: 4072908410837738486, guid: 9e52e07579a4c8e4aa2d26007e7fd466, type: 3}
   attackSpeed: 5
   attackRange: 0
   weaponType: 1

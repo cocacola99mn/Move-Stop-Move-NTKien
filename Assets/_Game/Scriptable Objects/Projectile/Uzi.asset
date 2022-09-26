@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Uzi
   m_EditorClassIdentifier: 
   id: 9
-  projectile: {fileID: 1287074620023475125, guid: 741459a6f16beff488f38a327f768f69, type: 3}
+  projectile: {fileID: 6356265764769711466, guid: b731634989bc9df4d8ef201041a7ea89, type: 3}
   attackSpeed: 30
   attackRange: 30
   weaponType: 1

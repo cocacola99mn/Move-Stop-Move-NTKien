@@ -6,17 +6,11 @@ using UnityEngine.UI;
 
 public class CanvasPause : UICanvas
 {
-    Scene scene;
     public GameObject SoundOn, SoundOff, VibrateOn, VibrateOff;
-
-    public void Start()
-    {
-        scene = SceneManager.GetActiveScene();
-    }
 
     public void HomeButton()
     {
-        SceneManager.LoadScene(scene.name);
+        GameManager.Ins.Restart();
     }
 
     public void ContinueButton()

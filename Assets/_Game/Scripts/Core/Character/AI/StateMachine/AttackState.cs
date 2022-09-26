@@ -12,7 +12,7 @@ public class AttackState : IState<AIController>
 
     public void OnExecute(AIController ai)
     {
-        if (ai.InRangeCondition() && ai.StopMovingCondition() && ai.firing.shotCounter <= 0.8f)
+        if (ai.InRangeCondition() && ai.StopMovingCondition())
             ai.ChangeAnim(GameConstant.ATTACK_ANIM);
         else
             ai.ChangeAnim(GameConstant.IDLE_ANIM);

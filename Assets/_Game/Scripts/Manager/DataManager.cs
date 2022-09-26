@@ -10,7 +10,7 @@ public class DataManager : Singleton<DataManager>
 
     public ItemListData itemListData;
 
-    public List<GameObject> weaponObjectList, hatObjectList, pantObjectList;
+    public List<GameObject> weaponObjectList, projectileObjectList, hatObjectList, pantObjectList;
 
     public List<Material> pantMaterialList;
 
@@ -31,6 +31,7 @@ public class DataManager : Singleton<DataManager>
         for (int i = 0; i < itemListData.weaponList.Count; i++)
         {
             weaponObjectList.Add(itemListData.weaponList[i].weapon);
+            projectileObjectList.Add(itemListData.projectileList[i].projectile);
         }
 
         for (int i = 0; i < itemListData.hatDatasList.Count; i++)

@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileController : GameUnit
 {
     public Character bulletShooter;
-
-    public Projectile projectile;
     
     private float projecTileSpeed, projectileExistTime, existTime, scale;
 
@@ -37,7 +35,10 @@ public class ProjectileController : MonoBehaviour
         
         projectileExistTime = existTime;
         
-        scale = (bulletShooter.characterLevel - 1) * 0.1f;
+        if(bulletShooter != null)
+        {
+            scale = (bulletShooter.characterLevel - 1) * 0.1f;
+        }
 
         ProjectileScale(scale);
     }
@@ -74,7 +75,7 @@ public class ProjectileController : MonoBehaviour
 
     public virtual void DespawnProjectile()
     {
-        ObjectPooling.Ins.Despawn(projectile.id + "", gameObject);
+        SimplePool.Despawn(this);
 
         projectileExistTime = existTime;
     }

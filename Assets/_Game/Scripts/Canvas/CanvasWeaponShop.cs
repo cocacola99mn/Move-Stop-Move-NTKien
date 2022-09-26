@@ -10,12 +10,10 @@ public class CanvasWeaponShop : UICanvas
     public List<GameObject> weapons;
 
     public Transform weaponImageHolder;
-
+    public GameObject nextButton, backButton;
     public Text weaponNameText, lockText, descriptionText;
 
-    public GameObject nextButton, backButton;
-
-    int currentWeaponIndex;
+    int currentWeaponIndex, firstWeaponIndex;
 
     Vector3 imageScale;
 
@@ -27,12 +25,10 @@ public class CanvasWeaponShop : UICanvas
     public void OnInit()
     {
         dataIns = DataManager.Ins;
-
         currentWeaponIndex = 0;
-
         backButton.SetActive(false);
-
         imageScale = new Vector3(10, 10, 10);
+        firstWeaponIndex = 0;
 
         InitWeaponImage();
 
@@ -85,12 +81,10 @@ public class CanvasWeaponShop : UICanvas
         {
             nextButton.SetActive(false);
         }
-
-        else if (currentWeaponIndex == 0)
+        else if (currentWeaponIndex == firstWeaponIndex)
         {
             backButton.SetActive(false);
         }
-
         else
         {
             nextButton.SetActive(true);

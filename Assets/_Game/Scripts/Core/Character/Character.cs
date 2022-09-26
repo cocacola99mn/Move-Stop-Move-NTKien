@@ -2,40 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IHit
+public class Character : GameUnit, IHit
 {
     public DataManager dataIns;
-
+    public Indicator indicator;
+    public ProjectileController projectile;
     public Firing firing;
-
     public CanvasInfoBar canvasInfoBar;
 
     public CharacterController controller;
-
-    public GameObject characterObject, weaponHolder, hatHolder, canvasInfoObject;
-
     public SkinnedMeshRenderer pantHolder, bodyMeshRenderer;
 
-    public Color32 bodyColor;
-
+    public GameObject characterObject, weaponHolder, hatHolder, canvasInfoObject;
     public Transform characterTransform;
     Transform currentWeaponTransform, currentHatTransform;
-
     public Animator animator;
-
     public Collider[] colliders;
 
+    public Color32 bodyColor;
     public Vector3 direction, characterOrigin, sizeUpOffset;
-
     public LayerMask targetLayer;
 
     public int characterPoint, characterLevel, characterLevelLimit, characterWeapon;
-
     public float playerSpeed, attackRange, deadAnimTime, deadAnimEnd, horizontal, vertical;
     float turnTime, turnVelocity;
-
     private string curAnimName;
-
     public bool isDead;
 
 #if UNITY_EDITOR
@@ -55,24 +46,20 @@ public class Character : MonoBehaviour, IHit
 
     public virtual void OnInit()
     {
+        dataIns = DataManager.Ins;
         turnTime = 0.1f;
         playerSpeed = 5;
         attackRange = 6;
         deadAnimTime = 2;
         characterLevel = 1;
-        characterLevelLimit = 2;
-        
+        characterLevelLimit = 2;        
         characterObject = gameObject;
-
         sizeUpOffset = new Vector3(0.1f, 0.1f, 0.1f);
-        
-        dataIns = DataManager.Ins;
     }
 
     public void Movement(CharacterController controller)
     {
         RunAnim();
-
         PlayerRotation(direction);
 
         controller.Move(direction * playerSpeed * Time.deltaTime);
@@ -83,9 +70,7 @@ public class Character : MonoBehaviour, IHit
     public virtual void OnGetHit()
     {
         isDead = true;
-
         deadAnimEnd = Time.time + deadAnimTime;
-
         controller.enabled = false;
 
         ChangeAnim(GameConstant.DEAD_ANIM);
@@ -97,10 +82,16 @@ public class Character : MonoBehaviour, IHit
     {
         if(isDead && Time.time > deadAnimEnd)
         {
-            ObjectPooling.Ins.Despawn(GameConstant.ENEMY_POOLING, gameObject);
+            SimplePool.Despawn(this);
 
             LevelManager.Ins.OnCharacterDead();
         }
+    }
+
+    public virtual void OnRevive()
+    {
+        isDead = false;
+        controller.enabled = true;
     }
 
     //Rotation for movement
@@ -175,8 +166,7 @@ public class Character : MonoBehaviour, IHit
 
     public void OnLevelUp()
     {
-        characterLevel++;
-        
+        characterLevel++;        
         characterLevelLimit = characterLevelLimit * 2 + 1;
         
         GainStat();
@@ -185,7 +175,6 @@ public class Character : MonoBehaviour, IHit
     public virtual void GainStat()
     {
         characterTransform.localScale += sizeUpOffset;
-
         attackRange += 0.6f;
     }
 
@@ -214,7 +203,6 @@ public class Character : MonoBehaviour, IHit
         characterTransform.localPosition = new Vector3(characterTransform.localPosition.x, 0, characterTransform.localPosition.z);
     }
 
-
     public void GetWeapon(int weaponIndex)
     {
         if (currentWeaponTransform != null)
@@ -224,7 +212,7 @@ public class Character : MonoBehaviour, IHit
 
         SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, Vector3.zero, Quaternion.Euler(0, 0, -100));
 
-        characterWeapon = weaponIndex;
+        projectile = Cache.GetProjectileController(dataIns.projectileObjectList[weaponIndex]);
     }
 
     public void GetHat(int hatIndex)

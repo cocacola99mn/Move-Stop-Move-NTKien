@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Prime Candy
   m_EditorClassIdentifier: 
   id: 5
-  projectile: {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
+  projectile: {fileID: 7639358721809235865, guid: 501a4511b021e3449b9eed2f57f18927, type: 3}
   attackSpeed: 10
   attackRange: 5
   weaponType: 1

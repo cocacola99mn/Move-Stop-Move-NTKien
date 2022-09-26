@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice Cream
   m_EditorClassIdentifier: 
   id: 4
-  projectile: {fileID: 4362393701989107104, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
+  projectile: {fileID: 4047059380868800644, guid: 331fa3a943f5a22418b81cd5ca3365a8, type: 3}
   attackSpeed: 5
   attackRange: 10
   weaponType: 0

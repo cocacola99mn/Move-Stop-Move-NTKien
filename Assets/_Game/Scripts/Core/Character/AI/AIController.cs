@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AIController : Character
 {
-    public Indicator indicator;
-
     public IState<AIController> currentState;
 
     public float timer, secondsFloatTimer, randomTimer;
@@ -33,7 +31,10 @@ public class AIController : Character
 
         ChangeState(idleState);
 
-        GetAllItem();
+        GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
+        GetPant(Random.Range(0, dataIns.pantMaterialList.Count - 1));
+        GetHat(Random.Range(0, dataIns.hatObjectList.Count - 1));
+        GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
 
         canvasInfoBar.SetColor(bodyColor);
         
@@ -59,14 +60,6 @@ public class AIController : Character
             firing.isFiring = false;
             ChangeState(idleState);
         }            
-    }
-
-    public void GetAllItem()
-    {
-        GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
-        GetPant(Random.Range(0, dataIns.pantMaterialList.Count - 1));
-        GetHat(Random.Range(0, dataIns.hatObjectList.Count - 1));
-        GetBodyColor(dataIns.colorList[Random.Range(0, dataIns.colorList.Count - 1)]);
     }
 
     public void RandomStateTime(IState<AIController> state)
@@ -109,11 +102,6 @@ public class AIController : Character
     {
         base.OnGetHit();
         indicator.DespawnIndicator();
-    }
-
-    public void AttachIndicator(Indicator indicator)
-    {
-        this.indicator = indicator;
     }
     #region STATEMACHINE
 
