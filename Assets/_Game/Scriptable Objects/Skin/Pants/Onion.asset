@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Onion
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 8b13ffce1b89b9b4da7044ade9b7dc3f, type: 3}
   pant: {fileID: 6401416971349512846, guid: f961f60bae205da4aa29f43fb9b2387d, type: 3}
   pantMaterial: {fileID: 2100000, guid: 47b1040698e66ba448e5b2f12d8598bc, type: 2}
   price: 100
   skinId: 5
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

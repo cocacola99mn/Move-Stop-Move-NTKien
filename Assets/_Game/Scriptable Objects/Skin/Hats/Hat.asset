@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75da7205218b4ee42b90fdd9ada75b3e, type: 3}
   m_Name: Hat
   m_EditorClassIdentifier: 
+  hatSprite: {fileID: 21300000, guid: 2af6723c706353e43bbacbf707e7f0e4, type: 3}
   hat: {fileID: 56812472275026552, guid: 6879fd84c13f8294f808818d4fe36493, type: 3}
   price: 100
   skinId: 3

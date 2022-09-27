@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 2554166221338607195, guid: 50759512a0da3784897feb85139ed5f0, type: 3}
   weaponName: Knife
   description: AttackSpeed + 25
+  locked: 1

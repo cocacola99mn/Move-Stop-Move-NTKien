@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 7304090024495670490, guid: 423f674491983e14a8b68386c0ff50ec, type: 3}
   weaponName: Prime Axe
   description: Attack Speed +5
+  locked: 1

@@ -17,9 +17,7 @@ public static class GameConstant
     public const string HAT_DESCRIPTION = "+5 Range";
     public const string PANT_DESCRIPTION = "+5 Speed";
 
-    public const string ENEMY_POOLING = "Enemy";
-    public const string INDICATOR_POOLING = "Indicator";
-
+    public const string DEFAULT_NAME = "Player";
     public const string PREF_WEAPONEQUIP = "WeaponID";
     public const string PREF_HATEQUIP = "HatID";
     public const string PREF_PANTEQUIP = "PantID";
@@ -27,5 +25,8 @@ public static class GameConstant
     public const string PREF_COLOR = "Color";
     public const string PREF_GOLD = "Gold";
     public const string PREF_RANK = "Rank";
+    public const string PREF_ZONE = "Zone";
     public const string PREF_INITDATA = "InitData";
+    public const string PREF_SOUND = "SoundPref";
+    public const string PREF_VIBRATE = "Vibrate";
 }

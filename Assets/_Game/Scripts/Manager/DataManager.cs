@@ -24,6 +24,7 @@ public class DataManager : Singleton<DataManager>
     public void OnInit()
     {
         InitDataList();
+        LoadDataFirstTime();
     }
 
     public void InitDataList()
@@ -68,5 +69,19 @@ public class DataManager : Singleton<DataManager>
     {
         dataValue = value;
         PlayerPrefs.SetInt(data, value ? 1 : 0);
+    }
+
+    //Load data first time open the game
+    public void LoadDataFirstTime()
+    {
+        if (PlayerPrefs.GetInt(GameConstant.PREF_INITDATA) == 1)
+            playerDataSO.InitData = true;
+
+        if (!playerDataSO.InitData)
+        {
+            SetIntData(GameConstant.PREF_RANK, ref playerDataSO.Rank, 100);
+            SetIntData(GameConstant.PREF_ZONE, ref playerDataSO.Zone, 1);
+            SetBoolData(GameConstant.PREF_INITDATA, ref playerDataSO.InitData, true);
+        }
     }
 }

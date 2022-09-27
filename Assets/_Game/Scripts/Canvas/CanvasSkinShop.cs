@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class CanvasSkinShop : UICanvas
 {
-    public DataManager dataIns;
-
-    public GameObject hatScroll, pantScroll,itemTouched;
-    
+    DataManager dataIns;
+    ItemListData itemData;
     public SkinShopItem skinShopItem;
 
-    public Text skinDesText;
+    public GameObject hatScroll, pantScroll, itemTouched, equipButton, priceButton;
+    public Text skinDesText, priceText, coinText;
 
-    public int itemIndex;
+    public int itemIndex, goldNum;
 
     private void Start()
     {
@@ -23,8 +22,11 @@ public class CanvasSkinShop : UICanvas
     public void OnInit()
     {
         dataIns = DataManager.Ins;
+        itemData = dataIns.itemListData;
 
         itemIndex = 0;
+        coinText.text = dataIns.playerDataSO.Gold.ToString();
+        OnItemClicked(false);
     }
 
     public void CloseButton()
@@ -32,7 +34,7 @@ public class CanvasSkinShop : UICanvas
         dataIns.player.GetPant(dataIns.playerDataSO.Pant);
         dataIns.player.GetHat(dataIns.playerDataSO.Hat);
 
-        Close();
+        Destroy(gameObject);
 
         UIManager.Ins.OpenUI(UIID.UICMainMenu);
     }
@@ -52,27 +54,36 @@ public class CanvasSkinShop : UICanvas
         activeScroll.SetActive(true);
         deactiveScroll.SetActive(false);
         itemIndex = 0;
-        OnItemClicked();
+        OnItemClicked(false);
     }
 
-    public void OnItemClicked()
+    public void OnItemClicked(bool locker)
     {
-        if (pantScroll.activeInHierarchy)
+        if (locker)
         {
-            GetItemData(dataIns.itemListData.pantDatasList[itemIndex].skinDes);
-            dataIns.player.GetPant(itemIndex);
-        }
+            equipButton.SetActive(false);
+            priceButton.SetActive(true);
 
+        }
         else
         {
-            GetItemData(dataIns.itemListData.hatDatasList[itemIndex].skinDes);
+            equipButton.SetActive(true);
+            priceButton.SetActive(false);
+        }
+
+        if (pantScroll.activeInHierarchy)
+        {
+            skinDesText.text = itemData.pantDatasList[itemIndex].skinDes;
+            priceText.text = itemData.pantDatasList[itemIndex].price.ToString();
+            dataIns.player.GetPant(itemIndex);
+            
+        }
+        else
+        {
+            skinDesText.text = itemData.hatDatasList[itemIndex].skinDes;
+            priceText.text = itemData.hatDatasList[itemIndex].price.ToString();
             dataIns.player.GetHat(itemIndex);
         }
-    }
-
-    public void GetItemData(string skinDes)
-    {
-        skinDesText.text = skinDes;
     }
 
     public void EquipButton()
@@ -88,8 +99,34 @@ public class CanvasSkinShop : UICanvas
         }
     }
 
+    public void PriceButton()
+    {
+        
+        if (pantScroll.activeInHierarchy)
+        {
+            dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
+            CaculateGold(itemData.pantDatasList[itemIndex].price);
+        }
+
+        else
+        {
+            dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
+            CaculateGold(itemData.hatDatasList[itemIndex].price);
+        }
+    }
+
+    public void CaculateGold(int price)
+    {
+        if (dataIns.playerDataSO.Gold >= price)
+        {
+            goldNum = dataIns.playerDataSO.Gold - price;
+            coinText.text = goldNum.ToString();
+            dataIns.SetIntData(GameConstant.PREF_GOLD, ref dataIns.playerDataSO.Gold, goldNum);
+        }
+    }
+
     public void ShopButton()
     {
-
+        Debug.Log("Shop");
     }
 }

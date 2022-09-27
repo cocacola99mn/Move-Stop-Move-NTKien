@@ -29,6 +29,8 @@ public class AIController : Character
         patrolState = new PatrolState();
         attackState = new AttackState();
 
+        characterNameString = characterNameText.text;
+
         ChangeState(idleState);
 
         GetWeapon(Random.Range(0, dataIns.weaponObjectList.Count - 1));
@@ -98,9 +100,9 @@ public class AIController : Character
         indicator.SetIndicatorPoint(characterPoint);
     }
 
-    public override void OnGetHit()
+    public override void OnGetHit(Collider other)
     {
-        base.OnGetHit();
+        base.OnGetHit(other);
         indicator.DespawnIndicator();
     }
     #region STATEMACHINE

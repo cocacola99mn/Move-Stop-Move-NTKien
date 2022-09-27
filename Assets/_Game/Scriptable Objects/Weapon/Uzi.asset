@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 1287074620023475125, guid: 741459a6f16beff488f38a327f768f69, type: 3}
   weaponName: Mini Uzi
   description: Attack Range +30, Attack Speed +30
+  locked: 1

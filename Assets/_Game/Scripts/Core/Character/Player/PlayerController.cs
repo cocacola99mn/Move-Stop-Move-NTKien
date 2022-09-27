@@ -10,6 +10,8 @@ public class PlayerController : Character
 
     Vector3 moveDirection;
 
+    public Character killer;
+
     void Start()
     {
         OnInit();
@@ -26,16 +28,15 @@ public class PlayerController : Character
         base.OnInit();
 
         SetRangeOutline(attackRange - 1, attackRange - 1);
-
         GetWeapon(dataIns.playerDataSO.Weapon);
-
         GetHat(dataIns.playerDataSO.Hat);
-
         GetPant(dataIns.playerDataSO.Pant);
 
         bodyColor = dataIns.colorList[2];
 
         canvasInfoBar.SetColor(bodyColor);
+
+
     }    
 
     public void StartPlayer()
@@ -53,6 +54,12 @@ public class PlayerController : Character
             firing.isFiring = false;
             TargetOutline.gameObject.SetActive(false);
         }
+    }
+
+    public override void OnGetHit(Collider other)
+    {
+        base.OnGetHit(other);
+        killer = Cache.GetProjectileController(other.gameObject).bulletShooter;
     }
 
     public override void OnDead()

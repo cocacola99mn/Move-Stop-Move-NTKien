@@ -10,4 +10,6 @@ public class Weapon : ScriptableObject
     public GameObject weapon;
 
     public string weaponName, description;
+
+    public bool locked;
 }

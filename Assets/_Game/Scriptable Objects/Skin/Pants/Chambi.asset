@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Chambi
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 6fb6d3b1b4194774ba7023460842c965, type: 3}
   pant: {fileID: 3155797270236856838, guid: 532eca92642cd8048ad20d444a7fb2fa, type: 3}
   pantMaterial: {fileID: 2100000, guid: 1fb2886bee951c84cb949256be2b4569, type: 2}
   price: 100
   skinId: 2
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

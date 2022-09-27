@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHit 
 {
-    void OnGetHit();
+    void OnGetHit(Collider other);
 }

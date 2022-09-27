@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 7062343935611849201, guid: 224eaba47d0772749b6e7aa84eaca3eb, type: 3}
   weaponName: Perfect Candy
   description: Attack Speed +10, Attack Range +10
+  locked: 1

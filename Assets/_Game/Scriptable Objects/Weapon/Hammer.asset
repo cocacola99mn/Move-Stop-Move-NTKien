@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 2658909352863336754, guid: ab351128573ec234cb8501cde5e70a7d, type: 3}
   weaponName: Hammer
   description: Attack Range +25
+  locked: 1

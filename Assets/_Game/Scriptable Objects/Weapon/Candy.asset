@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 179291366974948169, guid: f9d1e0cc44342a745a56a68dc9ac1c93, type: 3}
   weaponName: Candy
   description: Attack Speed + 10
+  locked: 1

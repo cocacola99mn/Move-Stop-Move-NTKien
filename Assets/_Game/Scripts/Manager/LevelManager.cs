@@ -11,7 +11,7 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject UIGameplay,indicatorHolder;
     public Text UIAliveDisplayNumber;
     
-    public int aliveNumber;
+    public int aliveNumber, newGoldNum;
     public bool levelStarter;
 
     void Start()
@@ -53,6 +53,16 @@ public class LevelManager : Singleton<LevelManager>
     {
         UIManager.Ins.OpenUI(UIID.UICFail);
         LevelStarter(false);
+
+        //Gold for player
+        newGoldNum = DataManager.Ins.playerDataSO.Gold + playerController.characterPoint;
+        DataManager.Ins.SetIntData(GameConstant.PREF_GOLD, ref DataManager.Ins.playerDataSO.Gold, newGoldNum);
+
+        //Player Rank
+        if(DataManager.Ins.playerDataSO.Rank > aliveNumber)
+        {
+            DataManager.Ins.SetIntData(GameConstant.PREF_RANK, ref DataManager.Ins.playerDataSO.Rank, aliveNumber);
+        }
     }
 
     public void OnLevelVictory()

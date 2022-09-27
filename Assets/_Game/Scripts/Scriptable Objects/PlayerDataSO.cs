@@ -19,4 +19,5 @@ public class PlayerDataSO : ScriptableObject
     public int Gold;
 
     public int Rank;
+    public int Zone;
 }

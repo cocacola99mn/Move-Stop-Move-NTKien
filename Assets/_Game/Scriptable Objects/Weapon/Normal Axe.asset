@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 8983994976084142528, guid: 8261b0ab7c6ece14c81c23237e944f49, type: 3}
   weaponName: Normal Axe
   description: Just a normal axe
+  locked: 0

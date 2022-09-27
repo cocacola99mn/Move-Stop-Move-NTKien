@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 6422563681630201912, guid: a1b5fc463c60f0d43bcb65f3eba3faf5, type: 3}
   weaponName: Prime Candy
   description: Attack Speed + 10, Range +5
+  locked: 1

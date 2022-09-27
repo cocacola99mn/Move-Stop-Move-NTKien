@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Dabao
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 8ce9c269561d020459f2bae305190436, type: 3}
   pant: {fileID: 8420959911499599921, guid: 1717ce51d1425164db0654752be83575, type: 3}
   pantMaterial: {fileID: 2100000, guid: e37267f7440f0cb47bca113682ebf8cc, type: 2}
   price: 100
   skinId: 4
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

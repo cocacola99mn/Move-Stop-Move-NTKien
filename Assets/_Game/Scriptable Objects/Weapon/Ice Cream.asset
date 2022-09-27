@@ -17,3 +17,4 @@ MonoBehaviour:
   weapon: {fileID: 4362393701989107104, guid: a17a158326faa78418e64ab6b1414e61, type: 3}
   weaponName: Ice Cream
   description: Attack Range + 10, Attack Speed +5
+  locked: 1

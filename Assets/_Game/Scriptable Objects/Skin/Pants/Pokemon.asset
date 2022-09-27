@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Pokemon
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 6b5863c7494ecb047b76db7d2c0c4636, type: 3}
   pant: {fileID: 6515820496580926932, guid: e9bec6deac02e784faa292b0ae173f66, type: 3}
   pantMaterial: {fileID: 2100000, guid: 8a04d11e4da38cb40be0559677a17896, type: 2}
   price: 100
   skinId: 6
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

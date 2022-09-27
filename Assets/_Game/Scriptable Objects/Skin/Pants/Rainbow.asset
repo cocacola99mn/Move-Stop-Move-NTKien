@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Rainbow
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: f27dc337e8c1a5a45b90a780d85b9e08, type: 3}
   pant: {fileID: 6545208705234852754, guid: 600e6111bd704be4f8ca465df703b23a, type: 3}
   pantMaterial: {fileID: 2100000, guid: bfe2557323ec6d64284fd36d38f2a411, type: 2}
   price: 100
   skinId: 7
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

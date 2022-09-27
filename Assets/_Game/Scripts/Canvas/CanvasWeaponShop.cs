@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class CanvasWeaponShop : UICanvas
 {
-    public DataManager dataIns;
+    DataManager dataIns;
+
+    public List<Weapon> weaponList;
 
     public List<GameObject> weapons;
 
     public Transform weaponImageHolder;
-    public GameObject nextButton, backButton;
-    public Text weaponNameText, lockText, descriptionText;
+    public GameObject nextButton, backButton, equipButtonObject, priceButtonObject;
+    public Text weaponNameText, weaponPriceText ,lockText, descriptionText, coinText;
 
-    int currentWeaponIndex, firstWeaponIndex;
+    int currentWeaponIndex, firstWeaponIndex, gold;
 
     Vector3 imageScale;
 
@@ -25,9 +27,11 @@ public class CanvasWeaponShop : UICanvas
     public void OnInit()
     {
         dataIns = DataManager.Ins;
+        weaponList = dataIns.itemListData.weaponList;
         currentWeaponIndex = 0;
         backButton.SetActive(false);
         imageScale = new Vector3(10, 10, 10);
+        coinText.text = dataIns.playerDataSO.Gold.ToString();
         firstWeaponIndex = 0;
 
         InitWeaponImage();
@@ -41,8 +45,20 @@ public class CanvasWeaponShop : UICanvas
 
         weapons[currentWeaponIndex].SetActive(true);
 
-        weaponNameText.text = dataIns.itemListData.weaponList[currentWeaponIndex].weaponName;
-        descriptionText.text = dataIns.itemListData.weaponList[currentWeaponIndex].description;
+        weaponNameText.text = weaponList[currentWeaponIndex].weaponName;
+        descriptionText.text = weaponList[currentWeaponIndex].description;
+
+        if (weaponList[currentWeaponIndex].locked)
+        {
+            priceButtonObject.SetActive(true);
+            equipButtonObject.SetActive(false);
+            weaponPriceText.text = weaponList[currentWeaponIndex].price.ToString();
+        }
+        else
+        {
+            priceButtonObject.SetActive(false);
+            equipButtonObject.SetActive(true);
+        }
     }
 
     public void InitWeaponImage()
@@ -64,6 +80,19 @@ public class CanvasWeaponShop : UICanvas
     {
         dataIns.SetIntData(GameConstant.PREF_WEAPONEQUIP, ref dataIns.playerDataSO.Weapon, currentWeaponIndex);
         dataIns.player.GetWeapon(currentWeaponIndex);
+    }
+
+    public void PriceButton()
+    {
+        if(dataIns.playerDataSO.Gold >= weaponList[currentWeaponIndex].price)
+        {
+            gold = dataIns.playerDataSO.Gold - weaponList[currentWeaponIndex].price;
+            dataIns.SetIntData(GameConstant.PREF_GOLD, ref dataIns.playerDataSO.Gold, gold);
+            coinText.text = dataIns.playerDataSO.Gold.ToString();
+            weaponList[currentWeaponIndex].locked = false;
+            priceButtonObject.SetActive(false);
+            equipButtonObject.SetActive(true);
+        }
     }
 
     public void ChangePageButton(int index)

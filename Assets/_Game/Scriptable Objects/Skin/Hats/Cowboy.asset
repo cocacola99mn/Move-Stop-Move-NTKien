@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75da7205218b4ee42b90fdd9ada75b3e, type: 3}
   m_Name: Cowboy
   m_EditorClassIdentifier: 
+  hatSprite: {fileID: 21300000, guid: 5c47b000f394c8948b641803392fb8ec, type: 3}
   hat: {fileID: 8233258358818712465, guid: 0aff9720e8ca3034c888594da2dc817f, type: 3}
   price: 100
   skinId: 2

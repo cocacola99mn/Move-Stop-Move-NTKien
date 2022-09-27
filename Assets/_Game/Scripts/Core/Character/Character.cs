@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : GameUnit, IHit
 {
@@ -12,6 +13,7 @@ public class Character : GameUnit, IHit
 
     public CharacterController controller;
     public SkinnedMeshRenderer pantHolder, bodyMeshRenderer;
+    public Text characterNameText;
 
     public GameObject characterObject, weaponHolder, hatHolder, canvasInfoObject;
     public Transform characterTransform;
@@ -27,6 +29,7 @@ public class Character : GameUnit, IHit
     public float playerSpeed, attackRange, deadAnimTime, deadAnimEnd, horizontal, vertical;
     float turnTime, turnVelocity;
     private string curAnimName;
+    public string characterNameString;
     public bool isDead;
 
 #if UNITY_EDITOR
@@ -41,7 +44,7 @@ public class Character : GameUnit, IHit
 
     public void OnTriggerEnter(Collider other)
     {
-        OnGetHit();
+        OnGetHit(other);
     }
 
     public virtual void OnInit()
@@ -67,7 +70,7 @@ public class Character : GameUnit, IHit
         KeepOnGround();
     }
 
-    public virtual void OnGetHit()
+    public virtual void OnGetHit(Collider other)
     {
         isDead = true;
         deadAnimEnd = Time.time + deadAnimTime;
@@ -75,7 +78,7 @@ public class Character : GameUnit, IHit
 
         ChangeAnim(GameConstant.DEAD_ANIM);
 
-        canvasInfoObject.SetActive(false);
+        canvasInfoObject.SetActive(false);   
     }
 
     public virtual void OnDead()
@@ -261,6 +264,11 @@ public class Character : GameUnit, IHit
 
         curAnimName = animName;
         animator.SetTrigger(curAnimName);
+    }
+
+    public void OnGetHit()
+    {
+        throw new System.NotImplementedException();
     }
     #endregion
 }

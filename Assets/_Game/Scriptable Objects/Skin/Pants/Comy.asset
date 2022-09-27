@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Comy
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 9f539e0fa451b6a4a8f98a46ab4a44e8, type: 3}
   pant: {fileID: 8273274634609264738, guid: 4d2fb9c9edaa8d34fa3aea4e4092c38c, type: 3}
   pantMaterial: {fileID: 2100000, guid: 7f2e0c158c6764b41818f1dcfd8fb6b9, type: 2}
   price: 100
   skinId: 3
   skinDes: +5 Speed
-  locked: 0
+  locked: 1

@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287341535483816262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.8}
+  m_LocalPosition: {x: 0, y: 1, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5608546082855209180}
@@ -2834,22 +2834,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0752f46289f134cbfb887944db8264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   dataIns: {fileID: 0}
+  indicator: {fileID: 0}
+  projectile: {fileID: 0}
   firing: {fileID: 1752358567}
   canvasInfoBar: {fileID: 6063577869931340906}
   controller: {fileID: 3687084864315573268}
+  pantHolder: {fileID: 8072915140420792399}
+  bodyMeshRenderer: {fileID: 1146689481934501164}
+  characterNameText: {fileID: 7835069030024815745}
   characterObject: {fileID: 8903290090917771983}
   weaponHolder: {fileID: 1455396626432034547}
   hatHolder: {fileID: 7054215559882694292}
   canvasInfoObject: {fileID: 1753423031}
-  pantHolder: {fileID: 8072915140420792399}
-  bodyMeshRenderer: {fileID: 1146689481934501164}
-  bodyColor:
-    serializedVersion: 2
-    rgba: 0
   characterTransform: {fileID: 5608546082855209180}
   animator: {fileID: 2548911167534458278}
   colliders: []
+  bodyColor:
+    serializedVersion: 2
+    rgba: 0
   direction: {x: 0, y: 0, z: 0}
   characterOrigin: {x: 0, y: 0, z: 0}
   sizeUpOffset: {x: 0, y: 0, z: 0}
@@ -2866,10 +2870,12 @@ MonoBehaviour:
   deadAnimEnd: 0
   horizontal: 0
   vertical: 0
+  characterNameString: 
   isDead: 0
   joyStick: {fileID: 0}
   TargetOutline: {fileID: 0}
   rangeOutline: {fileID: 998390256}
+  killer: {fileID: 0}
 --- !u!114 &1752358567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,12 +2889,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1940171342}
+  projectile: {fileID: 0}
+  projectileHolder: {fileID: 0}
   weaponHolderObject: {fileID: 1455396626432034547}
-  spawnedProjectile: {fileID: 0}
+  firePoint: {fileID: 7759085281900443982}
   isFiring: 0
   timeBetweenShots: 0
   shotCounter: 0
-  firePoint: {fileID: 7759085281900443982}
 --- !u!1 &8914701659162119850
 GameObject:
   m_ObjectHideFlags: 0

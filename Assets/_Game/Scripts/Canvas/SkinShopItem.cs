@@ -6,19 +6,16 @@ using UnityEngine.UI;
 
 public class SkinShopItem : MonoBehaviour
 {
-    public DataManager dataIns;
+    DataManager dataIns;
+    ItemListData itemData;
 
     public CanvasSkinShop canvasSkinShop;
+    public GetItemData getItemData;
 
-    public GetItemData getItemData, itemDataHolder;
+    public Image itemImage;
+    public GameObject hatItemHolder, pantItemHolder , item, uiHolder, locker;
 
-    public GameObject hatItemHolder, pantItemHolder , itemBackGround, item3dHolder,  uiItem, uiHolder;
-
-    public RectTransform uiHolderTransform;
-
-    Vector3 itemPos;
-
-    public int itemIndex;
+    public int itemIndex, loopCounter;
     
     void Start()
     {
@@ -28,32 +25,30 @@ public class SkinShopItem : MonoBehaviour
     private void OnInit()
     {
         dataIns = DataManager.Ins;
-        itemPos = new Vector3(0, -140, 0);
+        itemData = dataIns.itemListData;
 
-        GetItem(dataIns.hatObjectList, ref hatItemHolder, Vector3.zero);
-        GetItem(dataIns.pantObjectList, ref pantItemHolder, itemPos);
-    }
-
-    public void GetItem(List<GameObject> itemList, ref GameObject itemHolder, Vector3 position)
-    {
-        for(int i = 0; i < itemList.Count; i++)
+        for (int i = 0; i < itemData.hatDatasList.Count; i++)
         {
-            SetParentForItem(itemList ,itemHolder.transform, i, position);
+            SetItem(hatItemHolder.transform, itemData.hatDatasList[i].hatSprite, itemData.hatDatasList[i].locked, i);
+        }
+        
+        for (int i = 0; i < itemData.pantDatasList.Count; i++)
+        {
+            SetItem(pantItemHolder.transform, itemData.pantDatasList[i].pantSprite, itemData.pantDatasList[i].locked, i);
         }
     }
 
-    public void SetParentForItem(List<GameObject> itemList , Transform holder, int index, Vector3 position)
+    public void SetItem(Transform holderTransform, Sprite sprite, bool locker, int index)
     {
-        uiHolder = Instantiate(item3dHolder);
-        uiHolder.transform.SetParent(holder);
-        uiHolderTransform = Cache.GetRectTransform(uiHolder);
-        uiHolderTransform.localPosition = Vector3.zero;
+        uiHolder = Instantiate(item);
+        uiHolder.transform.SetParent(holderTransform);
+        uiHolder.transform.localPosition = Vector3.zero;
+        uiHolder.transform.localScale = new Vector3(1, 1, 1);
+
+        uiHolder.GetComponent<Image>().sprite = sprite;
 
         getItemData = Cache.GetItemData(uiHolder);
         getItemData.itemData = index;
-
-        uiItem = Instantiate(itemList[index]);
-        uiItem.transform.SetParent(uiHolder.transform);
-        uiItem.transform.localPosition = position;
+        getItemData.locker = locker;
     }
 }

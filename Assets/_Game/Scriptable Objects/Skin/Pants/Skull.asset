@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e507fcbf02e07bb4f88de08eedb9105f, type: 3}
   m_Name: Skull
   m_EditorClassIdentifier: 
+  pantSprite: {fileID: 21300000, guid: 3a7811872b703f745a2617b74baf385d, type: 3}
   pant: {fileID: 1296761946333481243, guid: beb2e7b04d20f9647a0266fec273c7dd, type: 3}
   pantMaterial: {fileID: 2100000, guid: 4f6bd5546e6aac64291fe7a1f51fb1cc, type: 2}
   price: 100
   skinId: 8
   skinDes: +5 Speed
-  locked: 0
+  locked: 1
