@@ -38,11 +38,6 @@ public class EnemySpawner : MonoBehaviour
         spawner.position = player.position;
     }
 
-    public void GetRandomTimer()
-    {
-        randomTimer = Random.Range(1, 3);
-    }
-
     public Vector3 GetRandomPosition(float min, float max)
     {
         xPos = Random.Range(min, max);
@@ -76,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         if (!initCheck)
         {
             AIController aiController = Cache.GetAIController(enemy.gameObject);
-
+            aiController.OnRevive();
             aiController.indicator.SetIndicatorColor(aiController.bodyColor);
             aiController.indicator.SetIndicatorPoint(aiController.characterPoint);
         }
@@ -94,9 +89,7 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnEnemyOnDead()
     {
-        GetRandomTimer();
-
-        yield return new WaitForSeconds(randomTimer);
+        yield return new WaitForSeconds(3);
 
         SpawnEnemy(false);
     }  

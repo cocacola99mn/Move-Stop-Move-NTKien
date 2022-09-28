@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Damageable
   - Obstacle
+  - Gift
+  - Projectile
   layers:
   - Default
   - TransparentFX

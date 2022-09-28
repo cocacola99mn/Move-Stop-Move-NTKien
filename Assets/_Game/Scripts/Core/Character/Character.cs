@@ -30,7 +30,7 @@ public class Character : GameUnit, IHit
     float turnTime, turnVelocity;
     private string curAnimName;
     public string characterNameString;
-    public bool isDead;
+    public bool isDead, weaponBoost;
 
 #if UNITY_EDITOR
 
@@ -44,7 +44,10 @@ public class Character : GameUnit, IHit
 
     public void OnTriggerEnter(Collider other)
     {
-        OnGetHit(other);
+        if (other.CompareTag(GameConstant.PROJECTILE_TAG))
+        {
+            OnGetHit(other);
+        }
     }
 
     public virtual void OnInit()
@@ -57,6 +60,7 @@ public class Character : GameUnit, IHit
         characterLevel = 1;
         characterLevelLimit = 2;        
         characterObject = gameObject;
+        weaponBoost = false;
         sizeUpOffset = new Vector3(0.1f, 0.1f, 0.1f);
     }
 
@@ -78,7 +82,9 @@ public class Character : GameUnit, IHit
 
         ChangeAnim(GameConstant.DEAD_ANIM);
 
-        canvasInfoObject.SetActive(false);   
+        canvasInfoObject.SetActive(false);
+
+        LevelManager.Ins.OnCharacterDead();
     }
 
     public virtual void OnDead()
@@ -86,8 +92,6 @@ public class Character : GameUnit, IHit
         if(isDead && Time.time > deadAnimEnd)
         {
             SimplePool.Despawn(this);
-
-            LevelManager.Ins.OnCharacterDead();
         }
     }
 
@@ -106,15 +110,9 @@ public class Character : GameUnit, IHit
         characterTransform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
-    public void GetCharacterPosition()
-    {
-        characterOrigin = characterTransform.position;
-    }
-
     public void PlayerCircleCast()
     {
-        GetCharacterPosition();
-
+        characterOrigin = characterTransform.position;
         colliders = Physics.OverlapSphere(characterOrigin, attackRange, targetLayer);
     }
 
@@ -179,6 +177,12 @@ public class Character : GameUnit, IHit
     {
         characterTransform.localScale += sizeUpOffset;
         attackRange += 0.6f;
+    }
+
+    public virtual void OnWeaponBoost(float range, bool value)
+    {
+        weaponBoost = value;
+        attackRange += range;
     }
 
     public bool InRangeCondition()

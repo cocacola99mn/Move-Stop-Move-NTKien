@@ -7,11 +7,12 @@ public class PoolController : MonoBehaviour
     public ItemListData itemListData;
 
     public List<Transform> parentTransform;
-    public Transform enemyHolder, indicatorHolder;
+    public Transform enemyHolder, indicatorHolder, giftHolder;
 
     public List<ProjectileController> projectileControllers;
     public Character enemy;
     public Indicator indicator;
+    public Gift gift;
 
     /*public Transform tf_vfx;
     public ParticleSystem hitvfx;*/
@@ -26,6 +27,7 @@ public class PoolController : MonoBehaviour
     {
         SimplePool.Preload(enemy, 20, enemyHolder);
         SimplePool.Preload(indicator, 10, indicatorHolder);
+        SimplePool.Preload(gift, 5, giftHolder);
 
         for (int i = 0; i < itemListData.projectileList.Count; i++)
         {

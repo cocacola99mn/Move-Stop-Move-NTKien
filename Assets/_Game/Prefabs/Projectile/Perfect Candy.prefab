@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4389747852287790457}
   m_Layer: 0
   m_Name: Perfect Candy
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: e948423516f9d2847a3bc11715fa1f15, type: 2}
   projectileTransform: {fileID: 54846318812897165}
   projectileObjectTransform: {fileID: 1659778569764702663}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!1001 &7115869979799734876
 PrefabInstance:
   m_ObjectHideFlags: 0

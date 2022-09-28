@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : Singleton<DataManager>
 {
     public PlayerController player;
 
     public PlayerDataSO playerDataSO;
-
     public ItemListData itemListData;
 
     public List<GameObject> weaponObjectList, projectileObjectList, hatObjectList, pantObjectList;
-
+    public List<LevelDataSO> levelDataSOList;
     public List<Material> pantMaterialList;
-
     public List<Color32> colorList;
 
     public void Awake()
@@ -79,7 +78,7 @@ public class DataManager : Singleton<DataManager>
 
         if (!playerDataSO.InitData)
         {
-            SetIntData(GameConstant.PREF_RANK, ref playerDataSO.Rank, 100);
+            SetIntData(GameConstant.PREF_RANK, ref playerDataSO.Rank, 50);
             SetIntData(GameConstant.PREF_ZONE, ref playerDataSO.Zone, 1);
             SetBoolData(GameConstant.PREF_INITDATA, ref playerDataSO.InitData, true);
         }

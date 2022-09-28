@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorHolder: {fileID: 0}
   character: {fileID: 932174503, guid: ad3764caa8f3ea74e8d5fb11dd3b5a8e, type: 3}
+  characterHolder: {fileID: 0}
   player: {fileID: 0}
   spawner: {fileID: 4801873103700955100}
   xPos: 0

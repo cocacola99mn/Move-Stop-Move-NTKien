@@ -29,6 +29,7 @@ public class AIController : Character
         patrolState = new PatrolState();
         attackState = new AttackState();
 
+        characterNameText.text = PickRandomName();
         characterNameString = characterNameText.text;
 
         ChangeState(idleState);
@@ -62,6 +63,13 @@ public class AIController : Character
             firing.isFiring = false;
             ChangeState(idleState);
         }            
+    }
+
+
+    public string PickRandomName()
+    {
+        int randomName = Random.Range(0, GameConstant.names.Length - 1);
+        return GameConstant.names[randomName];
     }
 
     public void RandomStateTime(IState<AIController> state)

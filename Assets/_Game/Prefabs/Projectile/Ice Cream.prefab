@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6815792043753921470}
   m_Layer: 0
   m_Name: Ice Cream
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: 2413f3c477490df4b97e6b86c863490f, type: 2}
   projectileTransform: {fileID: 3157679979004829903}
   projectileObjectTransform: {fileID: 6490162014251412603}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!65 &6815792043753921470
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class GameConstant
 {
+    public static string[] names =  { "Aron", "Abdul", "Abe", "Abel", "Abraham", "Adam", "Adan", "Adolfo", "Adolph", "Adrian", "Hafsa", "Lindsay", "Sierra", "Yusef", "Johns", "Ward", "Sarah" , "Khalil", "Payne", "Henri", "Hunter" , "Tomi", "Lam", "Bryant", "Diego" };
+
     public const string IDLE_ANIM = "IsIdle";
     public const string DEAD_ANIM = "IsDead";
     public const string ATTACK_ANIM = "IsAttack";
@@ -13,6 +15,8 @@ public static class GameConstant
 
     public const string DAMAGEABLE_TAG = "Damageable";
     public const string OBSTACLE_TAG = "Obstacle";
+    public const string GIFT_TAG = "Gift";
+    public const string PROJECTILE_TAG = "Projectile";
 
     public const string HAT_DESCRIPTION = "+5 Range";
     public const string PANT_DESCRIPTION = "+5 Speed";

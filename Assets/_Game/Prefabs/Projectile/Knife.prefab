@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1477943802964617996}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa20e39c790a94498e4153db0412e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: c7363cfd96e568446bdcb529b19954d8, type: 2}
   projectileTransform: {fileID: 8792209096649851735}
   projectileObjectTransform: {fileID: 3204325666650497749}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
   left: 0
   right: 0
 --- !u!1001 &6446352227294650668

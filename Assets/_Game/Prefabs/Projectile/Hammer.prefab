@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5098676794083861893}
   m_Layer: 0
   m_Name: Hammer
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5745e3c3b3db24b99863bba90fe6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: 07e4f31777fd4894a9bef3d990678997, type: 2}
   projectileTransform: {fileID: 3015391979690304838}
   projectileObjectTransform: {fileID: 3295518493704284911}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!65 &-5098676794083861893
 BoxCollider:
   m_ObjectHideFlags: 0

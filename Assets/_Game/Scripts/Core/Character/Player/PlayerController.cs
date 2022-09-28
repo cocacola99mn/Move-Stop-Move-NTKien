@@ -27,7 +27,7 @@ public class PlayerController : Character
     {
         base.OnInit();
 
-        SetRangeOutline(attackRange - 1, attackRange - 1);
+        SetRangeOutline(attackRange - 1);
         GetWeapon(dataIns.playerDataSO.Weapon);
         GetHat(dataIns.playerDataSO.Hat);
         GetPant(dataIns.playerDataSO.Pant);
@@ -35,8 +35,6 @@ public class PlayerController : Character
         bodyColor = dataIns.colorList[2];
 
         canvasInfoBar.SetColor(bodyColor);
-
-
     }    
 
     public void StartPlayer()
@@ -56,22 +54,6 @@ public class PlayerController : Character
         }
     }
 
-    public override void OnGetHit(Collider other)
-    {
-        base.OnGetHit(other);
-        killer = Cache.GetProjectileController(other.gameObject).bulletShooter;
-    }
-
-    public override void OnDead()
-    {
-        base.OnDead();
-
-        if (isDead && Time.time > deadAnimEnd)
-        {
-            LevelManager.Ins.OnLevelFail();
-        }
-    }
-
     public void Action()
     {
         JoyStickInput();
@@ -87,6 +69,22 @@ public class PlayerController : Character
         else
         {
             ChangeAnim(GameConstant.IDLE_ANIM);
+        }
+    }
+
+    public override void OnGetHit(Collider other)
+    {
+        base.OnGetHit(other);
+        killer = Cache.GetProjectileController(other.gameObject).bulletShooter;
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+
+        if (isDead && Time.time > deadAnimEnd)
+        {
+            LevelManager.Ins.OnLevelFail();
         }
     }
 
@@ -119,9 +117,15 @@ public class PlayerController : Character
         }
     }
 
-    public void SetRangeOutline(float x, float y)
+    public override void OnWeaponBoost(float range, bool value)
     {
-        rangeOutline.localScale = new Vector3(x, y, 1);
+        base.OnWeaponBoost(range, value);
+        SetRangeOutline(attackRange - 1);
+    }
+
+    public void SetRangeOutline(float x)
+    {
+        rangeOutline.localScale = new Vector3(x, x, 1);
     }
 
     public override void GainStat()

@@ -11,7 +11,7 @@ public class LevelManager : Singleton<LevelManager>
     public GameObject UIGameplay,indicatorHolder;
     public Text UIAliveDisplayNumber;
     
-    public int aliveNumber, newGoldNum;
+    public int aliveNumber, newGoldNum, zoneIndex;
     public bool levelStarter;
 
     void Start()
@@ -21,7 +21,9 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnInit()
     {
-        aliveNumber = 50;
+        zoneIndex = DataManager.Ins.playerDataSO.Zone - 1;
+        aliveNumber = DataManager.Ins.levelDataSOList[zoneIndex].AliveNum;
+        //aliveNumber = 7;
         SetAliveNumber();
     }
 
@@ -35,17 +37,22 @@ public class LevelManager : Singleton<LevelManager>
         levelStarter = state;
         indicatorHolder.SetActive(state);
         UIGameplay.SetActive(state);
+        playerController.controller.enabled = state;
     }
 
     public void OnCharacterDead()
     {
         aliveNumber--;
-
         SetAliveNumber();
 
-        if(aliveNumber > 6)
+        if (aliveNumber > 6)
         {
             enemySpawner.StartCoroutine(enemySpawner.SpawnEnemyOnDead());
+        }
+
+        if(aliveNumber < 2 && !playerController.isDead)
+        {
+            OnLevelVictory();
         }
     }
 
@@ -67,6 +74,8 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnLevelVictory()
     {
-
+        LevelStarter(false);
+        DataManager.Ins.SetIntData(GameConstant.PREF_ZONE, ref DataManager.Ins.playerDataSO.Zone, DataManager.Ins.playerDataSO.Zone + 1);
+        UIManager.Ins.OpenUI(UIID.UICVictory);
     }
 }

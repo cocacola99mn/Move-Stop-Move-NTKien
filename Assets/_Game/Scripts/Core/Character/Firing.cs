@@ -51,6 +51,12 @@ public class Firing : MonoBehaviour
             OnTypeSplit(projectile);
 
             projectileHolder.bulletShooter = character;
+            projectileHolder.boost = character.weaponBoost;
+
+            if (character.weaponBoost)
+            {
+                character.OnWeaponBoost(-2, false);
+            }
         }
         else
         {

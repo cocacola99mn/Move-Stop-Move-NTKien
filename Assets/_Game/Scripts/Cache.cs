@@ -7,6 +7,7 @@ public static class Cache
     private static Dictionary<Collider, Character> character = new Dictionary<Collider, Character>();
     private static Dictionary<GameObject, ProjectileController> projectileController = new Dictionary<GameObject, ProjectileController>();
     private static Dictionary<GameObject, AIController> aiController = new Dictionary<GameObject, AIController>();
+    private static Dictionary<GameObject, PlayerController> playerController = new Dictionary<GameObject, PlayerController>();
     private static Dictionary<GameObject, RectTransform> rectTransform = new Dictionary<GameObject, RectTransform>();
     private static Dictionary<GameObject, GetItemData> getItemData = new Dictionary<GameObject, GetItemData>();
     private static Dictionary<GameObject, TypeSplit> getTypeSplit = new Dictionary<GameObject, TypeSplit>();
@@ -40,6 +41,16 @@ public static class Cache
         }
 
             return aiController[gameObject];     
+    }
+
+    public static PlayerController GetPlayerController(GameObject gameObject)
+    {
+        if (!aiController.ContainsKey(gameObject))
+        {
+            playerController.Add(gameObject, gameObject.GetComponent<PlayerController>());
+        }
+
+        return playerController[gameObject];
     }
 
     public static RectTransform GetRectTransform(GameObject gameObject)

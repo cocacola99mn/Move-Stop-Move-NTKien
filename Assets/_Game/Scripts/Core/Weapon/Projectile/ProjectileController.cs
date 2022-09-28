@@ -5,12 +5,13 @@ using UnityEngine;
 public class ProjectileController : GameUnit
 {
     public Character bulletShooter;
-    
-    private float projecTileSpeed, projectileExistTime, existTime, scale;
 
     public Transform projectileTransform, projectileObjectTransform;
 
-    public Vector3 direction;
+    public Vector3 direction, normalScale;
+
+    private float projecTileSpeed, projectileExistTime, existTime, scale;
+    public bool boost;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public class ProjectileController : GameUnit
     {
         projecTileSpeed = 6;
         existTime = 1.5f;
-        
+        normalScale = new Vector3(1, 1, 1);
         projectileExistTime = existTime;
         
         if(bulletShooter != null)
@@ -40,7 +41,12 @@ public class ProjectileController : GameUnit
             scale = (bulletShooter.characterLevel - 1) * 0.1f;
         }
 
-        ProjectileScale(scale);
+        if (boost)
+        {
+            projecTileSpeed = 8;
+        }
+
+        ProjectileScaleUp(scale);
     }
 
     public void ProjectileLifeTime()
@@ -57,7 +63,10 @@ public class ProjectileController : GameUnit
     {
         if (other.gameObject.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
-            DespawnProjectile();
+            if (!boost)
+            {
+                DespawnProjectile();
+            }
 
             bulletShooter.OnGetKill(Cache.GetCharacter(other));
         }
@@ -66,15 +75,27 @@ public class ProjectileController : GameUnit
     public virtual void TransformProjectile()
     {
         projectileObjectTransform.Translate(Vector3.forward * projecTileSpeed * Time.deltaTime);
+        
+        if (boost)
+        {
+            ProjectileScaleUp(0.015f);
+        }
     }
 
-    public void ProjectileScale(float x)
+    public void ProjectileScaleUp(float x)
     {
         projectileObjectTransform.localScale += new Vector3(x, x, x);
     }
 
     public virtual void DespawnProjectile()
     {
+        if (boost)
+        {
+            projectileObjectTransform.localScale = normalScale;
+            boost = false;
+            projecTileSpeed = 6;
+        }
+
         SimplePool.Despawn(this);
 
         projectileExistTime = existTime;

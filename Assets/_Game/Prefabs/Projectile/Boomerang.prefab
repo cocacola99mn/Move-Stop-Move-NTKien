@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6721093417414532049}
   m_Layer: 0
   m_Name: Boomerang
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: de682caf97656a54e83ad997ec202a2a, type: 2}
   projectileTransform: {fileID: 5964272391941128306}
   projectileObjectTransform: {fileID: 1507131251447300022}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!1001 &7096132528273740547
 PrefabInstance:
   m_ObjectHideFlags: 0

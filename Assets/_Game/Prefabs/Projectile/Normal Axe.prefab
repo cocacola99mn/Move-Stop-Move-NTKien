@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1180747925134924413}
   m_Layer: 0
   m_Name: Normal Axe
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: f5466141f3afae84c93015217e9e6b10, type: 2}
   projectileTransform: {fileID: 3522793768803108209}
   projectileObjectTransform: {fileID: 4561388125201332629}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!1001 &5498602195955495057
 PrefabInstance:
   m_ObjectHideFlags: 0

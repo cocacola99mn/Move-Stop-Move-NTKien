@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -630705978132900020}
   m_Layer: 0
   m_Name: Prime Candy
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1c530fbcd1f99499d0981ca7142a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tf: {fileID: 0}
   bulletShooter: {fileID: 0}
-  projectile: {fileID: 11400000, guid: 1a1ffec8a9ef94f48b073be96ee8ee1b, type: 2}
   projectileTransform: {fileID: 5639100037364017586}
   projectileObjectTransform: {fileID: 5093967389844937259}
   direction: {x: 0, y: 0, z: 0}
+  boost: 0
 --- !u!1001 &1685362452937203114
 PrefabInstance:
   m_ObjectHideFlags: 0
