@@ -33,4 +33,6 @@ public static class GameConstant
     public const string PREF_INITDATA = "InitData";
     public const string PREF_SOUND = "SoundPref";
     public const string PREF_VIBRATE = "Vibrate";
+
+    public const string MIXER_MASTER = "MasterVolume";
 }

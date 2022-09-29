@@ -13,6 +13,11 @@ public class GetItemData : MonoBehaviour
 
     public void Start()
     {
+        OnInit();
+    }
+
+    public void OnInit()
+    {
         if (!locker)
         {
             lockerObject.SetActive(false);
@@ -22,6 +27,6 @@ public class GetItemData : MonoBehaviour
     public void ItemButton()
     {
         canvasSkinShop.itemIndex = itemData;
-        canvasSkinShop.OnItemClicked(locker);
+        canvasSkinShop.OnItemClicked(locker, this);
     }
 }

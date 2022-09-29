@@ -6,6 +6,7 @@ public class CanvasGameplay : UICanvas
 {
     public void PauseButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICPause);
         LevelManager.Ins.LevelStarter(false);
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public EnemySpawner enemySpawner;
+    public Spawner spawner;
     public PlayerController playerController;
 
     public GameObject UIGameplay,indicatorHolder;
@@ -17,13 +17,13 @@ public class LevelManager : Singleton<LevelManager>
     void Start()
     {
         OnInit();
+
     }
 
     public void OnInit()
     {
         zoneIndex = DataManager.Ins.playerDataSO.Zone - 1;
         aliveNumber = DataManager.Ins.levelDataSOList[zoneIndex].AliveNum;
-        //aliveNumber = 7;
         SetAliveNumber();
     }
 
@@ -47,9 +47,8 @@ public class LevelManager : Singleton<LevelManager>
 
         if (aliveNumber > 6)
         {
-            enemySpawner.StartCoroutine(enemySpawner.SpawnEnemyOnDead());
+            spawner.StartCoroutine(spawner.SpawnEnemyOnDead());
         }
-
         if(aliveNumber < 2 && !playerController.isDead)
         {
             OnLevelVictory();
@@ -77,5 +76,6 @@ public class LevelManager : Singleton<LevelManager>
         LevelStarter(false);
         DataManager.Ins.SetIntData(GameConstant.PREF_ZONE, ref DataManager.Ins.playerDataSO.Zone, DataManager.Ins.playerDataSO.Zone + 1);
         UIManager.Ins.OpenUI(UIID.UICVictory);
+        playerController.ChangeAnim(GameConstant.DANCE_ANIM);
     }
 }

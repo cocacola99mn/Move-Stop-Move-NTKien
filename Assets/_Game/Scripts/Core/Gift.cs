@@ -8,8 +8,12 @@ public class Gift : GameUnit
     {
         if (other.CompareTag(GameConstant.DAMAGEABLE_TAG))
         {
+            LevelManager.Ins.spawner.SpawnGift();
             SimplePool.Despawn(this);
-            Cache.GetCharacter(other).OnWeaponBoost(2, true);
+            if (!Cache.GetCharacter(other).weaponBoost)
+            {
+                Cache.GetCharacter(other).OnWeaponBoost(2, true);
+            }
         }
         else
         {

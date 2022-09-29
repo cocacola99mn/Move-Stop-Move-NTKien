@@ -16,9 +16,16 @@ public class CanvasPause : UICanvas
     public void OnInit()
     {
         if (PlayerPrefs.GetInt(GameConstant.PREF_SOUND) == 1)
-            SoundOffButton();
+        {
+            SoundOn.SetActive(true);
+            SoundOff.SetActive(false);
+        }
         else
-            SoundOnButton();
+        {
+            SoundOn.SetActive(false);
+            SoundOff.SetActive(true);
+        }
+
 
         if (PlayerPrefs.GetInt(GameConstant.PREF_VIBRATE) == 1)
             VibrateOffButton();
@@ -33,6 +40,7 @@ public class CanvasPause : UICanvas
 
     public void ContinueButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         LevelManager.Ins.LevelStarter(true);
         Destroy(gameObject);
     }
@@ -41,14 +49,15 @@ public class CanvasPause : UICanvas
     {
         SoundOn.SetActive(false);
         SoundOff.SetActive(true);
-        PlayerPrefs.SetInt(GameConstant.PREF_SOUND, 0);
+        AudioManager.Ins.SetAudio(false);
     }
 
     public void SoundOffButton()
     {
         SoundOn.SetActive(true);
         SoundOff.SetActive(false);
-        PlayerPrefs.SetInt(GameConstant.PREF_SOUND, 1);
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
+        AudioManager.Ins.SetAudio(true);
     }
 
     public void VibrateOnButton()

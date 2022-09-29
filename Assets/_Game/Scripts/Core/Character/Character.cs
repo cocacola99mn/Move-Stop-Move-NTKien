@@ -23,6 +23,7 @@ public class Character : GameUnit, IHit
 
     public Color32 bodyColor;
     public Vector3 direction, characterOrigin, sizeUpOffset;
+    Vector3 viewPortPos, viewPortOffset;
     public LayerMask targetLayer;
 
     public int characterPoint, characterLevel, characterLevelLimit, characterWeapon;
@@ -30,10 +31,9 @@ public class Character : GameUnit, IHit
     float turnTime, turnVelocity;
     private string curAnimName;
     public string characterNameString;
-    public bool isDead, weaponBoost;
+    public bool isDead, weaponBoost, audioOn;
 
 #if UNITY_EDITOR
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -61,6 +61,8 @@ public class Character : GameUnit, IHit
         characterLevelLimit = 2;        
         characterObject = gameObject;
         weaponBoost = false;
+        audioOn = false;
+        viewPortOffset = new Vector3(0.5f, 0.5f, 0);
         sizeUpOffset = new Vector3(0.1f, 0.1f, 0.1f);
     }
 
@@ -79,12 +81,13 @@ public class Character : GameUnit, IHit
         isDead = true;
         deadAnimEnd = Time.time + deadAnimTime;
         controller.enabled = false;
+        canvasInfoObject.SetActive(false);
 
         ChangeAnim(GameConstant.DEAD_ANIM);
 
-        canvasInfoObject.SetActive(false);
-
         LevelManager.Ins.OnCharacterDead();
+        PlayAudioIfInScreen(AudioName.Hit);
+        PlayAudioIfInScreen(AudioName.Die);
     }
 
     public virtual void OnDead()
@@ -122,7 +125,6 @@ public class Character : GameUnit, IHit
         if (InRangeCondition() && StopMovingCondition())
         {
             firing.isFiring = true;
-
             PlayerRotation(GetClosestEnemyCollider(colliders) - characterOrigin);
         }    
         else
@@ -171,6 +173,8 @@ public class Character : GameUnit, IHit
         characterLevelLimit = characterLevelLimit * 2 + 1;
         
         GainStat();
+
+        PlayAudioIfInScreen(AudioName.SizeUp);
     }
 
     public virtual void GainStat()
@@ -183,6 +187,27 @@ public class Character : GameUnit, IHit
     {
         weaponBoost = value;
         attackRange += range;
+    }
+
+    public bool TargetInScreen()
+    {
+        viewPortPos = CameraController.Ins.mainCamera.WorldToViewportPoint(characterTransform.position);
+
+        if ((viewPortPos.x > 0 && viewPortPos.x < 1) && (viewPortPos.y > 0 && viewPortPos.y < 1))
+        {
+            return true;
+        }
+
+        viewPortPos -= viewPortOffset;
+        return false;
+    }
+
+    public void PlayAudioIfInScreen(AudioName name)
+    {
+        if (TargetInScreen())
+        {
+            AudioManager.Ins.PlayAudio(name);
+        }       
     }
 
     public bool InRangeCondition()

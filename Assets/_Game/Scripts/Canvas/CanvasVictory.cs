@@ -15,11 +15,12 @@ public class CanvasVictory : UICanvas
     public void OnInit()
     {
         coinText.text = LevelManager.Ins.playerController.characterPoint.ToString();
+        AudioManager.Ins.PlayAudio(AudioName.Victory);
     }
 
     public void NextZoneButton()
     {
-
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         GameManager.Ins.NextScene();
     }
 }

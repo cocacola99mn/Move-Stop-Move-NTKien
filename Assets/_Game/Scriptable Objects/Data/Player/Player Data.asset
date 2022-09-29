@@ -17,7 +17,7 @@ MonoBehaviour:
   Weapon: 0
   Color: 0
   Hat: 0
-  Pant: 0
-  Gold: 300
+  Pant: 4
+  Gold: 0
   Rank: 50
   Zone: 1

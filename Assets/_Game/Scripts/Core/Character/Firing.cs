@@ -43,13 +43,9 @@ public class Firing : MonoBehaviour
         if (shotCounter <= 0)
         {
             weaponHolderObject.SetActive(false);
-
             shotCounter = timeBetweenShots;
-
             projectileHolder = SimplePool.Spawn<ProjectileController>(projectile, firePoint.position, firePoint.rotation);
-
             OnTypeSplit(projectile);
-
             projectileHolder.bulletShooter = character;
             projectileHolder.boost = character.weaponBoost;
 
@@ -57,6 +53,8 @@ public class Firing : MonoBehaviour
             {
                 character.OnWeaponBoost(-2, false);
             }
+
+            character.PlayAudioIfInScreen(AudioName.Projectile);
         }
         else
         {

@@ -13,6 +13,7 @@ public class CanvasMainMenu : UICanvas
     {
         OnInit();
     }
+
     public void OnInit()
     {
         dataIns = DataManager.Ins;
@@ -22,14 +23,24 @@ public class CanvasMainMenu : UICanvas
         nameFieldText.text = dataIns.playerDataSO.Name;
 
         if (PlayerPrefs.GetInt(GameConstant.PREF_SOUND) == 1)
-            SoundOffButton();
+        {
+            soundOff.SetActive(false);
+            soundOn.SetActive(true);
+        }
         else
-            SoundOnButton();
+        {
+            soundOff.SetActive(true);
+            soundOn.SetActive(false);
+        }
 
         if (PlayerPrefs.GetInt(GameConstant.PREF_VIBRATE) == 1)
+        {
             VibrateOffButton();
+        }
         else
+        {
             VibrateOnButton();
+        }
     }
 
     public void PlayGameButton()
@@ -47,18 +58,20 @@ public class CanvasMainMenu : UICanvas
         }
 
         dataIns.player.characterNameText.text = dataIns.playerDataSO.Name;
-
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         Destroy(gameObject);
     }
 
     public void WeaponShopButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICWeaponShop);
         Destroy(gameObject);
     }
 
     public void SkinShopButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICSkinShop);
         Destroy(gameObject);
     }
@@ -81,18 +94,20 @@ public class CanvasMainMenu : UICanvas
     {
         soundOff.SetActive(true);
         soundOn.SetActive(false);
-        PlayerPrefs.SetInt(GameConstant.PREF_SOUND, 0);
+        AudioManager.Ins.SetAudio(false);
     }
 
     public void SoundOffButton()
     {
         soundOff.SetActive(false);
         soundOn.SetActive(true);
-        PlayerPrefs.SetInt(GameConstant.PREF_SOUND, 1);
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
+        AudioManager.Ins.SetAudio(true);
     }
 
     public void AdsButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         Debug.Log("Turn off Ads");
     }
 }

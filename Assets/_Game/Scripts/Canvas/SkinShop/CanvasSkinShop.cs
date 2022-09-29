@@ -7,9 +7,10 @@ public class CanvasSkinShop : UICanvas
 {
     DataManager dataIns;
     ItemListData itemData;
+    GetItemData getItemData;
     public SkinShopItem skinShopItem;
 
-    public GameObject hatScroll, pantScroll, itemTouched, equipButton, priceButton;
+    public GameObject hatScroll, pantScroll, itemTouched, equipButton, priceButton, insufficentText;
     public Text skinDesText, priceText, coinText;
 
     public int itemIndex, goldNum;
@@ -26,11 +27,14 @@ public class CanvasSkinShop : UICanvas
 
         itemIndex = 0;
         coinText.text = dataIns.playerDataSO.Gold.ToString();
-        OnItemClicked(false);
+        skinDesText.text = "No Description";
+        equipButton.SetActive(true);
+        priceButton.SetActive(false);
     }
 
     public void CloseButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         dataIns.player.GetPant(dataIns.playerDataSO.Pant);
         dataIns.player.GetHat(dataIns.playerDataSO.Hat);
 
@@ -41,11 +45,13 @@ public class CanvasSkinShop : UICanvas
 
    public void HatButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         TopNavigator(hatScroll, pantScroll);
     }
 
     public void PantButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         TopNavigator(pantScroll, hatScroll);
     }
 
@@ -54,11 +60,13 @@ public class CanvasSkinShop : UICanvas
         activeScroll.SetActive(true);
         deactiveScroll.SetActive(false);
         itemIndex = 0;
-        OnItemClicked(false);
+        skinDesText.text = "No Description";
     }
 
-    public void OnItemClicked(bool locker)
+    public void OnItemClicked(bool locker, GetItemData getItemData)
     {
+        this.getItemData = getItemData;
+
         if (locker)
         {
             equipButton.SetActive(false);
@@ -84,6 +92,9 @@ public class CanvasSkinShop : UICanvas
             priceText.text = itemData.hatDatasList[itemIndex].price.ToString();
             dataIns.player.GetHat(itemIndex);
         }
+
+        insufficentText.SetActive(false);
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void EquipButton()
@@ -92,41 +103,57 @@ public class CanvasSkinShop : UICanvas
         {
             dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
         }
-
         else
         {
             dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
         }
+
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void PriceButton()
     {
         
         if (pantScroll.activeInHierarchy)
-        {
+        {            
             dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
-            CaculateGold(itemData.pantDatasList[itemIndex].price);
+            CaculateGold(itemData.pantDatasList[itemIndex].price, ref itemData.pantDatasList[itemIndex].locked);
         }
-
         else
         {
             dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
-            CaculateGold(itemData.hatDatasList[itemIndex].price);
+            CaculateGold(itemData.hatDatasList[itemIndex].price, ref itemData.hatDatasList[itemIndex].locked);
         }
+
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
-    public void CaculateGold(int price)
+    public void OnBuySkin()
+    {
+        priceButton.SetActive(false);
+        equipButton.SetActive(true);
+    }
+
+    public void CaculateGold(int price, ref bool locker)
     {
         if (dataIns.playerDataSO.Gold >= price)
         {
             goldNum = dataIns.playerDataSO.Gold - price;
             coinText.text = goldNum.ToString();
             dataIns.SetIntData(GameConstant.PREF_GOLD, ref dataIns.playerDataSO.Gold, goldNum);
+            locker = false;
+            getItemData.locker = false;
+            OnBuySkin();
+        }
+        else
+        {
+            insufficentText.SetActive(true);
         }
     }
 
     public void ShopButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         Debug.Log("Shop");
     }
 }

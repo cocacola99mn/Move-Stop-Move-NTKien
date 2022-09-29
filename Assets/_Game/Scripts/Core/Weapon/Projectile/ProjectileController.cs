@@ -9,7 +9,7 @@ public class ProjectileController : GameUnit
     public Transform projectileTransform, projectileObjectTransform;
 
     public Vector3 direction, normalScale;
-
+    [SerializeField]
     private float projecTileSpeed, projectileExistTime, existTime, scale;
     public bool boost;
 

@@ -80,6 +80,7 @@ public class CanvasWeaponShop : UICanvas
     {
         dataIns.SetIntData(GameConstant.PREF_WEAPONEQUIP, ref dataIns.playerDataSO.Weapon, currentWeaponIndex);
         dataIns.player.GetWeapon(currentWeaponIndex);
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void PriceButton()
@@ -93,10 +94,14 @@ public class CanvasWeaponShop : UICanvas
             priceButtonObject.SetActive(false);
             equipButtonObject.SetActive(true);
         }
+
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void ChangePageButton(int index)
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
+
         weapons[currentWeaponIndex].SetActive(false);
 
         currentWeaponIndex += index;
@@ -123,12 +128,13 @@ public class CanvasWeaponShop : UICanvas
 
     public void CloseButton()
     {
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICMainMenu);
         Close();
     }
 
     public void ShopButon()
     {
-
+        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 }

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     public IndicatorHolder indicatorHolder;
     public Character character, characterHolder;
+    public Gift gift;
 
     public Transform player, spawner;
 
@@ -14,16 +15,12 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 cacheVector;
 
-    private WaitForSeconds initSpawnWaitTime;
+    private WaitForSeconds initSpawnWaitTime, spawnWaitTime;
 
     public void Start()
     {
         OnInit();
-    }
-
-    private void Update()
-    {
-        SetSpawnerPos();
+        SpawnGift();
     }
 
     public void OnInit()
@@ -31,11 +28,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(InitSpawn());
 
         initSpawnWaitTime = new WaitForSeconds(0.5f);
-    }
-
-    public void SetSpawnerPos()
-    {
-        spawner.position = player.position;
+        spawnWaitTime = new WaitForSeconds(3);
     }
 
     public Vector3 GetRandomPosition(float min, float max)
@@ -57,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
         return cacheVector;
     }
 
-    public virtual void SpawnEnemy(bool initCheck)
+    public void SpawnEnemy(bool initCheck)
     {
         characterHolder = SimplePool.Spawn<Character>(character, GetRandomPosition(-16, 16), Quaternion.identity);
         indicatorHolder.MiddleAttach(characterHolder);
@@ -77,6 +70,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void SpawnGift()
+    {
+        SimplePool.Spawn<Gift>(gift, GetRandomPosition(-16, 16), Quaternion.identity);
+    }
+
     public IEnumerator InitSpawn()
     {
         yield return initSpawnWaitTime;
@@ -89,7 +87,7 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnEnemyOnDead()
     {
-        yield return new WaitForSeconds(3);
+        yield return spawnWaitTime;
 
         SpawnEnemy(false);
     }  

@@ -101,7 +101,7 @@ public static class SimplePool
         {
             GameUnit obj = null;
 
-            if(pools.Count == 0)
+            if (pools.Count == 0)
             {
                 obj = GameObject.Instantiate(prefab, parent);
                 poolParents.Add(obj, this);
@@ -115,7 +115,6 @@ public static class SimplePool
             obj.gameObject.SetActive(true);
 
             activeObjs.Add(obj);
-
             return obj; 
         }
 
