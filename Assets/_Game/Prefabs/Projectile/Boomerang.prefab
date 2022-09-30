@@ -60,14 +60,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf: {fileID: 0}
   bulletShooter: {fileID: 0}
+  hitParticle: {fileID: 3686404536457882106, guid: 44ef987ebb19cd84593c90289d0d9d29, type: 3}
   projectileTransform: {fileID: 5964272391941128306}
   projectileObjectTransform: {fileID: 1507131251447300022}
   direction: {x: 0, y: 0, z: 0}
   normalScale: {x: 0, y: 0, z: 0}
-  projecTileSpeed: 0
-  projectileExistTime: 0
-  existTime: 0
-  scale: 0
   boost: 0
 --- !u!1001 &7096132528273740547
 PrefabInstance:

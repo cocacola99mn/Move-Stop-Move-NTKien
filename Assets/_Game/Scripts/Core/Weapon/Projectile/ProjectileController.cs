@@ -6,10 +6,10 @@ public class ProjectileController : GameUnit
 {
     public Character bulletShooter;
 
+    public ParticleSystem hitParticle;
     public Transform projectileTransform, projectileObjectTransform;
-
     public Vector3 direction, normalScale;
-    [SerializeField]
+
     private float projecTileSpeed, projectileExistTime, existTime, scale;
     public bool boost;
 
@@ -68,6 +68,7 @@ public class ProjectileController : GameUnit
                 DespawnProjectile();
             }
 
+            ParticlePool.Play(hitParticle, projectileObjectTransform.position, Quaternion.identity);
             bulletShooter.OnGetKill(Cache.GetCharacter(other));
         }
     }

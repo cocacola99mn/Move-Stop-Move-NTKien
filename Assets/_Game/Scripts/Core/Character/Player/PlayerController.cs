@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : Character
-{
+{   
+    public Character killer;
     public Joystick joyStick;
 
-    public Transform TargetOutline, rangeOutline;
+    public ParticleSystem levelUpParticle;
+    public Transform TargetOutline, rangeOutline, particleTransform;
 
     Vector3 moveDirection;
 
-    public Character killer;
+
 
     void Start()
     {
@@ -21,6 +23,11 @@ public class PlayerController : Character
     {
         OnDead();
         StartPlayer();
+    }
+
+    private void LateUpdate()
+    {
+        particleTransform = characterTransform;
     }
 
     public override void OnInit()
@@ -138,6 +145,7 @@ public class PlayerController : Character
     {
         base.GainStat();
         PlayAudioIfInScreen(AudioName.SizeUp);
+        ParticlePool.Play(levelUpParticle, characterOrigin, Quaternion.identity);
         CameraController.Ins.MoveFurtherFromPlayer();
     }
 }
