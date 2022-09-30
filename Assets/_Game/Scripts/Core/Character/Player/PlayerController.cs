@@ -80,11 +80,17 @@ public class PlayerController : Character
 
     public override void OnDead()
     {
-        base.OnDead();
-
         if (isDead && Time.time > deadAnimEnd)
         {
-            LevelManager.Ins.OnLevelFail();
+            gameObject.SetActive(false);
+            if (!LevelManager.Ins.reviveCheck)
+            {
+                UIManager.Ins.OpenUI(UIID.UICRevive);
+            }
+            else
+            {
+                UIManager.Ins.OpenUI(UIID.UICFail);
+            }
         }
     }
 
@@ -131,6 +137,7 @@ public class PlayerController : Character
     public override void GainStat()
     {
         base.GainStat();
+        PlayAudioIfInScreen(AudioName.SizeUp);
         CameraController.Ins.MoveFurtherFromPlayer();
     }
 }

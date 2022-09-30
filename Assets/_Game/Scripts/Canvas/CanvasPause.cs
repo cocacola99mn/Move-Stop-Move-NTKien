@@ -41,7 +41,7 @@ public class CanvasPause : UICanvas
     public void ContinueButton()
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
-        LevelManager.Ins.LevelStarter(true);
+        LevelManager.Ins.SetGameplayUI(true);
         Destroy(gameObject);
     }
 

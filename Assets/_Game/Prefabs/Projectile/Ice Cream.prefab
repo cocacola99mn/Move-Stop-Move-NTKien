@@ -50,6 +50,11 @@ MonoBehaviour:
   projectileTransform: {fileID: 3157679979004829903}
   projectileObjectTransform: {fileID: 6490162014251412603}
   direction: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  existTime: 0
+  scale: 0
   boost: 0
 --- !u!65 &6815792043753921470
 BoxCollider:

@@ -15,20 +15,18 @@ public class Spawner : MonoBehaviour
 
     private Vector3 cacheVector;
 
-    private WaitForSeconds initSpawnWaitTime, spawnWaitTime;
+    private WaitForSeconds spawnWaitTime;
 
     public void Start()
     {
         OnInit();
-        SpawnGift();
     }
 
     public void OnInit()
     {
-        StartCoroutine(InitSpawn());
-
-        initSpawnWaitTime = new WaitForSeconds(0.5f);
         spawnWaitTime = new WaitForSeconds(3);
+        InitSpawn();
+        SpawnGift();
     }
 
     public Vector3 GetRandomPosition(float min, float max)
@@ -46,15 +44,21 @@ public class Spawner : MonoBehaviour
         cacheVector.y = 0;
         cacheVector.z = zPos;
         cacheVector = player.position + cacheVector;
-
         return cacheVector;
+    }
+
+    public void SpawnGift()
+    {
+        Gift giftDrop = SimplePool.Spawn<Gift>(gift, GetRandomPosition(-16, 16), Quaternion.identity);
+        IsOutOfBound(giftDrop.transform);
     }
 
     public void SpawnEnemy(bool initCheck)
     {
         characterHolder = SimplePool.Spawn<Character>(character, GetRandomPosition(-16, 16), Quaternion.identity);
+        IsOutOfBound(characterHolder.transform);
         indicatorHolder.MiddleAttach(characterHolder);
-
+        
         SetEnemyVariable(characterHolder, initCheck);
     }
 
@@ -65,26 +69,35 @@ public class Spawner : MonoBehaviour
         {
             AIController aiController = Cache.GetAIController(enemy.gameObject);
             aiController.OnRevive();
-            aiController.indicator.SetIndicatorColor(aiController.bodyColor);
-            aiController.indicator.SetIndicatorPoint(aiController.characterPoint);
         }
     }
 
-    public void SpawnGift()
+    //Check if object is outside the boundary, if true, send enemy inside the boundary
+    public void IsOutOfBound(Transform objectTf)
     {
-        SimplePool.Spawn<Gift>(gift, GetRandomPosition(-16, 16), Quaternion.identity);
+        Vector3 localPos = objectTf.localPosition;
+        Vector3 newPos;
+        float boundValue = 40;
+
+        if (localPos.x > boundValue || localPos.x < -boundValue || localPos.z > boundValue && localPos.z < -boundValue)
+        {
+            newPos.x = Random.Range(-10, 10);
+            newPos.y = 0;
+            newPos.z = Random.Range(-10, 10);
+            objectTf.localPosition = newPos;
+        }
     }
 
-    public IEnumerator InitSpawn()
+    // Spawn enemy at beggining of the game
+    public void InitSpawn()
     {
-        yield return initSpawnWaitTime;
-
         for (int i = 0; i < 6; i++)
         {
             SpawnEnemy(true);
         }
     }
 
+    //Spawn enemy when an enemy die
     public IEnumerator SpawnEnemyOnDead()
     {
         yield return spawnWaitTime;

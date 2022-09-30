@@ -8,6 +8,6 @@ public class CanvasGameplay : UICanvas
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICPause);
-        LevelManager.Ins.LevelStarter(false);
+        LevelManager.Ins.SetGameplayUI(false);
     }
 }

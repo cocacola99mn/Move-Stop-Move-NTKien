@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class TodoList : MonoBehaviour
 {
-    //TODO: + Revive function
-    //      + After fail AI keep going
+    // + Particle
 }

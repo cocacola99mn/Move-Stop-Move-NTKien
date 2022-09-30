@@ -63,6 +63,11 @@ MonoBehaviour:
   projectileTransform: {fileID: 8792209096649851735}
   projectileObjectTransform: {fileID: 3204325666650497749}
   direction: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  existTime: 0
+  scale: 0
   boost: 0
   left: 0
   right: 0

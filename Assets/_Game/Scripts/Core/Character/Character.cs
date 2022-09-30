@@ -173,8 +173,6 @@ public class Character : GameUnit, IHit
         characterLevelLimit = characterLevelLimit * 2 + 1;
         
         GainStat();
-
-        PlayAudioIfInScreen(AudioName.SizeUp);
     }
 
     public virtual void GainStat()
@@ -242,7 +240,7 @@ public class Character : GameUnit, IHit
             Destroy(currentWeaponTransform.gameObject);
         }
 
-        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, Vector3.zero, Quaternion.Euler(0, 0, -100));
+        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, dataIns.weaponObjectList[weaponIndex].transform.position, Quaternion.Euler(0, 0, -100));
 
         projectile = Cache.GetProjectileController(dataIns.projectileObjectList[weaponIndex]);
     }

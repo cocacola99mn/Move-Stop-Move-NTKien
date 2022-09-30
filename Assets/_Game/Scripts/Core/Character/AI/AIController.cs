@@ -61,7 +61,6 @@ public class AIController : Character
         else
         {
             firing.isFiring = false;
-            ChangeState(idleState);
         }            
     }
 
@@ -112,6 +111,13 @@ public class AIController : Character
     {
         base.OnGetHit(other);
         indicator.DespawnIndicator();
+    }
+
+    public override void OnRevive()
+    {
+        base.OnRevive();
+        indicator.SetIndicatorColor(bodyColor);
+        indicator.SetIndicatorPoint(characterPoint);
     }
     #region STATEMACHINE
 

@@ -788,7 +788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455396626432034547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2774001160016637052}
@@ -2840,7 +2840,6 @@ MonoBehaviour:
   projectile: {fileID: 0}
   firing: {fileID: 1752358567}
   canvasInfoBar: {fileID: 6063577869931340906}
-  spawner: {fileID: 0}
   controller: {fileID: 3687084864315573268}
   pantHolder: {fileID: 8072915140420792399}
   bodyMeshRenderer: {fileID: 1146689481934501164}
@@ -2874,6 +2873,7 @@ MonoBehaviour:
   characterNameString: 
   isDead: 0
   weaponBoost: 0
+  audioOn: 0
   joyStick: {fileID: 0}
   TargetOutline: {fileID: 0}
   rangeOutline: {fileID: 998390256}

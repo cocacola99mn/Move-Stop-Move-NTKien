@@ -46,7 +46,8 @@ public class CanvasMainMenu : UICanvas
     public void PlayGameButton()
     {
         CameraController.Ins.MoveToPlayer();
-        LevelManager.Ins.LevelStarter(true);
+        LevelManager.Ins.SetGameplayUI(true);
+        LevelManager.Ins.levelStarter = true;
 
         if(string.Equals(nameFieldText.text, ""))
         {

@@ -12,7 +12,7 @@ public class LevelManager : Singleton<LevelManager>
     public Text UIAliveDisplayNumber;
     
     public int aliveNumber, newGoldNum, zoneIndex;
-    public bool levelStarter;
+    public bool levelStarter, reviveCheck;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         zoneIndex = DataManager.Ins.playerDataSO.Zone - 1;
         aliveNumber = DataManager.Ins.levelDataSOList[zoneIndex].AliveNum;
+        reviveCheck = false;
         SetAliveNumber();
     }
 
@@ -35,9 +36,13 @@ public class LevelManager : Singleton<LevelManager>
     public void LevelStarter(bool state)
     {
         levelStarter = state;
+
+    }
+
+    public void SetGameplayUI(bool state)
+    {
         indicatorHolder.SetActive(state);
         UIGameplay.SetActive(state);
-        playerController.controller.enabled = state;
     }
 
     public void OnCharacterDead()
@@ -55,11 +60,19 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
+    public void RevivePlayer()
+    {
+        playerController.gameObject.SetActive(true);
+        playerController.OnRevive();
+        aliveNumber++;
+        reviveCheck = true;
+        SetGameplayUI(true);
+    }
+
     public void OnLevelFail()
     {
         UIManager.Ins.OpenUI(UIID.UICFail);
-        LevelStarter(false);
-
+        SetGameplayUI(false);
         //Gold for player
         newGoldNum = DataManager.Ins.playerDataSO.Gold + playerController.characterPoint;
         DataManager.Ins.SetIntData(GameConstant.PREF_GOLD, ref DataManager.Ins.playerDataSO.Gold, newGoldNum);
@@ -73,7 +86,9 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnLevelVictory()
     {
-        LevelStarter(false);
+        SetGameplayUI(false);
+        levelStarter = false;
+        playerController.controller.enabled = false;
         DataManager.Ins.SetIntData(GameConstant.PREF_ZONE, ref DataManager.Ins.playerDataSO.Zone, DataManager.Ins.playerDataSO.Zone + 1);
         UIManager.Ins.OpenUI(UIID.UICVictory);
         playerController.ChangeAnim(GameConstant.DANCE_ANIM);

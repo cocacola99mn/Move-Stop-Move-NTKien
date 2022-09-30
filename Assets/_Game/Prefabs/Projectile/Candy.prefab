@@ -63,6 +63,11 @@ MonoBehaviour:
   projectileTransform: {fileID: 4605053747844997495}
   projectileObjectTransform: {fileID: 3252074490579319728}
   direction: {x: 0, y: 0, z: 0}
+  normalScale: {x: 0, y: 0, z: 0}
+  projecTileSpeed: 0
+  projectileExistTime: 0
+  existTime: 0
+  scale: 0
   boost: 0
 --- !u!1001 &4437338042108247582
 PrefabInstance:

@@ -24,7 +24,7 @@ public class CameraController : Singleton<CameraController>
         zOffset.z = Camera.position.z - Target.position.z; // Get ZOffset
 
         yOffset.y = 0;
-        yPos.y = 12;
+        yPos.y = 15;
         moveFurtherOffset = new Vector3(0, 1, 1);
     }
 
@@ -42,10 +42,10 @@ public class CameraController : Singleton<CameraController>
 
     public void MoveToPlayer()
     {
-        zOffset.z += -7;
+        zOffset.z += -5;
 
         Camera.localPosition = Vector3.Lerp(Camera.position, yPos, 1);
-        Camera.localRotation = Quaternion.Euler(35, 0, 0);
+        Camera.localRotation = Quaternion.Euler(45, 0, 0);
 
         attackRangeOutLine.SetActive(true);
     }
