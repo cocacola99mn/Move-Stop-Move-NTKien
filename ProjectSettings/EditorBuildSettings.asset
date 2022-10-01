@@ -10,10 +10,16 @@ EditorBuildSettings:
     guid: a8b62a490acc46547bfbb1941835d221
   - enabled: 1
     path: Assets/_Game/Scenes/Zone 2.unity
-    guid: 5c9538a8f8beb1c44a556d450c51bd18
+    guid: c13b54532d270154ca8d1085a38c0cf3
   - enabled: 1
     path: Assets/_Game/Scenes/Zone 3.unity
-    guid: d93d3769b15e6f04ba830ee133ea8993
+    guid: 15b5a5b27ab7aca46a65d6f611ba8f91
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
