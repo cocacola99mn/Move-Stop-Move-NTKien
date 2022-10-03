@@ -25,7 +25,7 @@ public class CameraController : Singleton<CameraController>
 
         yOffset.y = 0;
         yPos.y = 15;
-        moveFurtherOffset = new Vector3(0, 1, 1);
+        moveFurtherOffset = new Vector3(0, 2, 2);
     }
 
     public void FollowPlayer()
@@ -53,6 +53,6 @@ public class CameraController : Singleton<CameraController>
     public void MoveFurtherFromPlayer()
     {
         Camera.localPosition += moveFurtherOffset;
-        zOffset.z--;
+        zOffset.z -= 2;
     }
 }

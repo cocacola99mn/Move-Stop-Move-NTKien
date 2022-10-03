@@ -11,8 +11,9 @@ public class CanvasSkinShop : UICanvas
     public SkinShopItem skinShopItem;
 
     public GameObject hatScroll, pantScroll, itemTouched, equipButton, priceButton, insufficentText;
-    public Text skinDesText, priceText, coinText;
+    public Text skinDesText, priceText, coinText, equipText;
 
+    public string noDes;
     public int itemIndex, goldNum;
 
     private void Start()
@@ -24,10 +25,10 @@ public class CanvasSkinShop : UICanvas
     {
         dataIns = DataManager.Ins;
         itemData = dataIns.itemListData;
-
+        noDes = "No Description";
         itemIndex = 0;
         coinText.text = dataIns.playerDataSO.Gold.ToString();
-        skinDesText.text = "No Description";
+        skinDesText.text = noDes;
         equipButton.SetActive(true);
         priceButton.SetActive(false);
     }
@@ -60,7 +61,9 @@ public class CanvasSkinShop : UICanvas
         activeScroll.SetActive(true);
         deactiveScroll.SetActive(false);
         itemIndex = 0;
-        skinDesText.text = "No Description";
+        skinDesText.text = noDes;
+        equipButton.SetActive(true);
+        priceButton.SetActive(false);
     }
 
     public void OnItemClicked(bool locker, GetItemData getItemData)
@@ -84,13 +87,14 @@ public class CanvasSkinShop : UICanvas
             skinDesText.text = itemData.pantDatasList[itemIndex].skinDes;
             priceText.text = itemData.pantDatasList[itemIndex].price.ToString();
             dataIns.player.GetPant(itemIndex);
-            
+            equipText.text = (itemIndex == dataIns.playerDataSO.Pant) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
         else
         {
             skinDesText.text = itemData.hatDatasList[itemIndex].skinDes;
             priceText.text = itemData.hatDatasList[itemIndex].price.ToString();
             dataIns.player.GetHat(itemIndex);
+            equipText.text = (itemIndex == dataIns.playerDataSO.Hat) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
 
         insufficentText.SetActive(false);
@@ -102,30 +106,29 @@ public class CanvasSkinShop : UICanvas
         if (pantScroll.activeInHierarchy)
         {
             dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
+            equipText.text = (itemIndex == dataIns.playerDataSO.Pant) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
         else
         {
             dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
+            equipText.text = (itemIndex == dataIns.playerDataSO.Hat) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
 
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void PriceButton()
-    {
-        
+    {        
         if (pantScroll.activeInHierarchy)
         {            
-            dataIns.SetIntData(GameConstant.PREF_PANTEQUIP, ref dataIns.playerDataSO.Pant, itemIndex);
             CaculateGold(itemData.pantDatasList[itemIndex].price, ref itemData.pantDatasList[itemIndex].locked);
+            equipText.text = (itemIndex == dataIns.playerDataSO.Pant) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
         else
         {
-            dataIns.SetIntData(GameConstant.PREF_HATEQUIP, ref dataIns.playerDataSO.Hat, itemIndex);
             CaculateGold(itemData.hatDatasList[itemIndex].price, ref itemData.hatDatasList[itemIndex].locked);
+            equipText.text = (itemIndex == dataIns.playerDataSO.Hat) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
-
-        AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
     public void OnBuySkin()
@@ -143,11 +146,14 @@ public class CanvasSkinShop : UICanvas
             dataIns.SetIntData(GameConstant.PREF_GOLD, ref dataIns.playerDataSO.Gold, goldNum);
             locker = false;
             getItemData.locker = false;
+            getItemData.lockerObject.SetActive(false);
+            EquipButton();
             OnBuySkin();
         }
         else
         {
             insufficentText.SetActive(true);
+            AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         }
     }
 

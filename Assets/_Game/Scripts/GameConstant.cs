@@ -35,4 +35,7 @@ public static class GameConstant
     public const string PREF_VIBRATE = "Vibrate";
 
     public const string MIXER_MASTER = "MasterVolume";
+
+    public const string EQUIPPED_TEXT = "EQUIPPED";
+    public const string EQUIP_TEXT = "EQUIP";
 }

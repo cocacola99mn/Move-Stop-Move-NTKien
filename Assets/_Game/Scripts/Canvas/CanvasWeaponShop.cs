@@ -13,7 +13,7 @@ public class CanvasWeaponShop : UICanvas
 
     public Transform weaponImageHolder;
     public GameObject nextButton, backButton, equipButtonObject, priceButtonObject;
-    public Text weaponNameText, weaponPriceText ,lockText, descriptionText, coinText;
+    public Text weaponNameText, weaponPriceText ,lockText, descriptionText, coinText, equipText;
 
     int currentWeaponIndex, firstWeaponIndex, gold;
 
@@ -35,7 +35,6 @@ public class CanvasWeaponShop : UICanvas
         firstWeaponIndex = 0;
 
         InitWeaponImage();
-
         GetWeaponShopData();
     }
 
@@ -44,7 +43,6 @@ public class CanvasWeaponShop : UICanvas
         OnReachShopBoundary();
 
         weapons[currentWeaponIndex].SetActive(true);
-
         weaponNameText.text = weaponList[currentWeaponIndex].weaponName;
         descriptionText.text = weaponList[currentWeaponIndex].description;
 
@@ -58,6 +56,7 @@ public class CanvasWeaponShop : UICanvas
         {
             priceButtonObject.SetActive(false);
             equipButtonObject.SetActive(true);
+            equipText.text = (currentWeaponIndex == dataIns.playerDataSO.Weapon) ? GameConstant.EQUIPPED_TEXT : GameConstant.EQUIP_TEXT;
         }
     }
 
@@ -80,6 +79,7 @@ public class CanvasWeaponShop : UICanvas
     {
         dataIns.SetIntData(GameConstant.PREF_WEAPONEQUIP, ref dataIns.playerDataSO.Weapon, currentWeaponIndex);
         dataIns.player.GetWeapon(currentWeaponIndex);
+        equipText.text = GameConstant.EQUIPPED_TEXT;
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
     }
 
@@ -93,6 +93,9 @@ public class CanvasWeaponShop : UICanvas
             weaponList[currentWeaponIndex].locked = false;
             priceButtonObject.SetActive(false);
             equipButtonObject.SetActive(true);
+            dataIns.SetIntData(GameConstant.PREF_WEAPONEQUIP, ref dataIns.playerDataSO.Weapon, currentWeaponIndex);
+            dataIns.player.GetWeapon(currentWeaponIndex);
+            equipText.text = GameConstant.EQUIPPED_TEXT;
         }
 
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);

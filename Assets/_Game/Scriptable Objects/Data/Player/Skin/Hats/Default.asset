@@ -16,5 +16,5 @@ MonoBehaviour:
   hat: {fileID: 7806045130597994136, guid: 86e3f82e8719d7a4fa2c9230c6208fa7, type: 3}
   price: 0
   skinId: 0
-  skinDes: No Hat
+  skinDes: No Description
   locked: 0

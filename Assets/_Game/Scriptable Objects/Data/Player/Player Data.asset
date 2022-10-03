@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitData: 1
   Name: Player
-  Weapon: 6
+  Weapon: 0
   Color: 0
-  Hat: 4
-  Pant: 0
+  Hat: 0
+  Pant: 5
   Gold: 3500
-  Rank: 41
+  Rank: 50
   Zone: 1

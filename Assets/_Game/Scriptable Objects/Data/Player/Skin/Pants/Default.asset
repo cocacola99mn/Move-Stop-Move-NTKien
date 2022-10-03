@@ -17,5 +17,5 @@ MonoBehaviour:
   pantMaterial: {fileID: 2100000, guid: 0c29d6579939bef43a1ce31054669223, type: 2}
   price: 0
   skinId: 0
-  skinDes: No Pant
+  skinDes: No Description
   locked: 0

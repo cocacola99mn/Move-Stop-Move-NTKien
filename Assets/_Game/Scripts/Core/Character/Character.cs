@@ -63,7 +63,7 @@ public class Character : GameUnit, IHit
         weaponBoost = false;
         audioOn = false;
         viewPortOffset = new Vector3(0.5f, 0.5f, 0);
-        sizeUpOffset = new Vector3(0.1f, 0.1f, 0.1f);
+        sizeUpOffset = new Vector3(0.2f, 0.2f, 0.2f);
     }
 
     public void Movement(CharacterController controller)
@@ -178,7 +178,7 @@ public class Character : GameUnit, IHit
     public virtual void GainStat()
     {
         characterTransform.localScale += sizeUpOffset;
-        attackRange += 0.6f;
+        attackRange += 1.2f;
     }
 
     public virtual void OnWeaponBoost(float range, bool value)

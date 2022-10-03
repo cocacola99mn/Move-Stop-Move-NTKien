@@ -1489,6 +1489,7 @@ MonoBehaviour:
   skinDesText: {fileID: 8855724604933613727}
   priceText: {fileID: 520852645422274229}
   coinText: {fileID: 7503022058884438570}
+  equipText: {fileID: 3684456244456316206}
   itemIndex: 0
   goldNum: 0
 --- !u!114 &3021559140273714881
@@ -1556,7 +1557,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8017940451195105700
 MonoBehaviour:
   m_ObjectHideFlags: 0

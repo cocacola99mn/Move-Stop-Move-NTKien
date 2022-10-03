@@ -7,6 +7,7 @@ public class CanvasMainMenu : UICanvas
 {
     DataManager dataIns;
     public Text zoneText, rankText, coinText, nameFieldText;
+    public InputField nameInput;
     public GameObject vibrateOn, soundOn, vibrateOff, soundOff;
 
     private void Start()
@@ -20,7 +21,7 @@ public class CanvasMainMenu : UICanvas
         coinText.text = dataIns.playerDataSO.Gold.ToString();
         zoneText.text = "ZONE " + dataIns.playerDataSO.Zone.ToString();
         rankText.text = "BEST " + dataIns.playerDataSO.Rank.ToString();
-        nameFieldText.text = dataIns.playerDataSO.Name;
+        nameInput.text = dataIns.playerDataSO.Name;
 
         if (PlayerPrefs.GetInt(GameConstant.PREF_SOUND) == 1)
         {
@@ -49,13 +50,13 @@ public class CanvasMainMenu : UICanvas
         LevelManager.Ins.SetGameplayUI(true);
         LevelManager.Ins.levelStarter = true;
 
-        if(string.Equals(nameFieldText.text, ""))
+        if(string.Equals(nameInput.text, ""))
         {
             dataIns.SetStringData(GameConstant.DEFAULT_NAME, ref dataIns.playerDataSO.Name, GameConstant.DEFAULT_NAME);
         }
         else
         {
-            dataIns.SetStringData(GameConstant.PREF_PLAYERNAME, ref dataIns.playerDataSO.Name, nameFieldText.text);
+            dataIns.SetStringData(GameConstant.PREF_PLAYERNAME, ref dataIns.playerDataSO.Name, nameInput.text);
         }
 
         dataIns.player.characterNameText.text = dataIns.playerDataSO.Name;

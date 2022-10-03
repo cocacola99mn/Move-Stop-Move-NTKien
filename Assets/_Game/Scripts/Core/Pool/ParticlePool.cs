@@ -39,6 +39,7 @@ public static class ParticlePool
         {
             item.Value.Release();
         }
+        particlePools.Clear();
     }
 
     public class Particle
@@ -47,7 +48,6 @@ public static class ParticlePool
         ParticleSystem particle;
         Transform parent;
         int index;
-        int amount;
 
         public Particle(ParticleSystem particle, int amount, Transform parent)
         {

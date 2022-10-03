@@ -34,7 +34,7 @@ public class PlayerController : Character
     {
         base.OnInit();
 
-        SetRangeOutline(attackRange - 1);
+        rangeOutline.localScale = new Vector3(attackRange * 0.8f, attackRange * 0.8f, 1);
         GetWeapon(dataIns.playerDataSO.Weapon);
         GetHat(dataIns.playerDataSO.Hat);
         GetPant(dataIns.playerDataSO.Pant);
@@ -133,12 +133,12 @@ public class PlayerController : Character
     public override void OnWeaponBoost(float range, bool value)
     {
         base.OnWeaponBoost(range, value);
-        SetRangeOutline(attackRange - 1);
+        SetRangeOutline(range * 0.8f);
     }
 
     public void SetRangeOutline(float x)
     {
-        rangeOutline.localScale = new Vector3(x, x, 1);
+        rangeOutline.localScale += new Vector3(x, x, 1);
     }
 
     public override void GainStat()

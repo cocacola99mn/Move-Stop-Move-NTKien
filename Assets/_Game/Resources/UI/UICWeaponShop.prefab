@@ -495,6 +495,7 @@ MonoBehaviour:
   lockText: {fileID: 353742899108336079}
   descriptionText: {fileID: 353742897585213556}
   coinText: {fileID: 353742898767643502}
+  equipText: {fileID: 353742899034325063}
 --- !u!223 &2681143710269811673
 Canvas:
   m_ObjectHideFlags: 0
@@ -538,7 +539,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8834976787291332989
 MonoBehaviour:
   m_ObjectHideFlags: 0

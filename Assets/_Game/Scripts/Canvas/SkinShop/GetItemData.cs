@@ -27,6 +27,6 @@ public class GetItemData : MonoBehaviour
     public void ItemButton()
     {
         canvasSkinShop.itemIndex = itemData;
-        canvasSkinShop.OnItemClicked(locker, this);
+        canvasSkinShop.OnItemClicked(locker,this);
     }
 }

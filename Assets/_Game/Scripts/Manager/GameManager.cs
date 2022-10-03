@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene(scene.name);
         SimplePool.ReleaseAll();
+        ParticlePool.ReleaseAll();
     }
 
     public void NextScene()

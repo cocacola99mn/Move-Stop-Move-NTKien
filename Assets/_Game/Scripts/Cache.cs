@@ -8,10 +8,8 @@ public static class Cache
     private static Dictionary<GameObject, ProjectileController> projectileController = new Dictionary<GameObject, ProjectileController>();
     private static Dictionary<GameObject, AIController> aiController = new Dictionary<GameObject, AIController>();
     private static Dictionary<GameObject, PlayerController> playerController = new Dictionary<GameObject, PlayerController>();
-    private static Dictionary<GameObject, RectTransform> rectTransform = new Dictionary<GameObject, RectTransform>();
     private static Dictionary<GameObject, GetItemData> getItemData = new Dictionary<GameObject, GetItemData>();
     private static Dictionary<GameObject, TypeSplit> getTypeSplit = new Dictionary<GameObject, TypeSplit>();
-    private static Dictionary<GameObject, Indicator> getIndicator = new Dictionary<GameObject, Indicator>();
 
     public static Character GetCharacter(Collider collider)
     {
@@ -53,16 +51,6 @@ public static class Cache
         return playerController[gameObject];
     }
 
-    public static RectTransform GetRectTransform(GameObject gameObject)
-    {
-        if (!rectTransform.ContainsKey(gameObject))
-        {
-            rectTransform.Add(gameObject, gameObject.GetComponent<RectTransform>());
-        }
-
-        return rectTransform[gameObject];
-    }
-
     public  static GetItemData GetItemData(GameObject gameObject)
     {
         if (!getItemData.ContainsKey(gameObject))
@@ -81,15 +69,5 @@ public static class Cache
         }
 
         return getTypeSplit[gameObject];
-    }
-
-    public static Indicator GetIndicator(GameObject gameObject)
-    {
-        if (!getIndicator.ContainsKey(gameObject))
-        {
-            getIndicator.Add(gameObject, gameObject.GetComponent<Indicator>());
-        }
-
-        return getIndicator[gameObject];
     }
 }

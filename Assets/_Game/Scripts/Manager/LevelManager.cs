@@ -65,6 +65,7 @@ public class LevelManager : Singleton<LevelManager>
         playerController.gameObject.SetActive(true);
         playerController.OnRevive();
         aliveNumber++;
+        SetAliveNumber();
         reviveCheck = true;
         SetGameplayUI(true);
     }
