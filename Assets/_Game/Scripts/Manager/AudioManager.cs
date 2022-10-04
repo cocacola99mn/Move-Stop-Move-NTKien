@@ -5,29 +5,24 @@ using UnityEngine.Audio;
 
 public enum AudioName 
 { 
-    ButtonClick,
-    Die,
-    Hit,
-    Projectile,
-    Fail,
-    Victory,
-    SizeUp
+    ButtonClick = 0,
+    Die = 1,
+    Hit = 2,
+    Projectile = 3,
+    Fail = 4,
+    Victory = 5,
+    SizeUp = 6
 }
 
 public class AudioManager : Singleton<AudioManager>
 {
+    DataManager dataIns;
+
     public AudioMixer audioMixer;
     public AudioSource audioSource;
+    bool startAudio;
 
-    [System.Serializable]
-    public class AudioData
-    {
-        public AudioName audioName;
-        public AudioClip audioClip;
-    }
-
-    public List<AudioData> audioDatas = new List<AudioData>();
-    public Dictionary<AudioName, AudioClip> audioDict = new Dictionary<AudioName, AudioClip>();
+    public List<AudioClip> audioList = new List<AudioClip>();
 
     void Start()
     {
@@ -36,21 +31,19 @@ public class AudioManager : Singleton<AudioManager>
 
     public void OnInit()
     {
-        foreach (var item in audioDatas)
-        {
-            audioDict.Add(item.audioName, item.audioClip);
-        }
+        dataIns = DataManager.Ins;
+        startAudio = (dataIns.playerDataSO.Sound) ? true : false;
+        SetAudio(startAudio);
     }
 
     public void PlayAudio(AudioName name)
     {
-        audioSource.PlayOneShot(audioDict[name]);
+        audioSource.PlayOneShot(audioList[(int)name]);
     }
 
     public void SetAudio(bool state)
     {
-        int soundPref = (state) ? 1 : 0;
-        PlayerPrefs.SetInt(GameConstant.PREF_SOUND, soundPref);
+        dataIns.SetBoolData(GameConstant.PREF_SOUND, ref dataIns.playerDataSO.Sound, state);
 
         float mixerValue = (state) ? 0 : -80;
         audioMixer.SetFloat(GameConstant.MIXER_MASTER, mixerValue);

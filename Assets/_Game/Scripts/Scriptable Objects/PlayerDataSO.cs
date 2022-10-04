@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerDataSO : ScriptableObject
 {
-    public bool InitData;
+    public bool InitData, Sound, Vibrate;
 
     public string Name;
 

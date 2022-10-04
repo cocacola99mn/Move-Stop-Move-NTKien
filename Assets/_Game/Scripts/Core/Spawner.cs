@@ -77,13 +77,13 @@ public class Spawner : MonoBehaviour
     {
         Vector3 localPos = objectTf.localPosition;
         Vector3 newPos;
-        float boundValue = 40;
+        float boundValue = 39;
 
         if (localPos.x > boundValue || localPos.x < -boundValue || localPos.z > boundValue && localPos.z < -boundValue)
         {
-            newPos.x = Random.Range(-10, 10);
+            newPos.x = Random.Range(-15, 15);
             newPos.y = 0;
-            newPos.z = Random.Range(-10, 10);
+            newPos.z = Random.Range(-15, 15);
             objectTf.localPosition = newPos;
         }
     }

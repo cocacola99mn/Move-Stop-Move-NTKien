@@ -505,6 +505,14 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3f9df24e23a9cfc4bbcb24d35f881833, type: 3}
   - audioName: 6
     audioClip: {fileID: 8300000, guid: 84159911c3981a2488380b0438e940ff, type: 3}
+  audioList:
+  - {fileID: 8300000, guid: 5d4dd3bece804aa4299aa76d529c9394, type: 3}
+  - {fileID: 8300000, guid: bbccdf9bca47845438db7f87ce5e0aea, type: 3}
+  - {fileID: 8300000, guid: ae6b17992c8263b46b28a49ccd7dcb34, type: 3}
+  - {fileID: 8300000, guid: e269d0f1215732843b81be1d34760e91, type: 3}
+  - {fileID: 8300000, guid: b0ecab52e9a553142a999ebe0df5bfa6, type: 3}
+  - {fileID: 8300000, guid: 3f9df24e23a9cfc4bbcb24d35f881833, type: 3}
+  - {fileID: 8300000, guid: 84159911c3981a2488380b0438e940ff, type: 3}
 --- !u!1 &401505640
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,10 +969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1498,11 +1506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00048828125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -261.02246
+      value: -261
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1522,11 +1530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
@@ -2602,10 +2610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 50
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

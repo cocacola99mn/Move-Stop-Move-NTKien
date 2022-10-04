@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   InitData: 1
+  Sound: 1
+  Vibrate: 1
   Name: Player
-  Weapon: 0
+  Weapon: 3
   Color: 0
   Hat: 0
-  Pant: 5
-  Gold: 3500
-  Rank: 50
+  Pant: 1
+  Gold: 3200
+  Rank: 45
   Zone: 1

@@ -153,7 +153,14 @@ public class Character : GameUnit, IHit
             }
         }
 
-        return bestCollider.transform.position;
+        if(bestCollider != null)
+        {
+            return bestCollider.transform.position;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     public virtual void OnGetKill(Character character)
