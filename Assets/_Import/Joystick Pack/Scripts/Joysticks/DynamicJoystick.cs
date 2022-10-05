@@ -18,7 +18,7 @@ public class DynamicJoystick : Joystick
 
     public override void OnPointerDown(PointerEventData eventData)
     {
-        background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
+        background.anchoredPosition = eventData.position;
         background.gameObject.SetActive(true);
         base.OnPointerDown(eventData);
     }
@@ -36,6 +36,7 @@ public class DynamicJoystick : Joystick
             Vector2 difference = normalised * (magnitude - moveThreshold) * radius;
             background.anchoredPosition += difference;
         }
+
         base.HandleInput(magnitude, normalised, radius, cam);
     }
 }

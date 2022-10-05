@@ -34,7 +34,7 @@ public class Firing : MonoBehaviour
         else
         {
             weaponHolderObject.SetActive(true);
-            shotCounter = 0.35f;
+            shotCounter = 0.3f;
         }
     }
 

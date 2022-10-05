@@ -247,7 +247,7 @@ public class Character : GameUnit, IHit
             Destroy(currentWeaponTransform.gameObject);
         }
 
-        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, dataIns.weaponObjectList[weaponIndex].transform.position, Quaternion.Euler(0, 0, -100));
+        SetItemTransform(dataIns.weaponObjectList[weaponIndex], ref currentWeaponTransform, weaponHolder.transform, dataIns.weaponObjectList[weaponIndex].transform.position, Quaternion.Euler(0, -50, -100));
 
         projectile = Cache.GetProjectileController(dataIns.projectileObjectList[weaponIndex]);
     }

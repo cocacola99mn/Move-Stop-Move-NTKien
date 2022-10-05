@@ -16,10 +16,10 @@ MonoBehaviour:
   Sound: 1
   Vibrate: 1
   Name: Player
-  Weapon: 3
+  Weapon: 7
   Color: 0
   Hat: 0
   Pant: 1
-  Gold: 3200
+  Gold: 1238
   Rank: 45
   Zone: 1

@@ -90,6 +90,8 @@ public class LevelManager : Singleton<LevelManager>
         SetGameplayUI(false);
         levelStarter = false;
         playerController.controller.enabled = false;
+        newGoldNum = DataManager.Ins.playerDataSO.Gold + playerController.characterPoint;
+        DataManager.Ins.SetIntData(GameConstant.PREF_GOLD, ref DataManager.Ins.playerDataSO.Gold, newGoldNum);
         DataManager.Ins.SetIntData(GameConstant.PREF_ZONE, ref DataManager.Ins.playerDataSO.Zone, DataManager.Ins.playerDataSO.Zone + 1);
         UIManager.Ins.OpenUI(UIID.UICVictory);
         playerController.ChangeAnim(GameConstant.DANCE_ANIM);

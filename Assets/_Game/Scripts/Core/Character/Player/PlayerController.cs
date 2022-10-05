@@ -97,6 +97,7 @@ public class PlayerController : Character
             else
             {
                 UIManager.Ins.OpenUI(UIID.UICFail);
+                LevelManager.Ins.OnLevelFail();
             }
         }
     }
