@@ -12,8 +12,6 @@ public class PlayerController : Character
 
     Vector3 moveDirection;
 
-
-
     void Start()
     {
         OnInit();

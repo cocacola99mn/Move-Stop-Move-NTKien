@@ -97,6 +97,8 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    
+
     //Spawn enemy when an enemy die
     public IEnumerator SpawnEnemyOnDead()
     {
