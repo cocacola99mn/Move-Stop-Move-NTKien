@@ -13,7 +13,7 @@ public class DataManager : Singleton<DataManager>
     public List<GameObject> weaponObjectList, projectileObjectList, hatObjectList, pantObjectList;
     public List<LevelDataSO> levelDataSOList;
     public List<Material> pantMaterialList;
-    public List<Color32> colorList;
+    public List<Color> colorList;
 
     public void Awake()
     {

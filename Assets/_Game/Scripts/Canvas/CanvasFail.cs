@@ -20,11 +20,13 @@ public class CanvasFail : UICanvas
         goldText.text = levelIns.playerController.characterPoint.ToString();
         killerText.text = levelIns.playerController.killer.characterNameString;
         AudioManager.Ins.PlayAudio(AudioName.Fail);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
     }
 
     public void ContinueButton()
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 0.55f;
         GameManager.Ins.Restart();
     }
 }

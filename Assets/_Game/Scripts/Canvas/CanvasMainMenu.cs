@@ -22,7 +22,6 @@ public class CanvasMainMenu : UICanvas
         zoneText.text = "ZONE " + dataIns.playerDataSO.Zone.ToString();
         rankText.text = "BEST " + dataIns.playerDataSO.Rank.ToString();
         nameInput.text = dataIns.playerDataSO.Name;
-
         if (PlayerPrefs.GetInt(GameConstant.PREF_SOUND) == 1)
         {
             soundOff.SetActive(false);
@@ -42,6 +41,8 @@ public class CanvasMainMenu : UICanvas
         {
             VibrateOnButton();
         }
+
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 0.55f;
     }
 
     public void PlayGameButton()

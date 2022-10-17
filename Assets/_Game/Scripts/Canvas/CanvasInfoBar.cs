@@ -33,7 +33,7 @@ public class CanvasInfoBar : MonoBehaviour
         infoBarTransform.rotation = infoBarRotation;
     }
 
-    public void SetColor(Color32 color)
+    public void SetColor(Color color)
     {
         nameText.color = color;
         pointBarBackground.color = color;

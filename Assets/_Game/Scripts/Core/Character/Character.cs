@@ -21,7 +21,7 @@ public class Character : GameUnit, IHit
     public Animator animator;
     public Collider[] colliders;
 
-    public Color32 bodyColor;
+    public Color bodyColor;
     public Vector3 direction, characterOrigin, sizeUpOffset;
     Vector3 viewPortPos, viewPortOffset;
     public LayerMask targetLayer;
@@ -267,7 +267,7 @@ public class Character : GameUnit, IHit
         pantHolder.material = dataIns.pantMaterialList[pantIndex];
     }
 
-    public void GetBodyColor(Color32 color)
+    public void GetBodyColor(Color color)
     {
         bodyMeshRenderer.material.color = color;
         bodyColor = color;

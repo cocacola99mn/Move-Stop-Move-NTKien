@@ -33,6 +33,7 @@ public class CanvasWeaponShop : UICanvas
         imageScale = new Vector3(10, 10, 10);
         coinText.text = dataIns.playerDataSO.Gold.ToString();
         firstWeaponIndex = 0;
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
 
         InitWeaponImage();
         GetWeaponShopData();
@@ -133,6 +134,7 @@ public class CanvasWeaponShop : UICanvas
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICMainMenu);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 0.55f;
         Close();
     }
 

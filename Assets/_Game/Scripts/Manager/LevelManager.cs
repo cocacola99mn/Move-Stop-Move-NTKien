@@ -8,7 +8,7 @@ public class LevelManager : Singleton<LevelManager>
     public Spawner spawner;
     public PlayerController playerController;
 
-    public GameObject UIGameplay,indicatorHolder;
+    public GameObject UIGameplay,indicatorHolder, joystick;
     public Text UIAliveDisplayNumber;
     
     public int aliveNumber, newGoldNum, zoneIndex;
@@ -36,13 +36,13 @@ public class LevelManager : Singleton<LevelManager>
     public void LevelStarter(bool state)
     {
         levelStarter = state;
-
     }
 
     public void SetGameplayUI(bool state)
     {
         indicatorHolder.SetActive(state);
         UIGameplay.SetActive(state);
+        joystick.SetActive(state);
     }
 
     public void OnCharacterDead()

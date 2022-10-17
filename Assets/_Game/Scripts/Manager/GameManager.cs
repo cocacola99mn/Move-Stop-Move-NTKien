@@ -4,11 +4,12 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     public Scene scene;
-
+    public CanvasScaler cameraScaler;
     protected void Awake()
     {
         OnInit();

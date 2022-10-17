@@ -31,6 +31,7 @@ public class CanvasSkinShop : UICanvas
         skinDesText.text = noDes;
         equipButton.SetActive(true);
         priceButton.SetActive(false);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
     }
 
     public void CloseButton()
@@ -42,6 +43,7 @@ public class CanvasSkinShop : UICanvas
         Destroy(gameObject);
 
         UIManager.Ins.OpenUI(UIID.UICMainMenu);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 0.55f;
     }
 
    public void HatButton()
