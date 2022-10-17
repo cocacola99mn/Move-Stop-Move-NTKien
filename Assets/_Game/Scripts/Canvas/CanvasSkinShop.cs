@@ -31,7 +31,6 @@ public class CanvasSkinShop : UICanvas
         skinDesText.text = noDes;
         equipButton.SetActive(true);
         priceButton.SetActive(false);
-        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
     }
 
     public void CloseButton()

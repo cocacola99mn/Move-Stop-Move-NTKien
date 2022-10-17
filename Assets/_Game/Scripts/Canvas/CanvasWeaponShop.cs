@@ -33,7 +33,6 @@ public class CanvasWeaponShop : UICanvas
         imageScale = new Vector3(10, 10, 10);
         coinText.text = dataIns.playerDataSO.Gold.ToString();
         firstWeaponIndex = 0;
-        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
 
         InitWeaponImage();
         GetWeaponShopData();

@@ -69,6 +69,7 @@ public class CanvasMainMenu : UICanvas
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICWeaponShop);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
         Destroy(gameObject);
     }
 
@@ -76,6 +77,7 @@ public class CanvasMainMenu : UICanvas
     {
         AudioManager.Ins.PlayAudio(AudioName.ButtonClick);
         UIManager.Ins.OpenUI(UIID.UICSkinShop);
+        GameManager.Ins.cameraScaler.matchWidthOrHeight = 1;
         Destroy(gameObject);
     }
 
